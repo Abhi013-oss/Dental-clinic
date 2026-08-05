@@ -135,7 +135,7 @@ export async function POST(request: NextRequest) {
     }).catch((err) => console.error('[Resend Patient Email Error]', err));
 
     // 2. Send Ultra-Luxury Doctor Notification Email
-    const doctorEmail = process.env.CLINIC_NOTIFICATION_EMAIL || 'shrivastavaabhinav046@gmail.com';
+    const doctorEmail = process.env.CLINIC_NOTIFICATION_EMAIL || 'adityabusinesslab@gmail.com';
     const doctorHtml = `
       <!DOCTYPE html>
       <html>

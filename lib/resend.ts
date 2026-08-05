@@ -18,7 +18,8 @@ export async function sendEmail({ to, subject, html }: SendEmailOptions) {
 
     const resendClient = new Resend(apiKey);
     const fromAddress = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
-    const fallbackEmail = process.env.CLINIC_NOTIFICATION_EMAIL || 'shrivastavaabhinav046@gmail.com';
+    const clinicEmail = process.env.CLINIC_NOTIFICATION_EMAIL || 'adityabusinesslab@gmail.com';
+    const registeredAccountOwner = 'shrivastavaabhinav046@gmail.com';
 
     let response = await resendClient.emails.send({
       from: `ÉLITE Dental Clinic <${fromAddress}>`,
@@ -27,18 +28,18 @@ export async function sendEmail({ to, subject, html }: SendEmailOptions) {
       html,
     });
 
-    // If Resend blocks sending to external email due to unverified testing domain (403 error)
-    if (response.error && response.error.name === 'validation_error' && to !== fallbackEmail) {
-      console.warn(`[Resend Testing Mode] Unverified recipient ${to}. Forwarding copy to registered email ${fallbackEmail}.`);
+    // If Resend blocks sending to unverified recipient due to free testing tier restrictions (403 error)
+    if (response.error && response.error.name === 'validation_error' && to !== registeredAccountOwner) {
+      console.warn(`[Resend Testing Mode] Unverified recipient ${to}. Forwarding copy to registered owner ${registeredAccountOwner}.`);
       
       const fallbackResponse = await resendClient.emails.send({
         from: `ÉLITE Dental Clinic <${fromAddress}>`,
-        to: fallbackEmail,
-        subject: `[Patient Confirmation for ${to}] ${subject}`,
+        to: registeredAccountOwner,
+        subject: `[Notification for ${to}] ${subject}`,
         html: `
           <div style="background:#fef3c7; padding:12px; border-radius:6px; margin-bottom:16px; font-size:12px; color:#92400e; border:1px solid #fde68a;">
-            ⚠️ <strong>Resend Testing Mode Notice:</strong> This patient confirmation email was addressed to <strong>${to}</strong>. 
-            To send directly to external patient inboxes in production, add your domain at <a href="https://resend.com/domains" target="_blank">resend.com/domains</a>.
+            ⚠️ <strong>Resend Testing Domain Notice:</strong> This notification was addressed to <strong>${to}</strong>. 
+            To send directly to this address in production, add your domain at <a href="https://resend.com/domains" target="_blank">resend.com/domains</a>.
           </div>
           ${html}
         `,

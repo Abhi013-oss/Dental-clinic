@@ -53,7 +53,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_iYWpzhB7AdCfWF_ysA83GA_Afp-p2C9
 
 # 2. Resend Email System Credentials
 RESEND_API_KEY=re_your_resend_api_key_here
-CLINIC_NOTIFICATION_EMAIL=shrivastavaabhinav046@gmail.com
+CLINIC_NOTIFICATION_EMAIL=adityabusinesslab@gmail.com
 RESEND_FROM_EMAIL=onboarding@resend.dev
 
 # 3. Production Site URL
