@@ -15,7 +15,7 @@ export function Navbar() {
   const [servicesDropdownOpen, setServicesDropdownOpen] = React.useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-white border-b border-slate-200/80 py-3.5 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-200/80 py-3.5 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="group flex items-center space-x-3 focus-visible:outline-none shrink-0">
@@ -127,7 +127,7 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-full bg-white border-b border-slate-200 p-6 shadow-2xl animate-in slide-in-from-top-4 duration-300">
+        <div className="lg:hidden fixed left-0 right-0 top-[67px] bg-white border-b border-slate-200 p-6 shadow-2xl z-50 animate-in slide-in-from-top-2 duration-200 max-h-[calc(100vh-67px)] overflow-y-auto">
           <div className="flex flex-col space-y-3">
             {mainNavItems.map((item) => (
               <Link
