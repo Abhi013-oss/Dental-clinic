@@ -57,15 +57,16 @@ export function Dialog({ isOpen, onClose, title, description, children, maxWidth
         )}
       >
         <button
+          type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 rounded-full p-2 text-slate-400 hover:bg-slate-100 hover:text-navy-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600"
+          className="absolute right-3 top-3 rounded-full p-2.5 text-slate-400 hover:bg-slate-100 hover:text-navy-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600 touch-manipulation cursor-pointer select-none active:scale-95 z-20"
           aria-label="Close dialog"
         >
           <X className="h-5 w-5" />
         </button>
 
         {title && (
-          <div className="mb-6 space-y-1">
+          <div className="mb-6 space-y-1 pr-8">
             <h2 className="font-sans text-2xl sm:text-3xl font-extrabold tracking-tight text-navy-900">{title}</h2>
             {description && <p className="text-sm text-slate-600 leading-relaxed">{description}</p>}
           </div>

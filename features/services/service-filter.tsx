@@ -3,11 +3,10 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { servicesData } from '@/constants/services.data';
-import { ServiceItem } from '@/types/service.types';
 import { GlassCard } from '@/components/shared/glass-card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, CheckCircle2, Clock, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Clock } from 'lucide-react';
 
 export function ServiceFilter() {
   const [selectedCategory, setSelectedCategory] = React.useState<string>('All');
@@ -20,16 +19,17 @@ export function ServiceFilter() {
 
   return (
     <div className="space-y-12">
-      {/* Category Tabs Bar */}
-      <div className="flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto p-1.5 rounded-full glass-panel-gold border border-gold-500/30">
+      {/* Responsive Category Tabs Bar */}
+      <div className="flex items-center space-x-2 overflow-x-auto no-scrollbar sm:flex-wrap sm:justify-center p-2 rounded-2xl sm:rounded-full bg-slate-100/90 border border-slate-200 max-w-2xl mx-auto">
         {categories.map((cat) => (
           <button
+            type="button"
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+            className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap cursor-pointer touch-manipulation select-none ${
               selectedCategory === cat
-                ? 'bg-gold-gradient text-obsidian-900 shadow-md font-bold'
-                : 'text-muted-foreground hover:text-foreground hover:bg-gold-500/10'
+                ? 'bg-medical-600 text-white shadow-md shadow-medical-600/20'
+                : 'text-slate-600 hover:text-navy-900 hover:bg-white/80'
             }`}
           >
             {cat}
@@ -42,11 +42,11 @@ export function ServiceFilter() {
         {filteredServices.map((service, index) => (
           <GlassCard
             key={service.id}
-            variant={index % 2 === 0 ? 'gold' : 'standard'}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+            variant="standard"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white border border-slate-200 shadow-md p-6 sm:p-8"
           >
             {/* Media Column */}
-            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-gold-500/30">
+            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200">
               <img
                 src={service.heroImage}
                 alt={service.title}
@@ -60,8 +60,8 @@ export function ServiceFilter() {
             {/* Details Column */}
             <div className="lg:col-span-7 space-y-6">
               <div>
-                <h2 className="font-serif text-3xl font-bold text-foreground">{service.title}</h2>
-                <p className="text-sm text-muted-foreground mt-2 leading-relaxed font-light">
+                <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-navy-900">{service.title}</h2>
+                <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed font-normal">
                   {service.fullDescription}
                 </p>
               </div>
@@ -69,31 +69,31 @@ export function ServiceFilter() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 {service.features.map((feature, fIdx) => (
                   <div key={fIdx} className="flex items-start space-x-2 text-xs">
-                    <CheckCircle2 className="h-4 w-4 text-gold-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-4 w-4 text-medical-600 shrink-0 mt-0.5" />
                     <div>
-                      <strong className="text-foreground font-semibold">{feature.title}</strong>
-                      <p className="text-muted-foreground">{feature.description}</p>
+                      <strong className="text-navy-900 font-bold">{feature.title}</strong>
+                      <p className="text-slate-500">{feature.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="pt-4 border-t border-border flex flex-wrap items-center justify-between gap-4">
-                <div className="flex items-center space-x-6 text-xs text-muted-foreground">
+              <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center space-x-6 text-xs text-slate-500">
                   <div className="flex items-center space-x-1.5">
-                    <Clock className="h-4 w-4 text-gold-500" />
+                    <Clock className="h-4 w-4 text-medical-600" />
                     <span>{service.durationMinutes} Mins Session</span>
                   </div>
                   <div>
                     Starting at{' '}
-                    <strong className="font-serif text-lg font-bold text-gold-600 dark:text-gold-400">
+                    <strong className="font-sans text-base font-extrabold text-medical-600">
                       ${service.startingPrice.toLocaleString()}
                     </strong>
                   </div>
                 </div>
 
-                <Link href={`/services/${service.slug}`}>
-                  <Button variant="gold">
+                <Link href={`/services/${service.slug}`} className="w-full sm:w-auto">
+                  <Button variant="gold" size="sm" className="w-full sm:w-auto font-bold text-xs h-11 px-6 touch-manipulation cursor-pointer">
                     <span>View Procedure Details</span>
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>

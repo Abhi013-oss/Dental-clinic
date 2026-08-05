@@ -60,11 +60,16 @@ export function LightboxModal({ caseStudy, isOpen, onClose }: LightboxModalProps
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-end gap-3 pt-2">
-          <Button variant="outline" onClick={onClose}>
+          <Button
+            variant="outline"
+            onClick={onClose}
+            className="w-full sm:w-auto font-bold text-xs h-11 px-6 touch-manipulation cursor-pointer"
+          >
             Close
           </Button>
-          <Link href="/book" onClick={onClose}>
-            <Button variant="gold">
+
+          <Link href="/book" onClick={onClose} className="w-full sm:w-auto">
+            <Button variant="gold" className="w-full sm:w-auto font-bold text-xs h-11 px-6 touch-manipulation cursor-pointer">
               <Calendar className="mr-2 h-4 w-4" />
               <span>Book Similar Treatment</span>
             </Button>
