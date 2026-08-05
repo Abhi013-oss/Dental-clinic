@@ -35,8 +35,9 @@ export function FaqSection() {
               <ScrollReveal key={index} direction="up" delay={0.08 * index + 0.15}>
                 <GlassCard variant="standard" className="p-0 overflow-hidden bg-white border border-slate-200 shadow-sm">
                   <button
+                    type="button"
                     onClick={() => toggleIndex(index)}
-                    className="w-full p-6 text-left flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600 transition-colors hover:bg-slate-50/80"
+                    className="w-full p-6 text-left flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600 transition-colors hover:bg-slate-50/80 cursor-pointer touch-manipulation select-none"
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center space-x-3 pr-4">

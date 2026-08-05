@@ -167,8 +167,9 @@ export function SmileQuiz() {
                 {question.options.map((opt, idx) => (
                   <button
                     key={idx}
+                    type="button"
                     onClick={() => handleSelectOption(opt.recommendedServiceSlug)}
-                    className="text-left p-5 rounded-xl border border-slate-200 hover:border-medical-600 bg-slate-50/50 hover:bg-medical-50 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600"
+                    className="text-left p-5 rounded-xl border border-slate-200 hover:border-medical-600 bg-slate-50/50 hover:bg-medical-50 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600 cursor-pointer touch-manipulation select-none active:scale-[0.98]"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-sans text-base font-bold text-navy-900 group-hover:text-medical-600 transition-colors">
@@ -198,15 +199,16 @@ export function SmileQuiz() {
 
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href={`/book?service=${getFinalRecommendation().slug}`}>
-                <Button variant="gold" size="lg">
+                <Button variant="gold" size="lg" className="touch-manipulation">
                   <Calendar className="mr-2 h-5 w-5" />
                   <span>Book Consultation for {getFinalRecommendation().title}</span>
                 </Button>
               </Link>
 
               <button
+                type="button"
                 onClick={resetQuiz}
-                className="inline-flex items-center text-xs text-slate-500 hover:text-medical-600 transition-colors py-2 font-bold"
+                className="inline-flex items-center text-xs text-slate-500 hover:text-medical-600 transition-colors py-2 font-bold cursor-pointer touch-manipulation"
               >
                 <RotateCcw className="mr-1.5 h-3.5 w-3.5" /> Retake Assessment
               </button>

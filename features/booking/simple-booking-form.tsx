@@ -48,8 +48,9 @@ export function SimpleBookingForm() {
     resolver: zodResolver(simpleBookingSchema),
     defaultValues: {
       serviceId: servicesData[0].id,
+      doctorId: 'any-doctor',
       preferredDate: todayStr,
-      preferredTimeSlot: DEFAULT_TIME_SLOTS[0].time,
+      preferredTimeSlot: '',
       fullName: '',
       email: '',
       phone: '',
@@ -58,96 +59,74 @@ export function SimpleBookingForm() {
 
   const selectedDate = watch('preferredDate');
   const selectedTimeSlot = watch('preferredTimeSlot');
-  const selectedServiceId = watch('serviceId');
 
   const isSlotBooked = (date: string, time: string) => {
+    if (!date || !time) return false;
     return bookedSlots.includes(`${date}_${time}`);
   };
 
-  const isSlotTimePassed = (dateStr: string, slotTimeStr: string) => {
-    if (!dateStr) return false;
+  const isSlotTimePassed = (date: string, timeSlot: string) => {
+    if (!date || !timeSlot) return false;
+    if (date !== todayStr) return false;
 
-    // Normalize date format YYYY-MM-DD
-    const selectedYMD = dateStr.split('T')[0].replaceAll('/', '-');
+    try {
+      const timePart = timeSlot.split('-')[0].trim();
+      const match = timePart.match(/(\d+):(\d+)\s*(AM|PM)/i);
+      if (!match) return false;
 
-    const currNow = new Date();
-    const currYear = currNow.getFullYear();
-    const currMonth = String(currNow.getMonth() + 1).padStart(2, '0');
-    const currDate = String(currNow.getDate()).padStart(2, '0');
-    const currTodayYMD = `${currYear}-${currMonth}-${currDate}`;
+      let hours = parseInt(match[1], 10);
+      const minutes = parseInt(match[2], 10);
+      const period = match[3].toUpperCase();
 
-    if (selectedYMD < currTodayYMD) return true;
-    if (selectedYMD > currTodayYMD) return false;
+      if (period === 'PM' && hours < 12) hours += 12;
+      if (period === 'AM' && hours === 12) hours = 0;
 
-    // Selected date is TODAY! Extract slot start time (e.g. "09:00 AM" from "09:00 AM - 10:00 AM")
-    const startTimeStr = slotTimeStr.split('-')[0].trim();
-    const match = startTimeStr.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
-    if (!match) return false;
+      const slotStartMinutes = hours * 60 + minutes;
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
-    let [_, hoursStr, minutesStr, period] = match;
-    let slotHour = parseInt(hoursStr, 10);
-    const slotMinute = parseInt(minutesStr, 10);
-
-    if (period.toUpperCase() === 'PM' && slotHour < 12) {
-      slotHour += 12;
-    } else if (period.toUpperCase() === 'AM' && slotHour === 12) {
-      slotHour = 0;
+      return slotStartMinutes <= currentMinutes;
+    } catch (e) {
+      return false;
     }
-
-    const currentHour = currNow.getHours();
-    const currentMinute = currNow.getMinutes();
-
-    if (currentHour > slotHour) return true;
-    if (currentHour === slotHour && currentMinute >= slotMinute) return true;
-
-    return false;
   };
 
   const handleResetForm = () => {
+    setIsSuccess(false);
+    setLastBooking(null);
     reset({
       serviceId: servicesData[0].id,
+      doctorId: 'any-doctor',
       preferredDate: todayStr,
-      preferredTimeSlot: DEFAULT_TIME_SLOTS[0].time,
+      preferredTimeSlot: '',
       fullName: '',
       email: '',
       phone: '',
     });
-    setIsSuccess(false);
-    setLastBooking(null);
   };
 
   const onSubmit = async (data: SimpleBookingFormValues) => {
-    const slotKey = `${data.preferredDate}_${data.preferredTimeSlot}`;
-
-    if (isSlotTimePassed(data.preferredDate, data.preferredTimeSlot)) {
-      showToast({
-        type: 'error',
-        title: 'Slot Expired',
-        message: 'You cannot book this time slot as the time has already passed.',
-      });
-      return;
-    }
-
-    if (bookedSlots.includes(slotKey)) {
-      showToast({
-        type: 'error',
-        title: 'Slot Unavailable',
-        message: 'This time slot was already reserved. Please choose another time.',
-      });
-      return;
-    }
-
     setIsSubmitting(true);
 
     try {
+      const slotKey = `${data.preferredDate}_${data.preferredTimeSlot}`;
+      if (bookedSlots.includes(slotKey)) {
+        throw new Error('This time slot has already been reserved by another patient. Please choose a different time slot.');
+      }
+
+      if (isSlotTimePassed(data.preferredDate, data.preferredTimeSlot)) {
+        throw new Error('This time slot has already passed for today. Please select a future time slot.');
+      }
+
       const sanitized = {
-        ...data,
+        serviceId: sanitizeInput(data.serviceId),
+        doctorId: data.doctorId || 'any-doctor',
+        preferredDate: sanitizeInput(data.preferredDate),
+        preferredTimeSlot: sanitizeInput(data.preferredTimeSlot),
         fullName: sanitizeInput(data.fullName),
         email: sanitizeInput(data.email),
         phone: sanitizeInput(data.phone),
       };
 
-      // Call Backend API Route
       const response = await fetch('/api/appointments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -160,7 +139,6 @@ export function SimpleBookingForm() {
         throw new Error(resData.error || 'Server processing error');
       }
 
-      // Persist slot lock
       const updatedBooked = [...bookedSlots, slotKey];
       setBookedSlots(updatedBooked);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedBooked));
@@ -187,10 +165,9 @@ export function SimpleBookingForm() {
     }
   };
 
-  // Confirmation Success Card
   if (isSuccess && lastBooking) {
     return (
-      <div className="p-8 sm:p-12 text-center max-w-xl mx-auto bg-white border border-slate-200 rounded-3xl shadow-xl space-y-6">
+      <div className="p-8 sm:p-12 text-center max-w-xl mx-auto bg-white border border-slate-200 rounded-3xl shadow-xl space-y-6 animate-in fade-in zoom-in-95 duration-300">
         <div className="h-16 w-16 rounded-full bg-medical-50 border border-medical-200 text-medical-600 flex items-center justify-center mx-auto shadow-md">
           <CheckCircle2 className="h-10 w-10 text-medical-600" />
         </div>
@@ -225,7 +202,7 @@ export function SimpleBookingForm() {
 
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <a href={`tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, '')}`} className="w-full sm:w-auto">
-            <Button variant="gold" size="sm" className="w-full font-bold text-xs h-11 px-5">
+            <Button variant="gold" size="sm" className="w-full font-bold text-xs h-11 px-5 touch-manipulation">
               <PhoneCall className="mr-2 h-4 w-4" />
               <span>Call Reception</span>
             </Button>
@@ -237,13 +214,13 @@ export function SimpleBookingForm() {
             rel="noopener noreferrer"
             className="w-full sm:w-auto"
           >
-            <Button variant="outline" size="sm" className="w-full font-bold text-xs h-11 px-5">
+            <Button variant="outline" size="sm" className="w-full font-bold text-xs h-11 px-5 touch-manipulation">
               <MessageSquare className="mr-2 h-4 w-4 text-emerald-600" />
               <span>WhatsApp Direct</span>
             </Button>
           </a>
 
-          <Button variant="ghost" size="sm" onClick={handleResetForm} className="font-bold text-xs h-11 px-5">
+          <Button variant="ghost" size="sm" onClick={handleResetForm} className="font-bold text-xs h-11 px-5 touch-manipulation">
             Book Another Slot
           </Button>
         </div>
@@ -254,6 +231,8 @@ export function SimpleBookingForm() {
   return (
     <div className="p-6 sm:p-10 max-w-3xl mx-auto bg-white border border-slate-200 rounded-3xl shadow-md space-y-6">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <input type="hidden" {...register('preferredTimeSlot')} />
+
         <div className="border-b border-slate-100 pb-4">
           <h2 className="font-sans text-2xl font-extrabold text-navy-900">Book Your Dental Visit</h2>
           <p className="text-xs text-slate-500 mt-1">Select your treatment, date, and preferred time slot.</p>
@@ -294,8 +273,8 @@ export function SimpleBookingForm() {
                     type="button"
                     key={slot.id}
                     disabled={isDisabled}
-                    onClick={() => setValue('preferredTimeSlot', slot.time)}
-                    className={`p-3 rounded-xl border text-xs font-bold text-left flex items-center justify-between transition-all select-none ${
+                    onClick={() => setValue('preferredTimeSlot', slot.time, { shouldValidate: true, shouldDirty: true, shouldTouch: true })}
+                    className={`p-3 rounded-xl border text-xs font-bold text-left flex items-center justify-between transition-all select-none touch-manipulation cursor-pointer ${
                       isDisabled
                         ? 'bg-slate-100 border-slate-200 text-slate-400 opacity-60 cursor-not-allowed'
                         : isSelected
@@ -368,7 +347,7 @@ export function SimpleBookingForm() {
             variant="gold"
             size="lg"
             isLoading={isSubmitting}
-            className="w-full sm:w-auto font-bold text-sm px-8 h-14"
+            className="w-full sm:w-auto font-bold text-sm px-8 h-14 touch-manipulation cursor-pointer"
           >
             <Calendar className="mr-2 h-5 w-5" />
             <span>Confirm Appointment Booking</span>
