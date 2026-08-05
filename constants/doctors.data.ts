@@ -1,0 +1,50 @@
+import { Doctor } from '@/types/doctor.types';
+
+export const doctorsData: Doctor[] = [
+  {
+    id: 'dr-alexander-vance',
+    name: 'Dr. Alexander Vance, DDS',
+    title: 'Founder & Master Aesthetic Surgeon',
+    specialty: 'Cosmetic Dentistry & Full Mouth Reconstruction',
+    degrees: ['DDS - Harvard School of Dental Medicine', 'Fellowship - AACD Master Ceramists Guild', 'B.S. Biochemistry - Stanford University'],
+    experienceYears: 22,
+    bio: 'Renowned globally for designing bespoke porcelain smiles for international dignitaries, celebrities, and discerning leaders. Dr. Vance merges classical artistic proportion with microscopic dental precision.',
+    avatarUrl: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=800&auto=format&fit=crop',
+    achievements: [
+      'Top 10 Cosmetic Dentists in North America',
+      'Presidential Award of Excellence in Esthetic Dentistry',
+      'Keynote Lecturer at Global Implantology Summit',
+    ],
+    consultationFee: 350,
+    availableDays: ['Monday', 'Tuesday', 'Thursday'],
+  },
+  {
+    id: 'dr-elena-rodriguez',
+    name: 'Dr. Elena Rodriguez, DMD, MS',
+    title: 'Chief Implantologist & Periodontist',
+    specialty: '3D Guided Implant Surgery & Regenerative Therapy',
+    degrees: ['DMD - University of Pennsylvania', 'M.S. Periodontics - Columbia University Medical Center'],
+    experienceYears: 18,
+    bio: 'Pioneer in flapless micro-implant placement and soft-tissue aesthetic grafting. Dr. Rodriguez has successfully placed over 8,000 implants with a 99.6% success rate.',
+    avatarUrl: 'https://images.unsplash.com/photo-1594824813566-78a9c2b4c107?q=80&w=800&auto=format&fit=crop',
+    achievements: [
+      'Diplomate, American Board of Periodontology',
+      'Author of 14 peer-reviewed clinical implantology papers',
+    ],
+    consultationFee: 300,
+    availableDays: ['Wednesday', 'Friday', 'Saturday'],
+  },
+  {
+    id: 'dr-marcus-chen',
+    name: 'Dr. Marcus Chen, DDS, MS',
+    title: 'Director of Clear Aligners & Facial Orthodontics',
+    specialty: 'Invisalign Master & Airway Orthodontics',
+    degrees: ['DDS - UCLA School of Dentistry', 'Orthodontic Residency - UCSF'],
+    experienceYears: 16,
+    bio: 'Specializing in non-extraction facial aesthetics and discreet alignment. Dr. Chen incorporates airway health and jaw alignment into every orthodontic design.',
+    avatarUrl: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=800&auto=format&fit=crop',
+    achievements: ['Invisalign Diamond Apex Specialist (Top 1% Worldwide)', 'Pioneer in iTero 5D Occlusal Analysis'],
+    consultationFee: 250,
+    availableDays: ['Monday', 'Wednesday', 'Thursday'],
+  },
+];
