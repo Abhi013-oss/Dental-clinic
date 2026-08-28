@@ -25,6 +25,11 @@ export const metadata: Metadata = {
   authors: [{ name: 'Jawahar Dental Hospital Team' }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/logo.jpg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

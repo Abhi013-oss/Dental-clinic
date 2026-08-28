@@ -19,8 +19,12 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="group flex items-center space-x-3 focus-visible:outline-none shrink-0">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-medical-600 shadow-md shadow-medical-600/20 transition-transform duration-300 group-hover:scale-105">
-            <Activity className="h-5 w-5 text-white" />
+          <div className="relative h-10 w-10 overflow-hidden rounded-xl shadow-md shadow-medical-600/20 transition-transform duration-300 group-hover:scale-105">
+            <img
+              src="/logo.jpg"
+              alt="Jawahar Dental Hospital Logo"
+              className="h-full w-full object-cover"
+            />
           </div>
           <div className="flex flex-col">
             <span className="font-sans text-xl font-extrabold tracking-tight text-navy-900 leading-none">JAWAHAR</span>
