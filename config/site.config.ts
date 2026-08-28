@@ -43,20 +43,20 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: 'ÉLITE Dental Clinic',
+  name: 'Jawahar Dental Hospital',
   tagline: 'Specialist Dental Care & Full Mouth Rehabilitation',
   description:
-    'Comprehensive dental care by Dr. Arjun Jawahar Sharma & Dr. Priyanka Sharma across Kapurthala, Punjab and Mayur Vihar, East Delhi.',
-  url: process.env.NEXT_PUBLIC_APP_URL || 'https://elitedentalatelier.com',
+    'Comprehensive dental care by Dr. Arjun Jawahar Sharma & Dr. Priyanka Sharma at Jawahar Dental Hospital across Kapurthala, Punjab and Mayur Vihar, East Delhi.',
+  url: process.env.NEXT_PUBLIC_APP_URL || 'https://jawahardentalhospital.com',
   ogImage: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1200&auto=format&fit=crop',
   branches: {
     kapurthala: {
-      name: 'Kapurthala Clinic',
+      name: 'Kapurthala Branch',
       address: 'LINK ROAD, OPPOSITE PARK, NEAR YES BANK, KAPURTHALA, PUNJAB',
       contact: '82641-71818',
     },
     delhi: {
-      name: 'Delhi Clinic',
+      name: 'Delhi Branch',
       address: '1/101-A, PRATAP NAGAR, MAYUR VIHAR, PHASE-I, METRO PILLAR NO. 12-13, EAST DELHI',
       contact: '99100-66721, 82855-47579',
     },
@@ -87,6 +87,6 @@ export const siteConfig: SiteConfig = {
     { label: 'Smiles Transformed', value: '12,500+' },
     { label: 'Years of Experience', value: '15+' },
     { label: 'Specialist Doctors', value: '2' },
-    { label: 'Clinic Locations', value: '2' },
+    { label: 'Hospital Locations', value: '2' },
   ],
 };

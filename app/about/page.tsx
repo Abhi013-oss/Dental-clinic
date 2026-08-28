@@ -32,7 +32,7 @@ export default function AboutPage() {
         {/* Hero Section */}
         <ScrollReveal direction="up" delay={0.1}>
           <SectionHeader
-            badge="About ÉLITE Clinic"
+            badge="About Jawahar Dental Hospital"
             title="The Sanctuary of Advanced Dentistry"
             highlightTitle="Science Meets Patient Comfort."
             description="Founded to redefine healthcare expectations. We combine sub-millimeter 3D technology with a calm, stress-free clinical environment."

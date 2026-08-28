@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     'Full Mouth Rehabilitation',
     'Gentle Dental Care',
   ],
-  authors: [{ name: 'ÉLITE Dental Clinic Team' }],
+  authors: [{ name: 'Jawahar Dental Hospital Team' }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
   openGraph: {

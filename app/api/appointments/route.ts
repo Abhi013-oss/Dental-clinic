@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
             <!-- Header -->
             <tr>
               <td style="background-color: #0f172a; padding: 32px 24px; text-align: center; border-bottom: 3px solid #0284c7;">
-                <h1 style="color: #ffffff; font-size: 22px; font-weight: 800; letter-spacing: 2px; margin: 0; text-transform: uppercase;">ÉLITE DENTAL CLINIC</h1>
+                <h1 style="color: #ffffff; font-size: 22px; font-weight: 800; letter-spacing: 2px; margin: 0; text-transform: uppercase;">JAWAHAR DENTAL HOSPITAL</h1>
                 <div style="color: #38bdf8; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-top: 6px;">Beverly Hills • Clinical Excellence</div>
               </td>
             </tr>
@@ -119,8 +119,8 @@ export async function POST(request: NextRequest) {
             <!-- Footer -->
             <tr>
               <td style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 20px; text-align: center; color: #94a3b8; font-size: 12px; line-height: 1.5;">
-                ÉLITE Dental Clinic • Kapurthala (Punjab) & Mayur Vihar (East Delhi)<br/>
-                © ${new Date().getFullYear()} ÉLITE Dental Clinic. All Rights Reserved.
+                Jawahar Dental Hospital • Kapurthala (Punjab) & Mayur Vihar (East Delhi)<br/>
+                © ${new Date().getFullYear()} Jawahar Dental Hospital. All Rights Reserved.
               </td>
             </tr>
           </table>
@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
 
     sendEmail({
       to: sanitizedData.email,
-      subject: `Appointment Confirmation (${bookingRef}) - ÉLITE Dental Clinic`,
+      subject: `Appointment Confirmation (${bookingRef}) - Jawahar Dental Hospital`,
       html: patientHtml,
     }).catch((err) => console.error('[Resend Patient Email Error]', err));
 

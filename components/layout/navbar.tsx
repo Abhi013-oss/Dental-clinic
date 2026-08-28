@@ -23,9 +23,9 @@ export function Navbar() {
             <Activity className="h-5 w-5 text-white" />
           </div>
           <div className="flex flex-col">
-            <span className="font-sans text-xl font-extrabold tracking-tight text-navy-900 leading-none">ÉLITE</span>
+            <span className="font-sans text-xl font-extrabold tracking-tight text-navy-900 leading-none">JAWAHAR</span>
             <span className="text-[10px] tracking-[0.18em] font-bold text-medical-600 uppercase mt-0.5">
-              Dental Clinic
+              Dental Hospital
             </span>
           </div>
         </Link>
@@ -150,7 +150,7 @@ export function Navbar() {
                 className="flex items-center justify-center p-3 text-sm font-bold text-navy-900 border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors touch-manipulation"
               >
                 <PhoneCall className="mr-2 h-4 w-4 text-medical-600" />
-                <span>Call Concierge ({siteConfig.contact.phone})</span>
+                <span>Call Hospital ({siteConfig.contact.phone})</span>
               </a>
 
               <Link href="/book" onClick={() => setMobileMenuOpen(false)}>

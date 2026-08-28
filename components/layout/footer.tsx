@@ -22,9 +22,9 @@ export function Footer() {
                 <Activity className="h-5 w-5 text-white" />
               </div>
               <div className="flex flex-col">
-                <span className="font-sans text-xl font-extrabold tracking-tight text-white leading-none">ÉLITE</span>
+                <span className="font-sans text-xl font-extrabold tracking-tight text-white leading-none">JAWAHAR</span>
                 <span className="text-[10px] tracking-[0.18em] font-bold text-sky-400 uppercase mt-0.5">
-                  Dental Clinic
+                  Dental Hospital
                 </span>
               </div>
             </Link>
@@ -39,7 +39,7 @@ export function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow ÉLITE Dental Clinic on Instagram"
+                aria-label="Follow Jawahar Dental Hospital on Instagram"
                 className="h-9 w-9 rounded-full bg-navy-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:bg-medical-600 hover:text-white hover:border-medical-500 transition-all duration-300"
               >
                 <Instagram className="h-4 w-4" />
@@ -48,7 +48,7 @@ export function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow ÉLITE Dental Clinic on Facebook"
+                aria-label="Follow Jawahar Dental Hospital on Facebook"
                 className="h-9 w-9 rounded-full bg-navy-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:bg-medical-600 hover:text-white hover:border-medical-500 transition-all duration-300"
               >
                 <Facebook className="h-4 w-4" />
@@ -57,7 +57,7 @@ export function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow ÉLITE Dental Clinic on LinkedIn"
+                aria-label="Follow Jawahar Dental Hospital on LinkedIn"
                 className="h-9 w-9 rounded-full bg-navy-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:bg-medical-600 hover:text-white hover:border-medical-500 transition-all duration-300"
               >
                 <Linkedin className="h-4 w-4" />
@@ -66,7 +66,7 @@ export function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow ÉLITE Dental Clinic on Twitter"
+                aria-label="Follow Jawahar Dental Hospital on Twitter"
                 className="h-9 w-9 rounded-full bg-navy-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:bg-medical-600 hover:text-white hover:border-medical-500 transition-all duration-300"
               >
                 <Twitter className="h-4 w-4" />
@@ -90,7 +90,7 @@ export function Footer() {
 
           {/* Company Column */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-sky-400">Clinic Info</h4>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-sky-400">Hospital Info</h4>
             <ul className="space-y-2.5 text-xs text-slate-300">
               {footerNavItems.company.map((item) => (
                 <li key={item.href}>

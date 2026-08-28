@@ -43,10 +43,10 @@ export function AboutSection() {
           <div className="lg:col-span-6 space-y-6">
             <ScrollReveal direction="up" delay={0.1}>
               <SectionHeader
-                badge="About ÉLITE Clinic"
+                badge="About Jawahar Dental Hospital"
                 title="Redefining Clinical Dentistry"
                 highlightTitle="Through Compassion & Precision."
-                description="Led by Dr. Arjun Jawahar Sharma and Dr. Priyanka Sharma, ÉLITE Dental Clinic was established to elevate patient care. We harmonize cutting-edge 3D technology with a calm, stress-free clinical environment."
+                description="Led by Dr. Arjun Jawahar Sharma and Dr. Priyanka Sharma, Jawahar Dental Hospital was established to elevate patient care. We harmonize cutting-edge 3D technology with a calm, stress-free clinical environment."
                 align="left"
               />
             </ScrollReveal>

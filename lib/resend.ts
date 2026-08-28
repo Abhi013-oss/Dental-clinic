@@ -22,7 +22,7 @@ export async function sendEmail({ to, subject, html }: SendEmailOptions) {
     const registeredAccountOwner = 'shrivastavaabhinav046@gmail.com';
 
     let response = await resendClient.emails.send({
-      from: `ÉLITE Dental Clinic <${fromAddress}>`,
+      from: `Jawahar Dental Hospital <${fromAddress}>`,
       to,
       subject,
       html,
@@ -33,7 +33,7 @@ export async function sendEmail({ to, subject, html }: SendEmailOptions) {
       console.warn(`[Resend Testing Mode] Unverified recipient ${to}. Forwarding copy to registered owner ${registeredAccountOwner}.`);
       
       const fallbackResponse = await resendClient.emails.send({
-        from: `ÉLITE Dental Clinic <${fromAddress}>`,
+        from: `Jawahar Dental Hospital <${fromAddress}>`,
         to: registeredAccountOwner,
         subject: `[Notification for ${to}] ${subject}`,
         html: `

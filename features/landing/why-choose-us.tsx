@@ -22,7 +22,7 @@ export function WhyChooseUs() {
         <ScrollReveal direction="up" delay={0.1}>
           <SectionHeader
             badge="Clinical Excellence"
-            title="Why Patients Trust ÉLITE Clinic"
+            title="Why Patients Trust Jawahar Dental Hospital"
             highlightTitle="For Their Lifetime Health."
             description="Every detail of our practice is designed around patient safety, comfort, and state-of-the-art medical technology."
           />
