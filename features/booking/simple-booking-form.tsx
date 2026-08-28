@@ -242,7 +242,7 @@ export function SimpleBookingForm() {
           label="Treatment Service *"
           options={servicesData.map((s) => ({
             value: s.id,
-            label: `${s.title} ($${s.startingPrice.toLocaleString()}+)`,
+            label: s.title,
           }))}
           error={errors.serviceId?.message}
           {...register('serviceId')}

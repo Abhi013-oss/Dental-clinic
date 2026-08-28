@@ -53,9 +53,9 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
 
             <div className="flex flex-wrap items-center gap-6 pt-2 border-t border-slate-100">
               <div>
-                <span className="text-xs text-slate-400 block font-bold uppercase tracking-wider">Investment Starting From</span>
-                <span className="font-sans text-2xl font-extrabold text-medical-600">
-                  ${service.startingPrice.toLocaleString()}
+                <span className="text-xs text-slate-400 block font-bold uppercase tracking-wider">Treatment Category</span>
+                <span className="font-sans text-xl font-extrabold text-medical-600">
+                  {service.category}
                 </span>
               </div>
               <div className="border-l border-slate-200 pl-6">

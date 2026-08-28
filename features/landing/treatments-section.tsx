@@ -33,7 +33,7 @@ export function TreatmentsSection() {
                       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                     <div className="absolute top-3 left-3 bg-white/95 text-medical-600 px-2.5 py-1 rounded-md text-[11px] font-bold shadow-sm backdrop-blur-sm">
-                      ${service.startingPrice.toLocaleString()}+
+                      {service.category}
                     </div>
                   </div>
 

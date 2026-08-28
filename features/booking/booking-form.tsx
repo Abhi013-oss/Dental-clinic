@@ -121,7 +121,7 @@ export function BookingForm() {
 
         <Select
           label="Select Dental Service"
-          options={servicesData.map((s) => ({ value: s.id, label: `${s.title} ($${s.startingPrice.toLocaleString()}+)` }))}
+          options={servicesData.map((s) => ({ value: s.id, label: s.title }))}
           error={errors.serviceId?.message}
           {...register('serviceId')}
         />
