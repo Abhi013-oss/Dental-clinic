@@ -1,9 +1,19 @@
+export interface BranchLocation {
+  name: string;
+  address: string;
+  contact: string;
+}
+
 export interface SiteConfig {
   name: string;
   tagline: string;
   description: string;
   url: string;
   ogImage: string;
+  branches: {
+    kapurthala: BranchLocation;
+    delhi: BranchLocation;
+  };
   contact: {
     phone: string;
     email: string;
@@ -33,39 +43,50 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: 'ÉLITE Dental Atelier',
-  tagline: 'Architects of Bespoke & Timeless Smiles',
+  name: 'ÉLITE Dental Clinic',
+  tagline: 'Specialist Dental Care & Full Mouth Rehabilitation',
   description:
-    'Experience world-class cosmetic dentistry, precision dental implants, and porcelain aesthetics in a private, ultra-luxurious sanctuary.',
+    'Comprehensive dental care by Dr. Arjun Jawahar Sharma & Dr. Priyanka Sharma across Kapurthala, Punjab and Mayur Vihar, East Delhi.',
   url: process.env.NEXT_PUBLIC_APP_URL || 'https://elitedentalatelier.com',
   ogImage: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1200&auto=format&fit=crop',
+  branches: {
+    kapurthala: {
+      name: 'Kapurthala Clinic',
+      address: 'LINK ROAD, OPPOSITE PARK, NEAR YES BANK, KAPURTHALA, PUNJAB',
+      contact: '82641-71818',
+    },
+    delhi: {
+      name: 'Delhi Clinic',
+      address: '1/101-A, PRATAP NAGAR, MAYUR VIHAR, PHASE-I, METRO PILLAR NO. 12-13, EAST DELHI',
+      contact: '99100-66721, 82855-47579',
+    },
+  },
   contact: {
-    phone: '+1 (800) 888-ELITE',
-    email: 'concierge@elitedentalatelier.com',
+    phone: '82641-71818',
+    email: 'adityabusinesslab@gmail.com',
     address: {
-      street: '450 Beverly Hills Boulevard',
-      suite: 'Suite 900',
-      city: 'Beverly Hills',
-      state: 'CA',
-      zip: '90210',
-      country: 'United States',
+      street: 'LINK ROAD, OPPOSITE PARK, NEAR YES BANK',
+      suite: 'Kapurthala',
+      city: 'Kapurthala',
+      state: 'Punjab',
+      zip: '144601',
+      country: 'India',
     },
     hours: [
-      { days: 'Monday – Friday', time: '8:00 AM – 7:00 PM' },
-      { days: 'Saturday', time: '9:00 AM – 4:00 PM (By Appointment)' },
-      { days: 'Sunday', time: 'Closed (VIP Concierge Available)' },
+      { days: 'Monday – Saturday', time: '9:30 AM – 7:30 PM' },
+      { days: 'Sunday', time: 'By Appointment' },
     ],
   },
   social: {
-    instagram: 'https://instagram.com/elitedentalatelier',
-    facebook: 'https://facebook.com/elitedentalatelier',
-    linkedin: 'https://linkedin.com/company/elitedentalatelier',
-    youtube: 'https://youtube.com/c/elitedentalatelier',
+    instagram: 'https://instagram.com',
+    facebook: 'https://facebook.com',
+    linkedin: 'https://linkedin.com',
+    youtube: 'https://youtube.com',
   },
   stats: [
     { label: 'Smiles Transformed', value: '12,500+' },
-    { label: 'Years of Excellence', value: '25+' },
-    { label: 'International Master Specialists', value: '14' },
-    { label: 'Client Satisfaction Rate', value: '99.8%' },
+    { label: 'Years of Experience', value: '15+' },
+    { label: 'Specialist Doctors', value: '2' },
+    { label: 'Clinic Locations', value: '2' },
   ],
 };

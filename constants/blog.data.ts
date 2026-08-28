@@ -21,23 +21,23 @@ export const blogPostsData: BlogPost[] = [
     id: '1',
     slug: 'the-science-of-porcelain-veneers',
     title: 'The Science of Porcelain Veneers: How Micro-Layered Ceramics Replicate Natural Enamel',
-    category: 'Cosmetic Dentistry',
+    category: 'Prosthodontics',
     excerpt: 'Discover how 3D digital smile simulation and hand-sculpted ceramic veneers achieve natural translucency and facial symmetry.',
     content: `
-      Porcelain veneers represent the pinnacle of cosmetic dentistry. Unlike composite resin, high-translucency lithium disilicate ceramics possess optical properties that match natural human tooth enamel.
+      Porcelain veneers represent the pinnacle of prosthodontic aesthetic dentistry. High-translucency ceramic materials possess optical properties that match natural human tooth enamel.
 
       ### 1. 3D Digital Smile Simulation
-      Before any preparation begins, our doctors use iTero 5D intraoral scanners to map your facial structure, lip dynamics, and tooth proportion. A digital mockup allows you to preview your new smile in 3D.
+      Before preparation, our doctors use digital scanners to map facial structure and tooth proportion for a custom trial preview.
 
       ### 2. Micro-Layering & Enamel Preservation
-      Ultra-thin veneers require minimal enamel reduction (often less than 0.3mm). Hand-sculpted by master ceramists, each veneer is layered with varying opalescent tints.
+      Ultra-thin veneers require minimal enamel reduction. Hand-sculpted ceramic shells are layered with opalescent natural tints.
 
       ### 3. Biocompatible Adhesive Bonding
-      Using light-cured resin cements, veneers fuse to natural enamel at a molecular level, offering exceptional stain resistance and 15-20+ years of clinical durability.
+      Using light-cured resin cements, veneers fuse to natural enamel at a molecular level for long-lasting stability.
     `,
     author: {
-      name: 'Dr. Alexander Vance',
-      role: 'Chief Cosmetic Surgeon',
+      name: 'Dr. Arjun Jawahar Sharma',
+      role: 'BDS, MDS (Prosthodontics & Oral Implantologist)',
       avatar: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&auto=format&fit=crop',
     },
     publishedAt: 'August 1, 2026',
@@ -48,22 +48,22 @@ export const blogPostsData: BlogPost[] = [
   {
     id: '2',
     slug: 'computer-guided-dental-implants',
-    title: 'Why Computer-Guided 3D Dental Implants Offer 99.8% Surgical Success',
-    category: 'Implantology',
+    title: 'Why Computer-Guided 3D Dental Implants Offer Superior Surgical Precision',
+    category: 'Dental Implants',
     excerpt: 'How CBCT 3D radiography and surgical guide templates eliminate guesswork and accelerate healing time.',
     content: `
-      Dental implantology has evolved from freehand placement to sub-millimeter computer guidance.
+      Dental implantology utilizes sub-millimeter computer guidance for safe, comfortable tooth replacement.
 
       ### CBCT 3D Bone Mapping
-      Cone-Beam Computed Tomography provides 3D volumetric images of your jawbone density, nerve locations, and sinus cavities.
+      Cone-Beam Computed Tomography provides 3D volumetric images of jawbone density, nerve locations, and sinus cavities.
 
       ### Flapless Guided Surgery
-      Using custom 3D printed surgical guides, implants are inserted precisely without large incisions or sutures, resulting in virtually pain-free recovery within 24-48 hours.
+      Using custom surgical guides, implants are inserted precisely with minimal swelling and fast recovery.
     `,
     author: {
-      name: 'Dr. Elena Rostova',
-      role: 'Lead Implantologist',
-      avatar: 'https://images.unsplash.com/photo-1594824813571-24a69c100dd3?q=80&w=400&auto=format&fit=crop',
+      name: 'Dr. Arjun Jawahar Sharma',
+      role: 'BDS, MDS (Prosthodontics & Oral Implantologist)',
+      avatar: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&auto=format&fit=crop',
     },
     publishedAt: 'July 24, 2026',
     readTime: '4 min read',
@@ -72,19 +72,19 @@ export const blogPostsData: BlogPost[] = [
   {
     id: '3',
     slug: 'invisalign-vs-traditional-braces',
-    title: 'Invisalign Clear Aligners vs. Metal Braces: A Clinical Comparison for Adults',
-    category: 'Orthodontics',
-    excerpt: 'Comparing aesthetics, oral hygiene maintenance, treatment speed, and comfort in adult orthodontic care.',
+    title: 'Single Seating RCT: Modern Painless Endodontic Care',
+    category: 'Endodontics',
+    excerpt: 'How single-visit root canal treatment saves teeth comfortably and efficiently.',
     content: `
-      Clear aligner therapy has revolutionized adult orthodontics. Using SmartTrack material, Invisalign gently shifts teeth into ideal alignment discreetly.
+      Single seating root canal therapy has transformed endodontics using rotary instrumentation and apex locators.
 
-      ### Oral Hygiene Advantages
-      Because aligners are removable, patients can brush and floss normally without bracket obstructions, reducing plaque accumulation during treatment.
+      ### Pain-Free Infection Control
+      Advanced local anesthesia and rotary files clean root canals thoroughly in a single comfortable session.
     `,
     author: {
-      name: 'Dr. Marcus Thorne',
-      role: 'Director of Orthodontics',
-      avatar: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=400&auto=format&fit=crop',
+      name: 'Dr. Priyanka Sharma',
+      role: 'BDS, Certified Endodontist',
+      avatar: 'https://images.unsplash.com/photo-1594824813566-78a9c2b4c107?q=80&w=400&auto=format&fit=crop',
     },
     publishedAt: 'July 15, 2026',
     readTime: '6 min read',

@@ -2,10 +2,9 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { Activity, Phone, Mail, MapPin, ArrowUp, Instagram, Facebook, Linkedin, Twitter, ShieldCheck } from 'lucide-react';
+import { Activity, Phone, Mail, MapPin, ArrowUp, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
 import { siteConfig } from '@/config/site.config';
 import { footerNavItems } from '@/config/navigation.config';
-import { Button } from '@/components/ui/button';
 
 export function Footer() {
   const scrollToTop = () => {
@@ -31,7 +30,7 @@ export function Footer() {
             </Link>
 
             <p className="text-xs text-slate-300 max-w-sm leading-relaxed font-normal">
-              Beverly Hills' flagship center for advanced 3D biophotonic dentistry, ceramic veneers, and computer-guided implant restorations.
+              Specialist dental care center led by Dr. Arjun Jawahar Sharma & Dr. Priyanka Sharma, providing comprehensive implants, prosthodontics, orthodontics, endodontics, oral surgery, pediatric dentistry, gum care, and 3D digital radiology across Kapurthala and Delhi.
             </p>
 
             {/* Social Links */}
@@ -105,21 +104,27 @@ export function Footer() {
 
           {/* Contact Details Column */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-sky-400">Beverly Hills Clinic</h4>
-            <ul className="space-y-3 text-xs text-slate-300">
-              <li className="flex items-start space-x-2.5">
-                <MapPin className="h-4 w-4 text-medical-400 shrink-0 mt-0.5" />
-                <span>{siteConfig.contact.address.street}, {siteConfig.contact.address.suite}, {siteConfig.contact.address.city}</span>
-              </li>
-              <li className="flex items-center space-x-2.5">
-                <Phone className="h-4 w-4 text-medical-400 shrink-0" />
-                <span>{siteConfig.contact.phone}</span>
-              </li>
-              <li className="flex items-center space-x-2.5">
-                <Mail className="h-4 w-4 text-medical-400 shrink-0" />
+            <h4 className="text-xs font-bold uppercase tracking-wider text-sky-400">Our Branches</h4>
+            <div className="space-y-4 text-xs text-slate-300">
+              {/* Kapurthala */}
+              <div className="space-y-1">
+                <span className="font-bold text-white block">Kapurthala Branch:</span>
+                <p className="text-[11px] text-slate-300 font-medium">LINK ROAD, OPPOSITE PARK, NEAR YES BANK, KAPURTHALA, PUNJAB</p>
+                <p className="text-[11px] text-sky-400 font-bold">Ph: 82641-71818</p>
+              </div>
+
+              {/* Delhi */}
+              <div className="space-y-1 pt-2 border-t border-navy-800">
+                <span className="font-bold text-white block">Delhi Branch:</span>
+                <p className="text-[11px] text-slate-300 font-medium">1/101-A, PRATAP NAGAR, MAYUR VIHAR, PHASE-I, METRO PILLAR NO. 12-13, EAST DELHI</p>
+                <p className="text-[11px] text-sky-400 font-bold">Ph: 99100-66721, 82855-47579</p>
+              </div>
+
+              <div className="pt-2 flex items-center space-x-2 text-[11px] text-slate-400">
+                <Mail className="h-3.5 w-3.5 text-medical-400 shrink-0" />
                 <span>{siteConfig.contact.email}</span>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
         </div>
 

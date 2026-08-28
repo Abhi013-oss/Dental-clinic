@@ -4,8 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import { Calendar, PhoneCall, Activity, MessageSquare } from 'lucide-react';
-import { siteConfig } from '@/config/site.config';
+import { Calendar, Activity, MessageSquare } from 'lucide-react';
 
 export function CtaSection() {
   return (
@@ -28,7 +27,7 @@ export function CtaSection() {
               </h2>
 
               <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
-                Schedule a consultation with Dr. Alexander Vance or our specialist medical team. Experience gentle, stress-free dental care in Beverly Hills.
+                Schedule a consultation with Dr. Arjun Jawahar Sharma & Dr. Priyanka Sharma. Experience gentle, stress-free specialist dental care in Kapurthala and Delhi.
               </p>
 
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -40,7 +39,7 @@ export function CtaSection() {
                 </Link>
 
                 <a
-                  href="https://wa.me/18008883548?text=Hello%20ÉLITE%20Dental%20Clinic,%20I%20would%20like%20to%20inquire%20about%20a%20consultation."
+                  href="https://wa.me/918264171818?text=Hello%20ÉLITE%20Dental%20Clinic,%20I%20would%20like%20to%20inquire%20about%20a%20consultation."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto"

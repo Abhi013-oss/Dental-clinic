@@ -22,7 +22,7 @@ export function HeroSection() {
               <div className="inline-flex items-center space-x-2">
                 <Badge variant="gold" className="px-4 py-1.5 text-xs font-bold tracking-wider bg-medical-50 text-medical-700 border-medical-200 hover:bg-medical-100 transition-colors">
                   <Activity className="mr-1.5 h-3.5 w-3.5 text-medical-600 animate-pulse" />
-                  Beverly Hills Certified Dental Center
+                  Specialist Dental Care & Implant Center
                 </Badge>
               </div>
             </ScrollReveal>

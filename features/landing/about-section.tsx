@@ -46,7 +46,7 @@ export function AboutSection() {
                 badge="About ÉLITE Clinic"
                 title="Redefining Clinical Dentistry"
                 highlightTitle="Through Compassion & Precision."
-                description="Founded in Beverly Hills, ÉLITE Dental Clinic was established to elevate patient care. We harmonize cutting-edge 3D technology with a calm, stress-free clinical environment."
+                description="Led by Dr. Arjun Jawahar Sharma and Dr. Priyanka Sharma, ÉLITE Dental Clinic was established to elevate patient care. We harmonize cutting-edge 3D technology with a calm, stress-free clinical environment."
                 align="left"
               />
             </ScrollReveal>

@@ -119,8 +119,8 @@ export async function POST(request: NextRequest) {
             <!-- Footer -->
             <tr>
               <td style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 20px; text-align: center; color: #94a3b8; font-size: 12px; line-height: 1.5;">
-                ÉLITE Dental Clinic & Atelier • 450 Beverly Hills Blvd, Suite 900, Beverly Hills, CA 90210<br/>
-                © ${new Date().getFullYear()} ÉLITE Dental Atelier. All Rights Reserved.
+                ÉLITE Dental Clinic • Kapurthala (Punjab) & Mayur Vihar (East Delhi)<br/>
+                © ${new Date().getFullYear()} ÉLITE Dental Clinic. All Rights Reserved.
               </td>
             </tr>
           </table>

@@ -11,7 +11,17 @@ import { ArrowRight, CheckCircle2, Clock } from 'lucide-react';
 export function ServiceFilter() {
   const [selectedCategory, setSelectedCategory] = React.useState<string>('All');
 
-  const categories = ['All', 'Cosmetic', 'Implantology', 'Orthodontics', 'Rehabilitation'];
+  const categories = [
+    'All',
+    'DENTAL IMPLANTS',
+    'PROSTHODONTICS',
+    'ORTHODONTICS',
+    'ENDODONTICS',
+    'ORAL & MAXILLOFACIAL SURGERY',
+    'PEDIATRIC DENTISTRY',
+    'ADVANCED GUM TREATMENT',
+    'ORAL MEDICINE & RADIOLOGY',
+  ];
 
   const filteredServices = selectedCategory === 'All'
     ? servicesData
@@ -20,13 +30,13 @@ export function ServiceFilter() {
   return (
     <div className="space-y-12">
       {/* Responsive Category Tabs Bar */}
-      <div className="flex items-center space-x-2 overflow-x-auto no-scrollbar sm:flex-wrap sm:justify-center p-2 rounded-2xl sm:rounded-full bg-slate-100/90 border border-slate-200 max-w-2xl mx-auto">
+      <div className="flex items-center space-x-2 overflow-x-auto no-scrollbar sm:flex-wrap sm:justify-center p-2 rounded-2xl sm:rounded-full bg-slate-100/90 border border-slate-200 max-w-4xl mx-auto">
         {categories.map((cat) => (
           <button
             type="button"
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap cursor-pointer touch-manipulation select-none ${
+            className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap cursor-pointer touch-manipulation select-none ${
               selectedCategory === cat
                 ? 'bg-medical-600 text-white shadow-md shadow-medical-600/20'
                 : 'text-slate-600 hover:text-navy-900 hover:bg-white/80'
@@ -39,7 +49,7 @@ export function ServiceFilter() {
 
       {/* Filtered Services List */}
       <div className="space-y-8">
-        {filteredServices.map((service, index) => (
+        {filteredServices.map((service) => (
           <GlassCard
             key={service.id}
             variant="standard"
@@ -83,12 +93,6 @@ export function ServiceFilter() {
                   <div className="flex items-center space-x-1.5">
                     <Clock className="h-4 w-4 text-medical-600" />
                     <span>{service.durationMinutes} Mins Session</span>
-                  </div>
-                  <div>
-                    Starting at{' '}
-                    <strong className="font-sans text-base font-extrabold text-medical-600">
-                      ${service.startingPrice.toLocaleString()}
-                    </strong>
                   </div>
                 </div>
 

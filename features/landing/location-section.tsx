@@ -3,9 +3,8 @@
 import { SectionHeader } from '@/components/shared/section-header';
 import { GlassCard } from '@/components/shared/glass-card';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import { MapPin, PhoneCall, Clock, Navigation } from 'lucide-react';
+import { MapPin, PhoneCall, Clock } from 'lucide-react';
 import { siteConfig } from '@/config/site.config';
-import { Button } from '@/components/ui/button';
 
 export function LocationSection() {
   return (
@@ -13,96 +12,104 @@ export function LocationSection() {
       <div className="container">
         <ScrollReveal direction="up" delay={0.1}>
           <SectionHeader
-            badge="Clinic Location"
-            title="Visit Our Beverly Hills Sanctuary"
-            highlightTitle="Convenient Private Valet Parking."
-            description="Located on Beverly Hills Boulevard with dedicated private suite entrances and direct reception check-in."
+            badge="Our Clinic Locations"
+            title="Visit Our Modern Dental Centers"
+            highlightTitle="Convenient Access in Kapurthala & Delhi."
+            description="Our centers in Kapurthala, Punjab and Mayur Vihar, East Delhi provide advanced, stress-free dental care."
           />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Left Column: Interactive Google Map Representation */}
-          <div className="lg:col-span-7">
-            <ScrollReveal direction="right" delay={0.2}>
-              <div className="relative h-full min-h-[360px] rounded-3xl overflow-hidden border border-slate-200 shadow-md bg-white group">
-                <img
-                  src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1200&auto=format&fit=crop"
-                  alt="Beverly Hills Map View"
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-90"
-                />
-
-                <div className="absolute inset-0 bg-navy-900/10 pointer-events-none" />
-
-                {/* Map Pin Badge overlay */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 rounded-2xl bg-white text-navy-900 border border-slate-200 shadow-2xl flex items-center space-x-3 group-hover:scale-105 transition-transform">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-medical-600 text-white">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          {/* Kapurthala Branch Card */}
+          <ScrollReveal direction="up" delay={0.2}>
+            <GlassCard variant="standard" className="p-6 sm:p-8 bg-white border border-slate-200 shadow-md space-y-6 h-full flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-medical-600 text-white shrink-0">
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-navy-900">{siteConfig.name}</h4>
-                    <p className="text-xs text-slate-500">{siteConfig.contact.address.street}, {siteConfig.contact.address.suite}</p>
+                    <h3 className="text-lg font-extrabold text-navy-900">{siteConfig.branches.kapurthala.name}</h3>
+                    <span className="text-xs font-bold text-medical-600 uppercase tracking-wider">Punjab Branch</span>
                   </div>
                 </div>
 
-                <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent(
-                    `${siteConfig.contact.address.street}, ${siteConfig.contact.address.city}`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute bottom-4 right-4"
-                >
-                  <Button variant="gold" size="sm" className="font-bold text-xs shadow-md">
-                    <Navigation className="mr-1.5 h-3.5 w-3.5" />
-                    <span>Get Directions</span>
-                  </Button>
-                </a>
-              </div>
-            </ScrollReveal>
-          </div>
-
-          {/* Right Column: Address & Operating Hours Info */}
-          <div className="lg:col-span-5 space-y-6">
-            <ScrollReveal direction="left" delay={0.3}>
-              <GlassCard variant="standard" className="p-6 bg-white border border-slate-200 shadow-sm space-y-4">
-                <div className="flex items-start space-x-3">
-                  <MapPin className="h-5 w-5 text-medical-600 shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-sm font-bold text-navy-900">Address & Access</h4>
-                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                      {siteConfig.contact.address.street}, {siteConfig.contact.address.suite}<br />
-                      {siteConfig.contact.address.city}, {siteConfig.contact.address.state} {siteConfig.contact.address.zip}
-                    </p>
+                <div className="pt-2 border-t border-slate-100 space-y-3">
+                  <div className="flex items-start space-x-3">
+                    <MapPin className="h-4 w-4 text-medical-600 shrink-0 mt-1" />
+                    <div>
+                      <h4 className="text-xs font-bold text-navy-900 uppercase">Address</h4>
+                      <p className="text-xs sm:text-sm text-slate-600 mt-0.5 leading-relaxed font-bold">
+                        {siteConfig.branches.kapurthala.address}
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex items-start space-x-3 pt-3 border-t border-slate-100">
-                  <PhoneCall className="h-5 w-5 text-medical-600 shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-sm font-bold text-navy-900">Emergency & Appointments Hotline</h4>
-                    <p className="text-xs text-slate-600 mt-1 font-bold text-medical-600">
-                      {siteConfig.contact.phone}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3 pt-3 border-t border-slate-100">
-                  <Clock className="h-5 w-5 text-medical-600 shrink-0 mt-0.5" />
-                  <div className="w-full">
-                    <h4 className="text-sm font-bold text-navy-900 mb-2">Operating Hours</h4>
-                    <div className="space-y-1.5 text-xs text-slate-600">
-                      {siteConfig.contact.hours.map((h, i) => (
-                        <div key={i} className="flex justify-between border-b border-slate-100 pb-1">
-                          <span className="font-bold text-navy-900">{h.days}</span>
-                          <span>{h.time}</span>
-                        </div>
-                      ))}
+                  <div className="flex items-start space-x-3 pt-2">
+                    <PhoneCall className="h-4 w-4 text-medical-600 shrink-0 mt-1" />
+                    <div>
+                      <h4 className="text-xs font-bold text-navy-900 uppercase">Contact Number</h4>
+                      <p className="text-xs sm:text-sm text-medical-600 font-extrabold mt-0.5">
+                        <a href={`tel:${siteConfig.branches.kapurthala.contact}`} className="hover:underline">
+                          {siteConfig.branches.kapurthala.contact}
+                        </a>
+                      </p>
                     </div>
                   </div>
                 </div>
-              </GlassCard>
-            </ScrollReveal>
-          </div>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center space-x-3 text-xs text-slate-500">
+                <Clock className="h-4 w-4 text-medical-600 shrink-0" />
+                <span>Mon – Sat: 9:30 AM – 7:30 PM (Sunday by Appointment)</span>
+              </div>
+            </GlassCard>
+          </ScrollReveal>
+
+          {/* Delhi Branch Card */}
+          <ScrollReveal direction="up" delay={0.3}>
+            <GlassCard variant="standard" className="p-6 sm:p-8 bg-white border border-slate-200 shadow-md space-y-6 h-full flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-medical-600 text-white shrink-0">
+                    <MapPin className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-extrabold text-navy-900">{siteConfig.branches.delhi.name}</h3>
+                    <span className="text-xs font-bold text-medical-600 uppercase tracking-wider">East Delhi Branch</span>
+                  </div>
+                </div>
+
+                <div className="pt-2 border-t border-slate-100 space-y-3">
+                  <div className="flex items-start space-x-3">
+                    <MapPin className="h-4 w-4 text-medical-600 shrink-0 mt-1" />
+                    <div>
+                      <h4 className="text-xs font-bold text-navy-900 uppercase">Address</h4>
+                      <p className="text-xs sm:text-sm text-slate-600 mt-0.5 leading-relaxed font-bold">
+                        {siteConfig.branches.delhi.address}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3 pt-2">
+                    <PhoneCall className="h-4 w-4 text-medical-600 shrink-0 mt-1" />
+                    <div>
+                      <h4 className="text-xs font-bold text-navy-900 uppercase">Contact Numbers</h4>
+                      <p className="text-xs sm:text-sm text-medical-600 font-extrabold mt-0.5">
+                        <a href="tel:9910066721" className="hover:underline">99100-66721</a>,{' '}
+                        <a href="tel:8285547579" className="hover:underline">82855-47579</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center space-x-3 text-xs text-slate-500">
+                <Clock className="h-4 w-4 text-medical-600 shrink-0" />
+                <span>Mon – Sat: 9:30 AM – 7:30 PM (Sunday by Appointment)</span>
+              </div>
+            </GlassCard>
+          </ScrollReveal>
         </div>
       </div>
     </section>

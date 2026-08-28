@@ -37,8 +37,8 @@ export function ServicesGrid() {
           />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {servicesData.map((service, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {servicesData.slice(0, 6).map((service, index) => (
             <ScrollReveal key={service.id} direction="up" delay={0.1 * index + 0.2}>
               <GlassCard variant="standard" className="flex flex-col justify-between group h-full">
                 <div className="space-y-4">
@@ -46,14 +46,14 @@ export function ServicesGrid() {
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-medical-50 border border-medical-200 group-hover:scale-105 transition-transform duration-300">
                       {getIcon(service.iconName)}
                     </div>
-                    {service.popular && <Badge variant="gold">Popular Choice</Badge>}
+                    {service.popular && <Badge variant="gold">Specialist Care</Badge>}
                   </div>
 
                   <div>
                     <span className="text-xs font-bold uppercase tracking-wider text-medical-600">
                       {service.category}
                     </span>
-                    <h3 className="font-sans text-2xl font-bold text-navy-900 mt-1 group-hover:text-medical-600 transition-colors">
+                    <h3 className="font-sans text-xl font-bold text-navy-900 mt-1 group-hover:text-medical-600 transition-colors">
                       {service.title}
                     </h3>
                   </div>
@@ -76,9 +76,9 @@ export function ServicesGrid() {
 
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <div>
-                    <span className="text-[11px] uppercase tracking-wider text-slate-400 block font-bold">Procedure Starting From</span>
-                    <span className="font-sans text-xl font-bold text-medical-600">
-                      ${service.startingPrice.toLocaleString()}
+                    <span className="text-[11px] uppercase tracking-wider text-slate-400 block font-bold">Session Duration</span>
+                    <span className="font-sans text-sm font-bold text-navy-900">
+                      {service.durationMinutes} Mins
                     </span>
                   </div>
 
@@ -98,7 +98,7 @@ export function ServicesGrid() {
           <div className="mt-14 text-center">
             <Link href="/services">
               <Button variant="gold" size="lg" className="font-bold text-sm">
-                <span>Explore All Treatments</span>
+                <span>Explore All 8 Categories & Services</span>
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>

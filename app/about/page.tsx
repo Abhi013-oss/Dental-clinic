@@ -53,8 +53,8 @@ export default function AboutPage() {
                   <Award className="h-5 w-5" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-navy-900">Beverly Hills Flagship Suite</h4>
-                  <p className="text-xs text-slate-500">Private valet, sterile suites, and 3D digital simulation room.</p>
+                  <h4 className="text-sm font-bold text-navy-900">Kapurthala & Delhi Dental Centers</h4>
+                  <p className="text-xs text-slate-500">Modern clinics led by Dr. Arjun Jawahar Sharma & Dr. Priyanka Sharma.</p>
                 </div>
               </div>
               <Badge variant="gold">25+ Years Excellence</Badge>
@@ -140,7 +140,7 @@ export default function AboutPage() {
         <div className="text-center p-12 rounded-3xl bg-gradient-to-br from-sky-50 to-white border border-medical-200 shadow-xl space-y-6">
           <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-navy-900">Experience Gentle Care Firsthand</h2>
           <p className="text-sm text-slate-600 max-w-lg mx-auto">
-            Schedule a consultation with our master specialists in Beverly Hills today.
+            Schedule a consultation with our specialist doctors Dr. Arjun Jawahar Sharma & Dr. Priyanka Sharma today.
           </p>
           <Link href="/book">
             <Button variant="gold" size="lg" className="font-bold text-sm">

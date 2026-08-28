@@ -33,19 +33,19 @@ export const whyChooseData: WhyChooseItem[] = [
     id: '1',
     iconName: 'Cpu',
     title: 'Advanced 3D Technology',
-    description: 'Computer-guided 3D scanners and digital CBCT imaging for sub-millimeter precision and zero pain.',
+    description: 'Digital 3D scanners, OPG/CBCT 3D radiography, and digital X-rays for sub-millimeter precision and zero pain.',
   },
   {
     id: '2',
     iconName: 'HeartHandshake',
     title: 'Gentle & Pain-Free Care',
-    description: 'Minimally invasive laser dentistry and gentle anesthesia protocols designed for anxious patients.',
+    description: 'Minimally invasive dentistry, single seating RCT, and gentle anesthesia protocols designed for patient comfort.',
   },
   {
     id: '3',
     iconName: 'Award',
-    title: 'International Specialists',
-    description: 'Harvard and Stanford trained doctors with over 50 years of combined clinical excellence.',
+    title: 'Specialist Doctors',
+    description: 'Led by Dr. Arjun Jawahar Sharma (Prosthodontist & Implantologist) & Dr. Priyanka Sharma (Certified Endodontist).',
   },
   {
     id: '4',
@@ -57,48 +57,40 @@ export const whyChooseData: WhyChooseItem[] = [
     id: '5',
     iconName: 'DollarSign',
     title: 'Transparent Pricing',
-    description: 'Zero hidden fees with clear treatment estimates and flexible zero-interest payment plans.',
+    description: 'Zero hidden fees with clear treatment estimates and accessible options for all dental procedures.',
   },
   {
     id: '6',
     iconName: 'PhoneCall',
-    title: '24/7 Emergency Support',
-    description: 'Immediate emergency dental concierge available round-the-clock for urgent tooth pain or trauma.',
+    title: 'Prompt Patient Care',
+    description: 'Direct phone lines for Kapurthala (82641-71818) and Delhi (99100-66721 / 82855-47579) for urgent care.',
   },
 ];
 
 export const technologyData: TechItem[] = [
   {
-    id: '3d-scanner',
-    title: 'iTero Element 5D Scanner',
+    id: '3d-scanning',
+    title: 'Digital 3D Intraoral Scanner',
     category: 'Digital Impressions',
     description: 'Creates accurate 3D digital impressions in seconds without messy alginate trays.',
     image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop',
     benefits: ['Zero gag reflex', 'Instant 3D smile preview', '100% digital accuracy'],
   },
   {
-    id: 'laser-dentistry',
-    title: 'Biolase Waterlase iPlus Laser',
-    category: 'Minimally Invasive',
-    description: 'Performs gum contouring and cavity preparation using laser energy and water droplets with minimal anesthesia.',
-    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800&auto=format&fit=crop',
-    benefits: ['Virtually painless', 'Faster healing time', 'No drill vibration noise'],
-  },
-  {
-    id: 'cad-cam',
-    title: 'CEREC Same-Day CAD/CAM',
-    category: '3D Restoration',
-    description: 'Mills high-strength ceramic crowns, inlays, and veneers right in our clinic within a single appointment.',
-    image: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=800&auto=format&fit=crop',
-    benefits: ['Single visit crowns', 'No temporary crowns needed', 'Precision ceramic fit'],
+    id: 'opg-cbct',
+    title: 'OPG / CBCT 3D Radiography',
+    category: '3D Imaging',
+    description: 'Full-mouth 3D volumetric CBCT imaging mapping bone density, nerve paths, and sinus anatomy.',
+    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop',
+    benefits: ['Sub-millimeter precision', 'Complete 3D jaw view', 'Safe low radiation'],
   },
   {
     id: 'digital-xray',
-    title: 'Low-Radiation Digital CBCT',
-    category: '3D Radiography',
-    description: 'Ultra-low dose 3D volumetric radiography mapping bone density, nerve pathways, and sinus cavities.',
+    title: 'Digital RVG X-Ray',
+    category: 'Digital Diagnostics',
+    description: 'Low-dose digital radiography providing instant high-resolution diagnostics on chairside screens.',
     image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop',
-    benefits: ['90% less radiation', 'Complete 3D jaw view', 'Safe for all ages'],
+    benefits: ['90% less radiation', '1-second display', 'Accurate diagnostic detail'],
   },
 ];
 
@@ -107,68 +99,62 @@ export const journeyData: JourneyStep[] = [
     stepNumber: 1,
     title: 'Personal Consultation',
     subtitle: 'Step 01',
-    description: 'Meet your specialist doctor in a comfortable suite to discuss your health goals and preferences.',
+    description: 'Meet Dr. Arjun Jawahar Sharma or Dr. Priyanka Sharma in a comfortable setting to discuss your oral health goals.',
     duration: '30 Mins',
   },
   {
     stepNumber: 2,
-    title: '3D Digital Diagnosis',
+    title: 'Digital Diagnosis',
     subtitle: 'Step 02',
-    description: 'High-definition 3D CBCT scan and iTero intraoral digital impression creation.',
+    description: 'High-definition digital RVG X-ray or 3D digital scan evaluation.',
     duration: '20 Mins',
   },
   {
     stepNumber: 3,
     title: 'Customized Care Plan',
     subtitle: 'Step 03',
-    description: 'Review a transparent 3D simulation of your treatment outcome, costs, and timeline.',
+    description: 'Review a transparent treatment plan, costs, and schedule.',
     duration: '15 Mins',
   },
   {
     stepNumber: 4,
     title: 'Gentle Treatment',
     subtitle: 'Step 04',
-    description: 'Relax in our ergonomic suite while our master doctors perform your procedure gently.',
-    duration: '45-90 Mins',
+    description: 'Relax while our specialist doctors perform your treatment gently.',
+    duration: '30-60 Mins',
   },
   {
     stepNumber: 5,
     title: 'Post-Care & Follow-Up',
     subtitle: 'Step 05',
-    description: 'Receive personalized recovery instructions and check-ins from your care coordinator.',
+    description: 'Receive personalized recovery guidance and oral care instructions.',
     duration: 'Ongoing',
   },
 ];
 
 export const faqData: FaqItem[] = [
   {
-    question: 'Is dental treatment at ÉLITE Pain-Free?',
+    question: 'Is dental treatment at ÉLITE Dental Clinic pain-free?',
     answer:
-      'Yes. We utilize computer-assisted local anesthesia, minimally invasive Waterlase lasers, and optional sleep dentistry to ensure every procedure is completely painless and stress-free.',
+      'Yes. We utilize gentle local anesthesia, rotary endodontics for single seating RCT, and minimally invasive techniques to ensure every procedure is comfortable and stress-free.',
     category: 'General',
   },
   {
-    question: 'How long do porcelain veneers and implants last?',
+    question: 'Who are the specialist doctors at the clinic?',
     answer:
-      'Our medical-grade titanium implants are designed to last a lifetime. Porcelain veneers crafted by our master ceramists typically last 15-20+ years with proper hygiene.',
-    category: 'Treatments',
+      'Our clinic is led by Dr. Arjun Jawahar Sharma (BDS, MDS Prosthodontics & Oral Implantologist, MBA) and Dr. Priyanka Sharma (BDS, Certified Endodontist).',
+    category: 'Doctors',
   },
   {
-    question: 'Do you offer emergency dental appointments?',
+    question: 'Where are your clinics located?',
     answer:
-      'Yes. We reserve daily emergency slots for severe toothache, broken crowns, or facial trauma. Call our emergency hotline at +1 (800) 888-ELITE for immediate assistance.',
-    category: 'Emergency',
+      'We have two branches: Kapurthala, Punjab (Link Road, Opposite Park, Near Yes Bank) and Mayur Vihar Phase-I, East Delhi (1/101-A, Pratap Nagar, Metro Pillar No. 12-13).',
+    category: 'Locations',
   },
   {
-    question: 'What financial plans and insurance do you accept?',
+    question: 'How do I contact the clinic for appointments?',
     answer:
-      'We accept all major PPO insurance plans and provide zero-interest monthly installment options (CareCredit, Sunbit) so premium care is accessible to all families.',
-    category: 'Payment',
-  },
-  {
-    question: 'How can I schedule my first consultation?',
-    answer:
-      'You can easily book online using our 24/7 interactive booking system or call our reception. We offer same-week appointments for new patients.',
+      'You can call Kapurthala branch at 82641-71818 or Delhi branch at 99100-66721 / 82855-47579, or book online 24/7.',
     category: 'General',
   },
 ];
