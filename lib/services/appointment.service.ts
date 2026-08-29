@@ -5,7 +5,7 @@ import { logBackendEvent } from '@/lib/logger';
 
 export type CreateAppointmentPayload = Database['public']['Tables']['appointments']['Insert'];
 
-export async function createAppointmentInDb(payload: CreateAppointmentPayload) {
+export async function createAppointmentInDb(payload: any) {
   if (!isSupabaseConfigured()) {
     logBackendEvent('warn', 'AppointmentService', 'Supabase credentials not configured. Simulation mode active.');
     return {
@@ -26,12 +26,13 @@ export async function createAppointmentInDb(payload: CreateAppointmentPayload) {
     
     const insertPayload = {
       patient_name: payload.patient_name,
+      country_code: payload.country_code || '+91',
       phone: payload.phone,
       email: payload.email,
       age: payload.age || null,
       gender: payload.gender || null,
       treatment: payload.treatment,
-      preferred_doctor: payload.preferred_doctor || 'First Available Specialist',
+      preferred_doctor: payload.preferred_doctor || 'Any Available Doctor / Specialist',
       appointment_date: payload.appointment_date,
       appointment_time: payload.appointment_time,
       reason_for_visit: payload.reason_for_visit || null,

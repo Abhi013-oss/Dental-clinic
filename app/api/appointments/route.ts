@@ -5,6 +5,7 @@ import { sanitizeInput } from '@/lib/sanitize';
 import { logBackendEvent } from '@/lib/logger';
 import { sendEmail } from '@/lib/resend';
 import { servicesData } from '@/constants/services.data';
+import { doctorsData } from '@/constants/doctors.data';
 
 export async function POST(request: NextRequest) {
   try {
@@ -32,20 +33,25 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { fullName, email, phone, serviceId, preferredDate, preferredTimeSlot, doctorId, age, gender, reasonForVisit, notes } = validationResult.data;
+    const { fullName, email, countryCode, phone, serviceId, preferredDate, preferredTimeSlot, doctorId, age, gender, reasonForVisit, notes } = validationResult.data;
 
     // Resolve service slug to clean human-readable title
     const serviceObj = servicesData.find((s) => s.id === serviceId || s.slug === serviceId);
     const serviceTitle = serviceObj ? serviceObj.title : serviceId;
 
+    // Resolve doctor ID to doctor name
+    const doctorObj = doctorsData.find((d) => d.id === doctorId);
+    const doctorName = doctorObj ? doctorObj.name : (doctorId === 'any-doctor' || !doctorId ? 'Any Available Doctor / Specialist' : doctorId);
+
     const sanitizedData = {
       patient_name: sanitizeInput(fullName),
       email: sanitizeInput(email),
+      country_code: countryCode ? sanitizeInput(countryCode) : '+91',
       phone: sanitizeInput(phone),
       treatment: sanitizeInput(serviceTitle),
       appointment_date: sanitizeInput(preferredDate),
       appointment_time: sanitizeInput(preferredTimeSlot),
-      preferred_doctor: doctorId ? sanitizeInput(doctorId) : 'First Available Specialist',
+      preferred_doctor: sanitizeInput(doctorName),
       age: age ? sanitizeInput(age) : null,
       gender: gender ? sanitizeInput(gender) : null,
       reason_for_visit: reasonForVisit ? sanitizeInput(reasonForVisit) : null,
@@ -54,9 +60,9 @@ export async function POST(request: NextRequest) {
 
     const result = await createAppointmentInDb(sanitizedData);
 
-    const bookingRef = result.data?.id ? `ELITE-${result.data.id.substring(0, 8).toUpperCase()}` : `ELITE-${Math.floor(100000 + Math.random() * 900000)}`;
+    const bookingRef = result.data?.id ? `JAWAHAR-${result.data.id.substring(0, 8).toUpperCase()}` : `JAWAHAR-${Math.floor(100000 + Math.random() * 900000)}`;
 
-    // 1. Send Luxury Confirmation Email to the Patient
+    // 1. Send Confirmation Email to Patient
     const patientHtml = `
       <!DOCTYPE html>
       <html>
@@ -71,7 +77,7 @@ export async function POST(request: NextRequest) {
             <tr>
               <td style="background-color: #0f172a; padding: 32px 24px; text-align: center; border-bottom: 3px solid #0284c7;">
                 <h1 style="color: #ffffff; font-size: 22px; font-weight: 800; letter-spacing: 2px; margin: 0; text-transform: uppercase;">JAWAHAR DENTAL HOSPITAL</h1>
-                <div style="color: #38bdf8; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-top: 6px;">Beverly Hills • Clinical Excellence</div>
+                <div style="color: #38bdf8; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-top: 6px;">Clinical Excellence & Specialist Care</div>
               </td>
             </tr>
             <!-- Content -->
@@ -81,13 +87,17 @@ export async function POST(request: NextRequest) {
                   ✓ Appointment Confirmed
                 </div>
                 <h2 style="color: #0f172a; font-size: 22px; font-weight: 800; margin: 0 0 10px 0;">Dear ${sanitizedData.patient_name},</h2>
-                <p style="color: #64748b; font-size: 14px; line-height: 1.6; margin-top: 0; margin-bottom: 24px;">Your clinical consultation has been successfully reserved. Our concierge team is preparing your private suite.</p>
+                <p style="color: #64748b; font-size: 14px; line-height: 1.6; margin-top: 0; margin-bottom: 24px;">Your consultation request has been successfully reserved with Jawahar Dental Hospital.</p>
                 
                 <!-- Table Details -->
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 24px; overflow: hidden;">
                   <tr>
                     <td style="padding: 12px 16px; color: #64748b; font-size: 13px; font-weight: 600; border-bottom: 1px solid #e2e8f0; width: 40%;">Booking Reference:</td>
                     <td style="padding: 12px 16px; color: #0284c7; font-size: 13px; font-weight: 800; font-family: monospace; text-align: right; border-bottom: 1px solid #e2e8f0;">${bookingRef}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px 16px; color: #64748b; font-size: 13px; font-weight: 600; border-bottom: 1px solid #e2e8f0;">Selected Doctor:</td>
+                    <td style="padding: 12px 16px; color: #0284c7; font-size: 13px; font-weight: 800; text-align: right; border-bottom: 1px solid #e2e8f0;">${sanitizedData.preferred_doctor}</td>
                   </tr>
                   <tr>
                     <td style="padding: 12px 16px; color: #64748b; font-size: 13px; font-weight: 600; border-bottom: 1px solid #e2e8f0;">Treatment Service:</td>
@@ -108,12 +118,8 @@ export async function POST(request: NextRequest) {
                 </table>
 
                 <p style="color: #475569; font-size: 13px; line-height: 1.6; text-align: center; margin: 0 0 20px 0;">
-                  Need to modify your appointment? Call reception directly at <strong style="color: #0f172a;">+1 (800) 888-ELITE</strong>.
+                  Direct Reception Phone: <strong style="color: #0f172a;">82641-71818 (Kapurthala) | 99100-66721 (Delhi)</strong>.
                 </p>
-
-                <div style="text-align: center;">
-                  <a href="tel:+18008883548" style="display: inline-block; background-color: #0284c7; color: #ffffff; font-weight: 700; font-size: 14px; text-decoration: none; padding: 14px 28px; border-radius: 10px; box-shadow: 0 4px 12px rgba(2,132,199,0.3);">Call Reception Desk</a>
-                </div>
               </td>
             </tr>
             <!-- Footer -->
@@ -134,7 +140,7 @@ export async function POST(request: NextRequest) {
       html: patientHtml,
     }).catch((err) => console.error('[Resend Patient Email Error]', err));
 
-    // 2. Send Ultra-Luxury Doctor Notification Email
+    // 2. Send Doctor Notification Email
     const doctorEmail = process.env.CLINIC_NOTIFICATION_EMAIL || 'adityabusinesslab@gmail.com';
     const doctorHtml = `
       <!DOCTYPE html>
@@ -149,7 +155,7 @@ export async function POST(request: NextRequest) {
             <!-- Header -->
             <tr>
               <td style="background-color: #0f172a; padding: 28px 24px; text-align: center; border-bottom: 4px solid #059669;">
-                <h1 style="color: #ffffff; font-size: 20px; font-weight: 800; letter-spacing: 2px; margin: 0; text-transform: uppercase;">ÉLITE CLINICAL RECEPTION</h1>
+                <h1 style="color: #ffffff; font-size: 20px; font-weight: 800; letter-spacing: 2px; margin: 0; text-transform: uppercase;">JAWAHAR CLINICAL RECEPTION</h1>
                 <div style="color: #34d399; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-top: 6px;">New Patient Reservation Alert</div>
               </td>
             </tr>
@@ -169,6 +175,10 @@ export async function POST(request: NextRequest) {
                   <tr>
                     <td style="padding: 14px 18px; color: #64748b; font-size: 13px; font-weight: 600; border-bottom: 1px solid #e2e8f0; width: 38%;">Patient Name:</td>
                     <td style="padding: 14px 18px; color: #0f172a; font-size: 14px; font-weight: 800; text-align: right; border-bottom: 1px solid #e2e8f0;">${sanitizedData.patient_name}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 14px 18px; color: #64748b; font-size: 13px; font-weight: 600; border-bottom: 1px solid #e2e8f0;">Requested Doctor:</td>
+                    <td style="padding: 14px 18px; color: #0284c7; font-size: 14px; font-weight: 800; text-align: right; border-bottom: 1px solid #e2e8f0;">${sanitizedData.preferred_doctor}</td>
                   </tr>
                   <tr>
                     <td style="padding: 14px 18px; color: #64748b; font-size: 13px; font-weight: 600; border-bottom: 1px solid #e2e8f0;">Email Address:</td>
@@ -196,7 +206,7 @@ export async function POST(request: NextRequest) {
             <!-- Footer -->
             <tr>
               <td style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 18px; text-align: center; color: #94a3b8; font-size: 12px;">
-                ÉLITE Dental Atelier • Automatic Clinical Notification System
+                Jawahar Dental Hospital • Automatic Clinical Notification System
               </td>
             </tr>
           </table>
@@ -206,7 +216,7 @@ export async function POST(request: NextRequest) {
 
     sendEmail({
       to: doctorEmail,
-      subject: `[New Patient] ${sanitizedData.patient_name} - ${sanitizedData.treatment} (${sanitizedData.appointment_date})`,
+      subject: `[New Booking] ${sanitizedData.patient_name} - ${sanitizedData.preferred_doctor} (${sanitizedData.appointment_date})`,
       html: doctorHtml,
     }).catch((err) => console.error('[Resend Doctor Email Error]', err));
 

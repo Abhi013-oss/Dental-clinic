@@ -1,6 +1,6 @@
 -- =================================================================
--- ÉLITE DENTAL CLINIC - SUPABASE PRODUCTION DATABASE SCHEMA
--- Migration-ready SQL for PostgreSQL & Supabase Engine
+-- JAWAHAR DENTAL HOSPITAL - SUPABASE PRODUCTION DATABASE SCHEMA
+-- Copy & Paste into Supabase SQL Editor (https://app.supabase.com)
 -- =================================================================
 
 -- 1. Enable UUID Extension
@@ -12,12 +12,13 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE IF NOT EXISTS public.appointments (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     patient_name TEXT NOT NULL,
+    country_code TEXT DEFAULT '+91',
     phone TEXT NOT NULL,
     email TEXT NOT NULL,
     age TEXT,
     gender TEXT,
     treatment TEXT NOT NULL,
-    preferred_doctor TEXT DEFAULT 'First Available Specialist',
+    preferred_doctor TEXT DEFAULT 'Any Available Doctor / Specialist',
     appointment_date DATE NOT NULL,
     appointment_time TEXT NOT NULL,
     reason_for_visit TEXT,
@@ -26,6 +27,10 @@ CREATE TABLE IF NOT EXISTS public.appointments (
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- Ensure country_code and preferred_doctor columns exist if updating existing table
+ALTER TABLE public.appointments ADD COLUMN IF NOT EXISTS country_code TEXT DEFAULT '+91';
+ALTER TABLE public.appointments ADD COLUMN IF NOT EXISTS preferred_doctor TEXT DEFAULT 'Any Available Doctor / Specialist';
 
 -- Indexes for performance & search queries
 CREATE INDEX IF NOT EXISTS idx_appointments_date ON public.appointments(appointment_date);
@@ -42,7 +47,9 @@ BEGIN
 END;
 $$ language 'plpgsql';
 
-CREATE OR REPLACE TRIGGER update_appointments_updated_at
+DROP TRIGGER IF EXISTS update_appointments_updated_at ON public.appointments;
+
+CREATE TRIGGER update_appointments_updated_at
 BEFORE UPDATE ON public.appointments
 FOR EACH ROW EXECUTE FUNCTION update_timestamp_column();
 
@@ -81,14 +88,14 @@ ALTER TABLE public.contact_messages ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.newsletter_subscribers ENABLE ROW LEVEL SECURITY;
 
 -- 1. APPOINTMENTS POLICIES
--- Allow anonymous public users to submit new appointments
+DROP POLICY IF EXISTS "Public users can insert appointments" ON public.appointments;
 CREATE POLICY "Public users can insert appointments"
 ON public.appointments
 FOR INSERT
 TO anon, authenticated
 WITH CHECK (true);
 
--- Restrict read/update/delete to service_role (Admin Dashboard preparation)
+DROP POLICY IF EXISTS "Service role full access to appointments" ON public.appointments;
 CREATE POLICY "Service role full access to appointments"
 ON public.appointments
 FOR ALL
@@ -97,12 +104,14 @@ USING (true)
 WITH CHECK (true);
 
 -- 2. CONTACT MESSAGES POLICIES
+DROP POLICY IF EXISTS "Public users can insert contact messages" ON public.contact_messages;
 CREATE POLICY "Public users can insert contact messages"
 ON public.contact_messages
 FOR INSERT
 TO anon, authenticated
 WITH CHECK (true);
 
+DROP POLICY IF EXISTS "Service role full access to contact messages" ON public.contact_messages;
 CREATE POLICY "Service role full access to contact messages"
 ON public.contact_messages
 FOR ALL
@@ -111,12 +120,14 @@ USING (true)
 WITH CHECK (true);
 
 -- 3. NEWSLETTER SUBSCRIBERS POLICIES
+DROP POLICY IF EXISTS "Public users can insert newsletter subscriptions" ON public.newsletter_subscribers;
 CREATE POLICY "Public users can insert newsletter subscriptions"
 ON public.newsletter_subscribers
 FOR INSERT
 TO anon, authenticated
 WITH CHECK (true);
 
+DROP POLICY IF EXISTS "Service role full access to newsletter subscribers" ON public.newsletter_subscribers;
 CREATE POLICY "Service role full access to newsletter subscribers"
 ON public.newsletter_subscribers
 FOR ALL
