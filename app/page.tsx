@@ -6,7 +6,6 @@ import { WhyChooseUs } from '@/features/landing/why-choose-us';
 import { TreatmentsSection } from '@/features/landing/treatments-section';
 import { DoctorsPreview } from '@/features/landing/doctors-preview';
 import { TechnologySection } from '@/features/landing/technology-section';
-import { PatientJourney } from '@/features/landing/patient-journey';
 import { XRayGallerySection } from '@/features/landing/xray-gallery-section';
 import { BeforeAfterSlider } from '@/features/landing/before-after-slider';
 import { TestimonialsSection } from '@/features/landing/testimonials-section';
@@ -44,22 +43,19 @@ export default function HomePage() {
       {/* 9. Technology & 3D Scanner Equipment Showcase */}
       <TechnologySection />
 
-      {/* 10. Step-By-Step Patient Journey Timeline */}
-      <PatientJourney />
-
-      {/* 11. Interactive Before & After Smile Gallery Slider */}
+      {/* 10. Interactive Before & After Smile Gallery Slider */}
       <BeforeAfterSlider />
 
-      {/* 12. Verified Patient Testimonials */}
+      {/* 11. Verified Patient Testimonials */}
       <TestimonialsSection />
 
-      {/* 13. Accessible FAQ Accordion */}
+      {/* 12. Accessible FAQ Accordion */}
       <FaqSection />
 
-      {/* 14. Primary Call To Action Banner with WhatsApp Concierge */}
+      {/* 13. Primary Call To Action Banner with WhatsApp Concierge */}
       <CtaSection />
 
-      {/* 15. Location, Valet & Operating Hours Preview */}
+      {/* 14. Location, Valet & Operating Hours Preview */}
       <LocationSection />
     </div>
   );
