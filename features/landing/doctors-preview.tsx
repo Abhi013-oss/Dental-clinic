@@ -22,7 +22,7 @@ export function DoctorsPreview() {
           />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {doctorsData.map((doctor, index) => (
             <ScrollReveal key={doctor.id} direction="up" delay={0.15 * index + 0.15}>
               <GlassCard variant="standard" className="h-full flex flex-col justify-between group bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-medical-500/40 transition-all duration-400">
