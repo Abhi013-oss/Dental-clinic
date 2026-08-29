@@ -5,22 +5,37 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { simpleBookingSchema, SimpleBookingFormValues, DEFAULT_TIME_SLOTS } from '@/types/booking.types';
 import { servicesData } from '@/constants/services.data';
-import { GlassCard } from '@/components/shared/glass-card';
+import { doctorsData } from '@/constants/doctors.data';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
 import { useToast } from '@/components/ui/toast';
 import { sanitizeInput } from '@/lib/sanitize';
 import { siteConfig } from '@/config/site.config';
-import { Calendar, Clock, CheckCircle2, PhoneCall, MessageSquare, ShieldCheck, Lock } from 'lucide-react';
+import { Calendar, Clock, CheckCircle2, PhoneCall, MessageSquare, ShieldCheck, Lock, UserCheck, Globe } from 'lucide-react';
 
 const STORAGE_KEY = 'elite_booked_slots_v1';
+
+export const COUNTRY_CODES = [
+  { value: '+91', label: '🇮🇳 India (+91)' },
+  { value: '+1', label: '🇨🇦/🇺🇸 USA & Canada (+1)' },
+  { value: '+44', label: '🇬🇧 UK (+44)' },
+  { value: '+49', label: '🇩🇪 Germany (+49)' },
+  { value: '+971', label: '🇦🇪 UAE (+971)' },
+  { value: '+61', label: '🇦🇺 Australia (+61)' },
+  { value: '+65', label: '🇸🇬 Singapore (+65)' },
+  { value: '+966', label: '🇸🇦 Saudi Arabia (+966)' },
+  { value: '+64', label: '🇳🇿 New Zealand (+64)' },
+  { value: '+33', label: '🇫🇷 France (+33)' },
+  { value: '+39', label: '🇮🇹 Italy (+39)' },
+  { value: '+81', label: '🇯🇵 Japan (+81)' },
+];
 
 export function SimpleBookingForm() {
   const [bookedSlots, setBookedSlots] = React.useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
-  const [lastBooking, setLastBooking] = React.useState<{ refCode: string; data: SimpleBookingFormValues } | null>(null);
+  const [lastBooking, setLastBooking] = React.useState<{ refCode: string; data: SimpleBookingFormValues; doctorName: string } | null>(null);
   const { showToast } = useToast();
 
   const now = new Date();
@@ -53,12 +68,14 @@ export function SimpleBookingForm() {
       preferredTimeSlot: '',
       fullName: '',
       email: '',
+      countryCode: '+91',
       phone: '',
     },
   });
 
   const selectedDate = watch('preferredDate');
   const selectedTimeSlot = watch('preferredTimeSlot');
+  const selectedDoctorId = watch('doctorId');
 
   const isSlotBooked = (date: string, time: string) => {
     if (!date || !time) return false;
@@ -100,6 +117,7 @@ export function SimpleBookingForm() {
       preferredTimeSlot: '',
       fullName: '',
       email: '',
+      countryCode: '+91',
       phone: '',
     });
   };
@@ -110,12 +128,14 @@ export function SimpleBookingForm() {
     try {
       const slotKey = `${data.preferredDate}_${data.preferredTimeSlot}`;
       if (bookedSlots.includes(slotKey)) {
-        throw new Error('This time slot has already been reserved by another patient. Please choose a different time slot.');
+        throw new Error('This time slot has already been reserved. Please choose another time slot.');
       }
 
       if (isSlotTimePassed(data.preferredDate, data.preferredTimeSlot)) {
         throw new Error('This time slot has already passed for today. Please select a future time slot.');
       }
+
+      const fullPhone = `${data.countryCode || '+91'} ${data.phone}`;
 
       const sanitized = {
         serviceId: sanitizeInput(data.serviceId),
@@ -124,7 +144,8 @@ export function SimpleBookingForm() {
         preferredTimeSlot: sanitizeInput(data.preferredTimeSlot),
         fullName: sanitizeInput(data.fullName),
         email: sanitizeInput(data.email),
-        phone: sanitizeInput(data.phone),
+        countryCode: data.countryCode || '+91',
+        phone: sanitizeInput(fullPhone),
       };
 
       const response = await fetch('/api/appointments', {
@@ -143,13 +164,17 @@ export function SimpleBookingForm() {
       setBookedSlots(updatedBooked);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedBooked));
 
-      const refCode = resData.data?.id ? `ELITE-${resData.data.id.substring(0, 8).toUpperCase()}` : `ELITE-${Math.floor(100000 + Math.random() * 900000)}`;
-      setLastBooking({ refCode, data: sanitized });
+      const refCode = resData.data?.id ? `JAWAHAR-${resData.data.id.substring(0, 8).toUpperCase()}` : `JAWAHAR-${Math.floor(100000 + Math.random() * 900000)}`;
+      
+      const docObj = doctorsData.find(d => d.id === sanitized.doctorId);
+      const doctorName = docObj ? docObj.name : 'Any Available Doctor / Specialist';
+
+      setLastBooking({ refCode, data: sanitized, doctorName });
 
       showToast({
         type: 'success',
-        title: 'Appointment Confirmed',
-        message: `Reserved for ${sanitized.preferredDate} at ${sanitized.preferredTimeSlot}.`,
+        title: 'Appointment Reserved',
+        message: `Reserved with ${doctorName} for ${sanitized.preferredDate} at ${sanitized.preferredTimeSlot}.`,
       });
 
       setIsSuccess(true);
@@ -165,6 +190,14 @@ export function SimpleBookingForm() {
     }
   };
 
+  const doctorOptions = [
+    { value: 'any-doctor', label: 'Any Available Doctor / Specialist (Recommended)' },
+    ...doctorsData.map((d) => ({
+      value: d.id,
+      label: `${d.name} (${d.title})`,
+    })),
+  ];
+
   if (isSuccess && lastBooking) {
     return (
       <div className="p-8 sm:p-12 text-center max-w-xl mx-auto bg-white border border-slate-200 rounded-3xl shadow-xl space-y-6 animate-in fade-in zoom-in-95 duration-300">
@@ -179,25 +212,33 @@ export function SimpleBookingForm() {
 
         <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-left space-y-3 text-xs">
           <div className="flex justify-between border-b border-slate-200 pb-2">
-            <span className="text-slate-500">Patient:</span>
+            <span className="text-slate-500">Patient Name:</span>
             <span className="font-bold text-navy-900">{lastBooking.data.fullName}</span>
           </div>
           <div className="flex justify-between border-b border-slate-200 pb-2">
+            <span className="text-slate-500">Selected Doctor:</span>
+            <span className="font-bold text-medical-600">{lastBooking.doctorName}</span>
+          </div>
+          <div className="flex justify-between border-b border-slate-200 pb-2">
             <span className="text-slate-500">Treatment:</span>
-            <span className="font-bold text-medical-600">{servicesData.find(s => s.id === lastBooking.data.serviceId)?.title}</span>
+            <span className="font-bold text-navy-900">{servicesData.find(s => s.id === lastBooking.data.serviceId)?.title}</span>
+          </div>
+          <div className="flex justify-between border-b border-slate-200 pb-2">
+            <span className="text-slate-500">Phone Number:</span>
+            <span className="font-bold text-navy-900 font-mono">{lastBooking.data.phone}</span>
           </div>
           <div className="flex justify-between border-b border-slate-200 pb-2">
             <span className="text-slate-500">Reserved Date:</span>
             <span className="font-bold text-navy-900">{lastBooking.data.preferredDate}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-slate-500">Time Window:</span>
+            <span className="text-slate-500">Time Slot:</span>
             <span className="font-bold text-emerald-600">{lastBooking.data.preferredTimeSlot}</span>
           </div>
         </div>
 
         <p className="text-xs text-slate-600 leading-relaxed font-normal">
-          Record saved to Supabase clinical database. Our team will send confirmation to <strong className="text-navy-900">{lastBooking.data.email}</strong>.
+          Saved to clinical database. Confirmation sent to <strong className="text-navy-900">{lastBooking.data.email}</strong>.
         </p>
 
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -209,7 +250,7 @@ export function SimpleBookingForm() {
           </a>
 
           <a
-            href={`https://wa.me/18008883548?text=Hi,%20I%20have%20booked%20an%20appointment%20Ref:%20${lastBooking.refCode}`}
+            href={`https://wa.me/918264171818?text=Hi,%20I%20have%20booked%20an%20appointment%20Ref:%20${lastBooking.refCode}%20with%20${encodeURIComponent(lastBooking.doctorName)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto"
@@ -221,7 +262,7 @@ export function SimpleBookingForm() {
           </a>
 
           <Button variant="ghost" size="sm" onClick={handleResetForm} className="font-bold text-xs h-11 px-5 touch-manipulation">
-            Book Another Slot
+            Book Another Visit
           </Button>
         </div>
       </div>
@@ -235,19 +276,30 @@ export function SimpleBookingForm() {
 
         <div className="border-b border-slate-100 pb-4">
           <h2 className="font-sans text-2xl font-extrabold text-navy-900">Book Your Dental Visit</h2>
-          <p className="text-xs text-slate-500 mt-1">Select your treatment, date, and preferred time slot.</p>
+          <p className="text-xs text-slate-500 mt-1">Select your preferred treatment doctor, appointment date, and time slot.</p>
         </div>
 
-        <Select
-          label="Treatment Service *"
-          options={servicesData.map((s) => ({
-            value: s.id,
-            label: s.title,
-          }))}
-          error={errors.serviceId?.message}
-          {...register('serviceId')}
-        />
+        {/* 1. Treatment Service & Preferred Doctor Dropdowns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Select
+            label="Treatment Service *"
+            options={servicesData.map((s) => ({
+              value: s.id,
+              label: s.title,
+            }))}
+            error={errors.serviceId?.message}
+            {...register('serviceId')}
+          />
 
+          <Select
+            label="Preferred Doctor / Specialist *"
+            options={doctorOptions}
+            error={errors.doctorId?.message}
+            {...register('doctorId')}
+          />
+        </div>
+
+        {/* 2. Date Selection & Time Slot Matrix */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <Input
             label="Preferred Date *"
@@ -312,28 +364,47 @@ export function SimpleBookingForm() {
           </div>
         </div>
 
-        <div className="pt-2 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <Input
-            label="Full Name *"
-            placeholder="Victoria Sterling"
-            error={errors.fullName?.message}
-            {...register('fullName')}
-          />
+        {/* 3. Patient Information: Name, Email & Phone with Country Code Selector */}
+        <div className="pt-4 border-t border-slate-100 space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <Input
+              label="Full Name *"
+              placeholder="Victoria Sterling"
+              error={errors.fullName?.message}
+              {...register('fullName')}
+            />
 
-          <Input
-            label="Email Address *"
-            type="email"
-            placeholder="victoria@example.com"
-            error={errors.email?.message}
-            {...register('email')}
-          />
+            <Input
+              label="Email Address *"
+              type="email"
+              placeholder="victoria@example.com"
+              error={errors.email?.message}
+              {...register('email')}
+            />
+          </div>
 
-          <Input
-            label="Phone Number *"
-            placeholder="+1 (555) 000-0000"
-            error={errors.phone?.message}
-            {...register('phone')}
-          />
+          {/* Country Code + Phone Number Input Field */}
+          <div className="space-y-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500">
+              Phone Number *
+            </label>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="sm:col-span-1">
+                <Select
+                  options={COUNTRY_CODES}
+                  error={errors.countryCode?.message}
+                  {...register('countryCode')}
+                />
+              </div>
+              <div className="sm:col-span-2">
+                <Input
+                  placeholder="98765 43210 / 8264171818"
+                  error={errors.phone?.message}
+                  {...register('phone')}
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">

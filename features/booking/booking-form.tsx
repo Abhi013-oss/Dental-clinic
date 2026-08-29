@@ -10,9 +10,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
 import { useToast } from '@/components/ui/toast';
-import { Calendar, Activity, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { Calendar, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { GlassCard } from '@/components/shared/glass-card';
 import { sanitizeInput } from '@/lib/sanitize';
+import { COUNTRY_CODES } from './simple-booking-form';
 
 export function BookingForm() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -29,9 +30,10 @@ export function BookingForm() {
     defaultValues: {
       fullName: '',
       email: '',
+      countryCode: '+91',
       phone: '',
       serviceId: servicesData[0].id,
-      doctorId: doctorsData[0].id,
+      doctorId: 'any-doctor',
       preferredDate: new Date(Date.now() + 86400000 * 2).toISOString().split('T')[0],
       preferredTimeSlot: '10:00 AM - 11:30 AM',
       notes: '',
@@ -42,12 +44,13 @@ export function BookingForm() {
   const onSubmit = async (data: BookingFormValues) => {
     setIsSubmitting(true);
     try {
-      // Client-Side Input Sanitization
+      const fullPhone = `${data.countryCode || '+91'} ${data.phone}`;
+
       const sanitizedData = {
         ...data,
         fullName: sanitizeInput(data.fullName),
         email: sanitizeInput(data.email),
-        phone: sanitizeInput(data.phone),
+        phone: sanitizeInput(fullPhone),
         notes: data.notes ? sanitizeInput(data.notes) : '',
       };
 
@@ -71,6 +74,14 @@ export function BookingForm() {
       setIsSubmitting(false);
     }
   };
+
+  const doctorOptions = [
+    { value: 'any-doctor', label: 'Any Available Doctor / Specialist (Recommended)' },
+    ...doctorsData.map((d) => ({
+      value: d.id,
+      label: `${d.name} (${d.title})`,
+    })),
+  ];
 
   if (isSuccess) {
     return (
@@ -96,14 +107,14 @@ export function BookingForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <Input
-          label="Full Name"
-          placeholder="e.g. Victoria Sterling"
+          label="Full Name *"
+          placeholder="Victoria Sterling"
           error={errors.fullName?.message}
           {...register('fullName')}
         />
 
         <Input
-          label="Email Address"
+          label="Email Address *"
           type="email"
           placeholder="victoria@example.com"
           error={errors.email?.message}
@@ -111,32 +122,47 @@ export function BookingForm() {
         />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <Input
-          label="Telephone / Mobile"
-          placeholder="+1 (555) 000-0000"
-          error={errors.phone?.message}
-          {...register('phone')}
-        />
+      <div className="space-y-1.5">
+        <label className="block text-xs font-bold uppercase tracking-wider text-slate-500">
+          Phone Number *
+        </label>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="sm:col-span-1">
+            <Select
+              options={COUNTRY_CODES}
+              error={errors.countryCode?.message}
+              {...register('countryCode')}
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <Input
+              placeholder="98765 43210 / 8264171818"
+              error={errors.phone?.message}
+              {...register('phone')}
+            />
+          </div>
+        </div>
+      </div>
 
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <Select
-          label="Select Dental Service"
+          label="Select Dental Service *"
           options={servicesData.map((s) => ({ value: s.id, label: s.title }))}
           error={errors.serviceId?.message}
           {...register('serviceId')}
         />
-      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <Select
-          label="Specialist Preference"
-          options={doctorsData.map((d) => ({ value: d.id, label: `${d.name}` }))}
+          label="Preferred Doctor / Specialist *"
+          options={doctorOptions}
           error={errors.doctorId?.message}
           {...register('doctorId')}
         />
+      </div>
 
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <Input
-          label="Preferred Date"
+          label="Preferred Date *"
           type="date"
           min={new Date().toISOString().split('T')[0]}
           error={errors.preferredDate?.message}
@@ -144,12 +170,14 @@ export function BookingForm() {
         />
 
         <Select
-          label="Preferred Time Window"
+          label="Preferred Time Window *"
           options={[
-            { value: '09:00 AM - 10:30 AM', label: '09:00 AM - 10:30 AM' },
-            { value: '11:00 AM - 12:30 PM', label: '11:00 AM - 12:30 PM' },
-            { value: '02:00 PM - 03:30 PM', label: '02:00 PM - 03:30 PM' },
-            { value: '04:00 PM - 05:30 PM', label: '04:00 PM - 05:30 PM' },
+            { value: '09:00 AM - 10:00 AM', label: '09:00 AM - 10:00 AM' },
+            { value: '10:30 AM - 11:30 AM', label: '10:30 AM - 11:30 AM' },
+            { value: '11:45 AM - 12:45 PM', label: '11:45 AM - 12:45 PM' },
+            { value: '02:00 PM - 03:00 PM', label: '02:00 PM - 03:00 PM' },
+            { value: '03:30 PM - 04:30 PM', label: '03:30 PM - 04:30 PM' },
+            { value: '05:00 PM - 06:00 PM', label: '05:00 PM - 06:00 PM' },
           ]}
           error={errors.preferredTimeSlot?.message}
           {...register('preferredTimeSlot')}

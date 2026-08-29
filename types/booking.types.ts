@@ -2,12 +2,13 @@ import { z } from 'zod';
 
 export const simpleBookingSchema = z.object({
   serviceId: z.string().min(1, 'Please select a treatment'),
-  doctorId: z.string().optional().default('any-doctor'),
+  doctorId: z.string().min(1, 'Please select a preferred doctor'),
   preferredDate: z.string().min(1, 'Please select a date'),
   preferredTimeSlot: z.string().min(1, 'Please select a time slot'),
   fullName: z.string().min(2, 'Full name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
-  phone: z.string().min(10, 'Please enter a valid phone number (at least 10 digits)'),
+  countryCode: z.string().optional().default('+91'),
+  phone: z.string().min(7, 'Please enter a valid phone number'),
   age: z.string().optional(),
   gender: z.string().optional(),
   reasonForVisit: z.string().optional(),
