@@ -33,7 +33,7 @@ export const whyChooseData: WhyChooseItem[] = [
     id: '1',
     iconName: 'Cpu',
     title: 'Advanced 3D Technology',
-    description: 'Digital 3D scanners, OPG/CBCT 3D radiography, and digital X-rays for sub-millimeter precision and zero pain.',
+    description: 'Primescan 3D digital scanners, portable digital X-rays, and 3D digital impressions for sub-millimeter precision.',
   },
   {
     id: '2',
@@ -51,7 +51,7 @@ export const whyChooseData: WhyChooseItem[] = [
     id: '4',
     iconName: 'ShieldCheck',
     title: 'Sterile Hospital Standards',
-    description: '100% autoclave sterilization and multi-stage infection control adhering to global health standards.',
+    description: 'Runyes 23L Class-B autoclave sterilization and multi-stage infection control adhering to global health standards.',
   },
   {
     id: '5',
@@ -69,28 +69,36 @@ export const whyChooseData: WhyChooseItem[] = [
 
 export const technologyData: TechItem[] = [
   {
-    id: '3d-scanning',
-    title: 'Digital 3D Intraoral Scanner',
-    category: 'Digital Impressions',
-    description: 'Creates accurate 3D digital impressions in seconds without messy alginate trays.',
-    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop',
-    benefits: ['Zero gag reflex', 'Instant 3D smile preview', '100% digital accuracy'],
+    id: 'primescan-3d-scanner',
+    title: 'Primescan 3D Intraoral Scanner',
+    category: '3D Digital Impressions',
+    description: 'Advanced Primescan 3D intraoral digital scanner for instant, highly accurate digital impressions and computer-guided implant planning.',
+    image: '/equipment/primescan-3d-scanner.png',
+    benefits: ['Zero gag reflex', 'Instant 3D model', '100% digital accuracy'],
   },
   {
-    id: 'opg-cbct',
-    title: 'OPG / CBCT 3D Radiography',
-    category: '3D Imaging',
-    description: 'Full-mouth 3D volumetric CBCT imaging mapping bone density, nerve paths, and sinus anatomy.',
-    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop',
-    benefits: ['Sub-millimeter precision', 'Complete 3D jaw view', 'Safe low radiation'],
+    id: 'portable-xray-system',
+    title: 'Genoray & Port-XII Portable X-Ray',
+    category: 'Advanced Digital Radiology',
+    description: 'High-frequency lightweight portable dental X-ray systems (Port-XII & Genoray) engineered for rapid, ultra-low radiation chairside diagnostics.',
+    image: '/equipment/portable-xray-system.png',
+    benefits: ['Ultra-low radiation', 'Chairside portability', 'Rapid HD capture'],
   },
   {
-    id: 'digital-xray',
-    title: 'Digital RVG X-Ray',
-    category: 'Digital Diagnostics',
-    description: 'Low-dose digital radiography providing instant high-resolution diagnostics on chairside screens.',
-    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop',
-    benefits: ['90% less radiation', '1-second display', 'Accurate diagnostic detail'],
+    id: 'autoclave-sterilizer',
+    title: '23-Litre Class-B Medical Autoclave',
+    category: 'Infection Control & Sterilization',
+    description: 'Runyes 23-Litre Class-B vacuum autoclave sterilizer delivering hospital-grade 100% sterilization for all surgical instruments.',
+    image: '/equipment/autoclave-sterilizer.png',
+    benefits: ['Class-B hospital grade', '100% sterile guarantee', 'Multi-vacuum cycle'],
+  },
+  {
+    id: 'dental-treatment-suite',
+    title: 'Ergonomic Dental Treatment Suite',
+    category: 'Operatory & Patient Comfort',
+    description: 'Fully equipped modern dental operatory suite with ergonomic patient chairs, shadowless LED clinical lamps, and integrated handpiece systems.',
+    image: '/equipment/dental-treatment-suite.png',
+    benefits: ['Ergonomic seating', 'Shadowless LED optics', 'Stress-free environment'],
   },
 ];
 
@@ -106,7 +114,7 @@ export const journeyData: JourneyStep[] = [
     stepNumber: 2,
     title: 'Digital Diagnosis',
     subtitle: 'Step 02',
-    description: 'High-definition digital RVG X-ray or 3D digital scan evaluation.',
+    description: 'High-definition digital RVG X-ray or Primescan 3D digital scan evaluation.',
     duration: '20 Mins',
   },
   {
@@ -118,43 +126,30 @@ export const journeyData: JourneyStep[] = [
   },
   {
     stepNumber: 4,
-    title: 'Gentle Treatment',
+    title: 'Painless Care & Follow-Up',
     subtitle: 'Step 04',
-    description: 'Relax while our specialist doctors perform your treatment gently.',
-    duration: '30-60 Mins',
-  },
-  {
-    stepNumber: 5,
-    title: 'Post-Care & Follow-Up',
-    subtitle: 'Step 05',
-    description: 'Receive personalized recovery guidance and oral care instructions.',
-    duration: 'Ongoing',
+    description: 'Experience gentle treatment followed by detailed post-care guidance.',
+    duration: 'Procedure Dependent',
   },
 ];
 
 export const faqData: FaqItem[] = [
   {
-    question: 'Is dental treatment at ÉLITE Dental Clinic pain-free?',
+    question: 'Is dental treatment at Jawahar Dental Hospital pain-free?',
     answer:
-      'Yes. We utilize gentle local anesthesia, rotary endodontics for single seating RCT, and minimally invasive techniques to ensure every procedure is comfortable and stress-free.',
-    category: 'General',
+      'Yes. We utilize gentle computerized anesthesia, minimally invasive micro-tools, and Primescan 3D digital diagnostics to maximize your comfort throughout every visit.',
+    category: 'Patient Care',
   },
   {
-    question: 'Who are the specialist doctors at the clinic?',
+    question: 'How do I schedule a consultation at the Kapurthala or Delhi branch?',
     answer:
-      'Our clinic is led by Dr. Arjun Jawahar Sharma (BDS, MDS Prosthodontics & Oral Implantologist, MBA) and Dr. Priyanka Sharma (BDS, Certified Endodontist).',
-    category: 'Doctors',
+      'You can call our Kapurthala branch directly at 82641-71818 or Delhi branch at 99100-66721 / 82855-47579, or click the "Book Appointment" button on our website.',
+    category: 'Appointments',
   },
   {
-    question: 'Where are your clinics located?',
+    question: 'What digital technologies are available at the hospital?',
     answer:
-      'We have two branches: Kapurthala, Punjab (Link Road, Opposite Park, Near Yes Bank) and Mayur Vihar Phase-I, East Delhi (1/101-A, Pratap Nagar, Metro Pillar No. 12-13).',
-    category: 'Locations',
-  },
-  {
-    question: 'How do I contact the clinic for appointments?',
-    answer:
-      'You can call Kapurthala branch at 82641-71818 or Delhi branch at 99100-66721 / 82855-47579, or book online 24/7.',
-    category: 'General',
+      'We feature Primescan 3D intraoral scanners, Genoray/Port-XII portable digital X-ray units, Runyes 23L Class-B autoclaves, and 3D digital diagnostics.',
+    category: 'Technology',
   },
 ];

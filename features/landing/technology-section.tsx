@@ -26,11 +26,11 @@ export function TechnologySection() {
               <GlassCard variant="standard" className="h-full flex flex-col justify-between group p-6 sm:p-8 bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-medical-500/40 transition-all duration-400">
                 <div className="space-y-4">
                   {/* Equipment Photo */}
-                  <div className="relative aspect-[16/9] rounded-xl overflow-hidden border border-slate-100">
+                  <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-slate-100 bg-slate-50">
                     <img
                       src={tech.image}
                       alt={tech.title}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                      className="w-full h-full object-contain p-2 transform group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                     <div className="absolute top-3 left-3">
                       <Badge variant="gold" className="bg-white/95 text-medical-700 shadow-sm backdrop-blur-sm">
