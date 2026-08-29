@@ -13,6 +13,7 @@ export interface Database {
         Row: {
           id: string;
           patient_name: string;
+          country_code: string | null;
           phone: string;
           email: string;
           age: string | null;
@@ -30,6 +31,7 @@ export interface Database {
         Insert: {
           id?: string;
           patient_name: string;
+          country_code?: string | null;
           phone: string;
           email: string;
           age?: string | null;
@@ -47,6 +49,7 @@ export interface Database {
         Update: {
           id?: string;
           patient_name?: string;
+          country_code?: string | null;
           phone?: string;
           email?: string;
           age?: string | null;
@@ -60,52 +63,6 @@ export interface Database {
           status?: 'Pending' | 'Confirmed' | 'Completed' | 'Cancelled' | 'Rejected';
           created_at?: string;
           updated_at?: string;
-        };
-      };
-      contact_messages: {
-        Row: {
-          id: string;
-          name: string;
-          phone: string | null;
-          email: string;
-          subject: string | null;
-          message: string;
-          created_at: string;
-        };
-        Insert: {
-          id?: string;
-          name: string;
-          phone?: string | null;
-          email: string;
-          subject?: string | null;
-          message: string;
-          created_at?: string;
-        };
-        Update: {
-          id?: string;
-          name?: string;
-          phone?: string | null;
-          email?: string;
-          subject?: string | null;
-          message?: string;
-          created_at?: string;
-        };
-      };
-      newsletter_subscribers: {
-        Row: {
-          id: string;
-          email: string;
-          created_at: string;
-        };
-        Insert: {
-          id?: string;
-          email: string;
-          created_at?: string;
-        };
-        Update: {
-          id?: string;
-          email?: string;
-          created_at?: string;
         };
       };
     };

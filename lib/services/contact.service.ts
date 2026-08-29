@@ -1,9 +1,14 @@
 import { getSupabaseServerClient } from '@/lib/supabase/server';
 import { isSupabaseConfigured } from '@/lib/supabase/client';
-import { Database } from '@/types/database.types';
 import { logBackendEvent } from '@/lib/logger';
 
-export type CreateContactPayload = Database['public']['Tables']['contact_messages']['Insert'];
+export interface CreateContactPayload {
+  name: string;
+  phone?: string | null;
+  email: string;
+  subject?: string | null;
+  message: string;
+}
 
 export async function createContactMessageInDb(payload: CreateContactPayload) {
   if (!isSupabaseConfigured()) {
