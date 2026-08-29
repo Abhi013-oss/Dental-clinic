@@ -6,15 +6,16 @@ import { Badge } from '@/components/ui/badge';
 import { doctorsData } from '@/constants/doctors.data';
 import { Calendar, GraduationCap, CheckCircle2 } from 'lucide-react';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
+import { CredentialsTrustSection } from '@/features/landing/credentials-trust-section';
 
 export const metadata = {
-  title: 'Specialist Doctors | ÉLITE Dental Clinic',
-  description: 'Meet Dr. Arjun Jawahar Sharma and Dr. Priyanka Sharma at ÉLITE Dental Clinic.',
+  title: 'Specialist Doctors & Verified Credentials | Jawahar Dental Hospital',
+  description: 'Meet Dr. Arjun Jawahar Sharma and Dr. Priyanka Sharma at Jawahar Dental Hospital. Review verified academic degrees, awards, and hospital residencies.',
 };
 
 export default function TeamPage() {
   return (
-    <div className="pt-32 pb-24 bg-white min-h-screen">
+    <div className="pt-32 pb-24 bg-white min-h-screen space-y-16">
       <div className="container max-w-5xl">
         <ScrollReveal direction="up" delay={0.1}>
           <SectionHeader
@@ -74,6 +75,9 @@ export default function TeamPage() {
           ))}
         </div>
       </div>
+
+      {/* Verified Degrees & Certificates Trust Section */}
+      <CredentialsTrustSection />
     </div>
   );
 }
