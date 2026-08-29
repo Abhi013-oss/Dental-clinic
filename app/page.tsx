@@ -9,7 +9,6 @@ import { TechnologySection } from '@/features/landing/technology-section';
 import { PatientJourney } from '@/features/landing/patient-journey';
 import { XRayGallerySection } from '@/features/landing/xray-gallery-section';
 import { BeforeAfterSlider } from '@/features/landing/before-after-slider';
-import { SmileQuiz } from '@/features/landing/smile-quiz';
 import { TestimonialsSection } from '@/features/landing/testimonials-section';
 import { StatsSection } from '@/features/landing/stats-section';
 import { FaqSection } from '@/features/landing/faq-section';
@@ -52,22 +51,19 @@ export default function HomePage() {
       {/* 11. Interactive Before & After Smile Gallery Slider */}
       <BeforeAfterSlider />
 
-      {/* 12. Interactive 2-Step Smile Assessment Quiz */}
-      <SmileQuiz />
-
-      {/* 13. Verified Patient Testimonials */}
+      {/* 12. Verified Patient Testimonials */}
       <TestimonialsSection />
 
-      {/* 14. Animated Clinic Statistics Counter */}
+      {/* 13. Animated Clinic Statistics Counter */}
       <StatsSection />
 
-      {/* 15. Accessible FAQ Accordion */}
+      {/* 14. Accessible FAQ Accordion */}
       <FaqSection />
 
-      {/* 16. Primary Call To Action Banner with WhatsApp Concierge */}
+      {/* 15. Primary Call To Action Banner with WhatsApp Concierge */}
       <CtaSection />
 
-      {/* 17. Location, Valet & Operating Hours Preview */}
+      {/* 16. Location, Valet & Operating Hours Preview */}
       <LocationSection />
     </div>
   );
