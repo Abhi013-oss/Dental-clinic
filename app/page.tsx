@@ -10,7 +10,6 @@ import { PatientJourney } from '@/features/landing/patient-journey';
 import { XRayGallerySection } from '@/features/landing/xray-gallery-section';
 import { BeforeAfterSlider } from '@/features/landing/before-after-slider';
 import { TestimonialsSection } from '@/features/landing/testimonials-section';
-import { StatsSection } from '@/features/landing/stats-section';
 import { FaqSection } from '@/features/landing/faq-section';
 import { CtaSection } from '@/features/landing/cta-section';
 import { LocationSection } from '@/features/landing/location-section';
@@ -54,16 +53,13 @@ export default function HomePage() {
       {/* 12. Verified Patient Testimonials */}
       <TestimonialsSection />
 
-      {/* 13. Animated Clinic Statistics Counter */}
-      <StatsSection />
-
-      {/* 14. Accessible FAQ Accordion */}
+      {/* 13. Accessible FAQ Accordion */}
       <FaqSection />
 
-      {/* 15. Primary Call To Action Banner with WhatsApp Concierge */}
+      {/* 14. Primary Call To Action Banner with WhatsApp Concierge */}
       <CtaSection />
 
-      {/* 16. Location, Valet & Operating Hours Preview */}
+      {/* 15. Location, Valet & Operating Hours Preview */}
       <LocationSection />
     </div>
   );
