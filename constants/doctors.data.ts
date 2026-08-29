@@ -12,7 +12,7 @@ export const doctorsData: Doctor[] = [
     ],
     experienceYears: 15,
     bio: 'BDS, MDS (Prosthodontics & Oral Implantologist), MBA (AMIS; IIB). Specialist in: Dentures, Crowns & Implants. Ex-Consultant - Clove Dental. Faculty - K.D. Dental College & Hospital.',
-    avatarUrl: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=800&auto=format&fit=crop',
+    avatarUrl: '/doctors/dr-arjun-jawahar-sharma.svg',
     achievements: [
       'BDS, MDS (Prosthodontics & Oral Implantologist)',
       'MBA (AMIS; IIB)',
@@ -34,7 +34,7 @@ export const doctorsData: Doctor[] = [
     ],
     experienceYears: 12,
     bio: 'BDS, (Dental Surgeon), Certified Endodontist. Member Indian Dental Association. Ex-Consultant - Sri Ganga Ram Hospital, New Delhi. Ex-Lecturer - ITS Dental College & Hospitals.',
-    avatarUrl: 'https://images.unsplash.com/photo-1594824813566-78a9c2b4c107?q=80&w=800&auto=format&fit=crop',
+    avatarUrl: '/doctors/dr-priyanka-sharma.svg',
     achievements: [
       'BDS, (Dental Surgeon)',
       'Certified Endodontist',
@@ -56,7 +56,7 @@ export const doctorsData: Doctor[] = [
     ],
     experienceYears: 10,
     bio: 'BDS (Dental Surgeon). Specialist in Root Canal Treatment (RCT), tooth fillings, and pain-free restorative dental procedures with gentle care.',
-    avatarUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=800&auto=format&fit=crop',
+    avatarUrl: '/doctors/dr-sandeep.svg',
     achievements: [
       'BDS (Dental Surgeon)',
       'Specialist in Single-Seating RCT & Tooth Fillings',
@@ -76,7 +76,7 @@ export const doctorsData: Doctor[] = [
     ],
     experienceYears: 11,
     bio: 'BDS (Dental Surgeon). Specialist in clinical oral diagnostics, atraumatic tooth extractions, and comprehensive oral surgery care.',
-    avatarUrl: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=800&auto=format&fit=crop',
+    avatarUrl: '/doctors/dr-vikrant.svg',
     achievements: [
       'BDS (Dental Surgeon)',
       'Specialist in Clinical Extractions & Digital Diagnostics',
@@ -96,7 +96,7 @@ export const doctorsData: Doctor[] = [
     ],
     experienceYears: 9,
     bio: 'BDS (Dental Surgeon). Dedicated specialist in aesthetic tooth restorations, preventative care, and patient-centered dental treatments.',
-    avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop',
+    avatarUrl: '/doctors/dr-rajwinder-kaur.svg',
     achievements: [
       'BDS (Dental Surgeon)',
       'Specialist in Restorative & Family Dentistry',

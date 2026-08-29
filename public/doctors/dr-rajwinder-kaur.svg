@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="coatGrad5" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+    <linearGradient id="scrubGrad5" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="500" rx="24" fill="url(#bgGrad5)" />
+  <circle cx="200" cy="180" r="140" fill="#ffffff" opacity="0.05" />
+  
+  <!-- Shoulders & Coat -->
+  <path d="M 60 500 C 60 380, 100 320, 200 320 C 300 320, 340 380, 340 500 Z" fill="url(#coatGrad5)" />
+  <!-- Inner Scrub Top -->
+  <path d="M 160 320 L 200 400 L 240 320 Z" fill="url(#scrubGrad5)" />
+  
+  <!-- Stethoscope around neck -->
+  <path d="M 135 320 Q 200 440 265 320" fill="none" stroke="#0f172a" stroke-width="10" stroke-linecap="round" />
+  <circle cx="200" cy="415" r="15" fill="#38bdf8" stroke="#ffffff" stroke-width="4" />
+  
+  <!-- Neck -->
+  <rect x="175" y="240" width="50" height="90" rx="10" fill="#f8fafc" />
+  
+  <!-- Head & Face -->
+  <ellipse cx="200" cy="175" rx="60" ry="75" fill="#ffffff" />
+  
+  <!-- Hair -->
+  <path d="M 125 150 C 120 70, 280 70, 275 150 C 285 240, 260 320, 250 340 C 235 320, 250 220, 235 150 C 235 110, 165 110, 165 150 C 150 220, 165 320, 150 340 C 140 320, 115 240, 125 150 Z" fill="#0f172a" />
+  
+  <!-- Kind Smile -->
+  <path d="M 178 210 Q 200 232 222 210" fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round" />
+  
+  <!-- Badge Label -->
+  <rect x="30" y="440" width="340" height="42" rx="10" fill="#ffffff" opacity="0.95" />
+  <text x="200" y="466" font-family="sans-serif" font-size="15" font-weight="bold" fill="#0284c7" text-anchor="middle">DR. RAJWINDER KAUR</text>
+</svg>
