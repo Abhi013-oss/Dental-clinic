@@ -80,8 +80,8 @@ export function HeroSection() {
               <div className="relative rounded-3xl overflow-hidden bg-white p-3 border border-slate-200/90 shadow-xl hover:shadow-2xl hover:border-medical-500/40 transition-all duration-500 group">
                 <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1000&auto=format&fit=crop"
-                    alt="Bright Modern ÉLITE Dental Clinic"
+                    src="/images/jawahar-dental-hospital-building.jpg"
+                    alt="Jawahar Dental Hospital Exterior Building & Modern Clinic Entrance"
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
 
