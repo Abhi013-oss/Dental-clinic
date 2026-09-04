@@ -11,7 +11,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Comprehensive full mouth rehabilitation utilizing advanced dental implant technology to restore chewing function, jaw alignment, and natural smile aesthetics.',
     startingPrice: 15000,
     durationMinutes: 120,
-    heroImage: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/full-mouth-rehabilitation.jpg',
     iconName: 'Crown',
     popular: true,
     features: [
@@ -34,7 +34,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Implant-supported overdentures anchored securely by dental implants, providing firm retention, comfort, and natural speech without slippage.',
     startingPrice: 5000,
     durationMinutes: 90,
-    heroImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/implants-overdentures.jpg',
     iconName: 'ShieldCheck',
     popular: true,
     features: [
@@ -56,7 +56,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Single tooth implant placement designed to replace missing teeth seamlessly without affecting adjacent healthy tooth structures.',
     startingPrice: 3800,
     durationMinutes: 60,
-    heroImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/single-implant.jpg',
     iconName: 'ShieldCheck',
     popular: true,
     features: [
@@ -80,7 +80,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Custom ceramic crowns and multi-unit dental bridges engineered to restore structural integrity, biting power, and smile aesthetics.',
     startingPrice: 1200,
     durationMinutes: 60,
-    heroImage: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/bridges-crowns.jpg',
     iconName: 'Sparkles',
     popular: true,
     features: [
@@ -102,7 +102,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Custom fabricated complete dentures replacing full upper or lower arches of missing teeth with individualized tissue contours.',
     startingPrice: 1800,
     durationMinutes: 60,
-    heroImage: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/complete-dentures.jpg',
     iconName: 'Sparkles',
     popular: false,
     features: [
@@ -124,7 +124,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Custom removable partial dentures designed to replace multiple missing teeth while clasping securely to remaining natural teeth.',
     startingPrice: 1400,
     durationMinutes: 45,
-    heroImage: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/partial-dentures.jpg',
     iconName: 'Sparkles',
     popular: false,
     features: [
@@ -146,7 +146,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Hand-crafted porcelain veneers and ceramic laminates designed to correct gaps, chips, discoloration, and minor misalignments.',
     startingPrice: 2500,
     durationMinutes: 90,
-    heroImage: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/veneers-laminates.jpg',
     iconName: 'Sparkles',
     popular: true,
     features: [
@@ -171,7 +171,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Orthodontic bracket and wire systems engineered for precise tooth movement, overcrowding correction, and bite correction.',
     startingPrice: 3000,
     durationMinutes: 45,
-    heroImage: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/brackets-braces.jpg',
     iconName: 'Smile',
     popular: true,
     features: [
@@ -193,7 +193,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Custom transparent clear aligners designed with 3D digital planning to straighten teeth comfortably without metal brackets.',
     startingPrice: 4500,
     durationMinutes: 45,
-    heroImage: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/aligners.jpg',
     iconName: 'Smile',
     popular: true,
     features: [
@@ -215,7 +215,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Custom orthodontic appliances engineered to modify jaw relationships, expand arches, and correct deep bites in growing patients.',
     startingPrice: 1500,
     durationMinutes: 30,
-    heroImage: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/corrective-appliances.jpg',
     iconName: 'Smile',
     popular: false,
     features: [
@@ -239,7 +239,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Biocompatible composite resin fillings designed to restore decayed or fractured teeth with seamless tooth-colored matching.',
     startingPrice: 350,
     durationMinutes: 30,
-    heroImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/tooth-color-fillings.jpg',
     iconName: 'ShieldCheck',
     popular: true,
     features: [
@@ -261,7 +261,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Advanced microscopic root canal therapy designed to clean infected pulp tissue, relieve severe toothache, and preserve natural tooth root structure.',
     startingPrice: 800,
     durationMinutes: 60,
-    heroImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/root-canal-treatment.jpg',
     iconName: 'ShieldCheck',
     popular: true,
     features: [
@@ -283,7 +283,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'High-precision single-visit root canal treatment utilizing rotary instrumentation and digital apex locators for complete canal sealing in a single visit.',
     startingPrice: 1000,
     durationMinutes: 60,
-    heroImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/single-seating-rct.jpg',
     iconName: 'ShieldCheck',
     popular: true,
     features: [
@@ -304,7 +304,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Reinforcement procedure placing a biocompatible post inside a root canal treated tooth to support a full protective crown.',
     startingPrice: 600,
     durationMinutes: 45,
-    heroImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/post-cores.jpg',
     iconName: 'ShieldCheck',
     popular: false,
     features: [
@@ -328,7 +328,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Surgical removal of impacted or wisdom teeth performed under local anesthesia with minimal discomfort and fast healing.',
     startingPrice: 1500,
     durationMinutes: 45,
-    heroImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/wisdom-tooth-extraction.jpg',
     iconName: 'ShieldCheck',
     popular: true,
     features: [
@@ -350,7 +350,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Careful removal of broken root stumps left beneath gum lines to clean underlying infection and prepare sites for healing or implants.',
     startingPrice: 600,
     durationMinutes: 30,
-    heroImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/root-stump-extraction.jpg',
     iconName: 'ShieldCheck',
     popular: false,
     features: [
@@ -371,7 +371,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Routine extraction of damaged or severely decayed teeth performed gently under local anesthesia with comprehensive post-op care.',
     startingPrice: 500,
     durationMinutes: 30,
-    heroImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/tooth-extraction.jpg',
     iconName: 'ShieldCheck',
     popular: false,
     features: [
@@ -392,7 +392,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Comprehensive screening, biopsy diagnostic evaluation, and surgical management of oral mucosal lesions and precancerous conditions.',
     startingPrice: 3000,
     durationMinutes: 60,
-    heroImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/oral-cancer-treatment.jpg',
     iconName: 'ShieldCheck',
     popular: false,
     features: [
@@ -416,7 +416,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Specialized pediatric nerve treatments designed to treat infected pulp in primary teeth, preserving space for permanent adult teeth.',
     startingPrice: 600,
     durationMinutes: 40,
-    heroImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/pulpotomy-pulpectomy.jpg',
     iconName: 'Smile',
     popular: true,
     features: [
@@ -437,7 +437,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Custom pediatric appliances designed to gently correct habits like thumb sucking, tongue thrusting, and mouth breathing before permanent jaw deformity occurs.',
     startingPrice: 1200,
     durationMinutes: 30,
-    heroImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/habit-breaking-appliances.jpg',
     iconName: 'Smile',
     popular: false,
     features: [
@@ -458,7 +458,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Gentle extraction of over-retained or decayed primary teeth to allow normal eruption of permanent adult teeth.',
     startingPrice: 300,
     durationMinutes: 20,
-    heroImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/deciduous-tooth-extraction.jpg',
     iconName: 'Smile',
     popular: false,
     features: [
@@ -479,7 +479,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Preventive resin coatings applied to deep grooves of children permanent molars, locking out bacteria and preventing cavity formation.',
     startingPrice: 250,
     durationMinutes: 20,
-    heroImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/pit-fissure-sealants.jpg',
     iconName: 'Smile',
     popular: false,
     features: [
@@ -502,7 +502,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Ultrasonic removal of tartar, plaque, and stubborn surface stains followed by micro-polishing for fresh breath and pink healthy gums.',
     startingPrice: 400,
     durationMinutes: 30,
-    heroImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/cleaning-polishing.jpg',
     iconName: 'Sparkles',
     popular: true,
     features: [
@@ -524,7 +524,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'In-office laser-assisted dental whitening therapy removing deep enamel stains and brightening your natural smile up to 8 shades in 1 session.',
     startingPrice: 1200,
     durationMinutes: 60,
-    heroImage: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/teeth-whitening-bleaching.jpg',
     iconName: 'Sparkles',
     popular: true,
     features: [
@@ -546,7 +546,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Targeted periodontal therapy including subgingival scaling, root planing, and antimicrobial irrigation to stop bleeding gums and treat gingivitis.',
     startingPrice: 800,
     durationMinutes: 45,
-    heroImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/bleeding-gum-treatment.jpg',
     iconName: 'ShieldCheck',
     popular: true,
     features: [
@@ -567,7 +567,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Clinical evaluation identifying underlying causes of chronic halitosis (bad breath) followed by deep tongue cleaning and periodontal pocket disinfection.',
     startingPrice: 500,
     durationMinutes: 30,
-    heroImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/bad-breath-treatment.jpg',
     iconName: 'Sparkles',
     popular: false,
     features: [
@@ -588,7 +588,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Composite fiber or wire splinting bonding loose periodontally-compromised teeth together to share biting forces and promote bone healing.',
     startingPrice: 700,
     durationMinutes: 45,
-    heroImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/splinting.jpg',
     iconName: 'ShieldCheck',
     popular: false,
     features: [
@@ -611,7 +611,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Instant high-resolution digital X-rays (RVG) with up to 90% less radiation exposure than conventional film X-rays.',
     startingPrice: 150,
     durationMinutes: 10,
-    heroImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/digital-x-ray.jpg',
     iconName: 'ShieldCheck',
     popular: true,
     features: [
@@ -632,7 +632,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Professional clinical counseling, nicotine replacement therapy guidance, and oral mucosal monitoring to help patients quit tobacco.',
     startingPrice: 400,
     durationMinutes: 30,
-    heroImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/tobacco-cessation.jpg',
     iconName: 'ShieldCheck',
     popular: false,
     features: [
@@ -653,7 +653,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Comprehensive 3D CBCT bone scans and full-jaw panoramic OPG radiographs for implant planning, wisdom teeth mapping, and joint evaluation.',
     startingPrice: 1500,
     durationMinutes: 15,
-    heroImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/opg-cbct.jpg',
     iconName: 'ShieldCheck',
     popular: true,
     features: [
@@ -674,7 +674,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription: 'Impression-free 3D digital intraoral optical scanning replacing messy alginate impressions with instant, accurate 3D digital dental models.',
     startingPrice: 800,
     durationMinutes: 15,
-    heroImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/treatments/3d-scanning.jpg',
     iconName: 'ShieldCheck',
     popular: true,
     features: [
