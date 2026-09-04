@@ -128,7 +128,7 @@ export default function AboutPage() {
                   <img
                     src="/doctors/dr-arjun-jawahar-sharma.jpg"
                     alt="Dr. Arjun Jawahar Sharma - Chief Prosthodontist & Oral Implantologist"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
               </div>

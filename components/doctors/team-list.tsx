@@ -29,7 +29,7 @@ export function TeamList() {
                   <img
                     src={doctor.avatarUrl}
                     alt={doctor.name}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                    className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
                 </div>
 
