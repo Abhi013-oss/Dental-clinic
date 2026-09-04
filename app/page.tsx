@@ -7,7 +7,6 @@ import { TreatmentsSection } from '@/features/landing/treatments-section';
 import { DoctorsPreview } from '@/features/landing/doctors-preview';
 import { TechnologySection } from '@/features/landing/technology-section';
 import { XRayGallerySection } from '@/features/landing/xray-gallery-section';
-import { BeforeAfterSlider } from '@/features/landing/before-after-slider';
 import { TestimonialsSection } from '@/features/landing/testimonials-section';
 import { FaqSection } from '@/features/landing/faq-section';
 import { CtaSection } from '@/features/landing/cta-section';
@@ -42,9 +41,6 @@ export default function HomePage() {
 
       {/* 9. Technology & 3D Scanner Equipment Showcase */}
       <TechnologySection />
-
-      {/* 10. Interactive Before & After Smile Gallery Slider */}
-      <BeforeAfterSlider />
 
       {/* 11. Verified Patient Testimonials */}
       <TestimonialsSection />
