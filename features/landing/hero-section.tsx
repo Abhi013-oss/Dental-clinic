@@ -18,6 +18,19 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Hero Copy */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+            {/* Jawahar Dental Official Brand Banner with Tagline */}
+            <ScrollReveal direction="down" delay={0.05}>
+              <div className="flex justify-center lg:justify-start">
+                <div className="inline-block p-3 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow max-w-sm sm:max-w-md">
+                  <img
+                    src="/images/jawahar-dental-tagline-logo.png"
+                    alt="Jawahar Dental - Tradition | Trust | Technology - Multi Speciality Dental Clinic"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+              </div>
+            </ScrollReveal>
+
             <ScrollReveal direction="down" delay={0.1}>
               <div className="inline-flex items-center space-x-2">
                 <Badge variant="gold" className="px-4 py-1.5 text-xs font-bold tracking-wider bg-medical-50 text-medical-700 border-medical-200 hover:bg-medical-100 transition-colors">

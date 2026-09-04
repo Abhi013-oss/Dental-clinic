@@ -18,11 +18,11 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-6">
             <Link href="/" className="group inline-flex items-center space-x-3 focus-visible:outline-none">
-              <div className="relative h-10 w-10 overflow-hidden rounded-xl shadow-md shadow-medical-600/30 transition-transform group-hover:scale-105">
+              <div className="relative h-10 w-10 overflow-hidden rounded-xl bg-white border border-white/20 shadow-sm transition-transform group-hover:scale-105">
                 <img
-                  src="/logo.jpg"
-                  alt="Jawahar Dental Hospital Logo"
-                  className="h-full w-full object-cover"
+                  src="/logo.png"
+                  alt="Jawahar Dental Hospital Official Logo"
+                  className="h-full w-full object-contain p-0.5"
                 />
               </div>
               <div className="flex flex-col">
