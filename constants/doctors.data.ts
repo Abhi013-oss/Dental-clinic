@@ -15,7 +15,7 @@ export const doctorsData: Doctor[] = [
     experienceYears: 14,
     about: 'Dr. Arjun Jawahar Sharma, BDS, MDS, is a highly experienced Prosthodontist and Oral Implantologist with more than 14 years of clinical experience and expertise in advanced implant dentistry and comprehensive oral rehabilitation. With 10,000+ implant placements, he has extensive experience in treating complex cases involving missing teeth, failing dentition, extensive tooth loss, and full-mouth rehabilitation.',
     bio: 'Highly experienced Prosthodontist & Oral Implantologist with 14+ years of clinical excellence and 10,000+ implant placements specializing in complex full-mouth rehabilitation.',
-    avatarUrl: '/doctors/dr-arjun-jawahar-sharma.svg',
+    avatarUrl: '/doctors/dr-arjun-jawahar-sharma.jpg',
     achievements: [
       '14+ Years Clinical Experience & 10,000+ Dental Implants Placed',
       'MBA from Indian School of Business (ISB)',

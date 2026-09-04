@@ -3,7 +3,7 @@ import { GlassCard } from '@/components/shared/glass-card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import { ShieldCheck, Activity, Award, HeartHandshake, Eye, Cpu, Calendar, Clock, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Activity, Award, HeartHandshake, Eye, Cpu, Calendar, Clock, CheckCircle2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata = {
@@ -43,8 +43,8 @@ export default function AboutPage() {
         <ScrollReveal direction="up" delay={0.2}>
           <div className="relative aspect-[21/9] rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-xl group">
             <img
-              src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1400&auto=format&fit=crop"
-              alt="ÉLITE Dental Clinic Interior"
+              src="/images/jawahar-dental-hospital-building.jpg"
+              alt="Jawahar Dental Hospital Exterior Building"
               className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
             />
             <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 text-navy-900 border border-slate-200 backdrop-blur-md shadow-lg flex items-center justify-between">
@@ -118,6 +118,54 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
+
+        {/* About Dr. Arjun Jawahar Sharma Leadership Spotlight */}
+        <ScrollReveal direction="up" delay={0.2}>
+          <div className="rounded-3xl bg-slate-50 border border-slate-200/90 p-6 sm:p-10 shadow-sm overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              <div className="md:col-span-4 flex justify-center">
+                <div className="relative aspect-[3/4] w-full max-w-[260px] rounded-2xl overflow-hidden shadow-md border-2 border-white bg-slate-100">
+                  <img
+                    src="/doctors/dr-arjun-jawahar-sharma.jpg"
+                    alt="Dr. Arjun Jawahar Sharma - Chief Prosthodontist & Oral Implantologist"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="md:col-span-8 space-y-4 text-left">
+                <div className="space-y-1.5">
+                  <Badge variant="gold" className="text-xs font-bold">Chief Prosthodontist & Oral Implantologist</Badge>
+                  <h3 className="font-sans text-2xl sm:text-3xl font-extrabold text-navy-900">
+                    Dr. Arjun Jawahar Sharma
+                  </h3>
+                  <p className="text-xs sm:text-sm text-medical-600 font-bold">
+                    BDS, MDS (Prosthodontics & Oral Implantologist) | MBA (ISB) | Fellow, AOI & ICOI
+                  </p>
+                </div>
+
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  With more than 14 years of clinical experience and over 10,000 dental implant placements, Dr. Arjun Jawahar Sharma specializes in complex full-mouth rehabilitation, computer-guided implantology, and natural aesthetic prosthetics.
+                </p>
+
+                <div className="pt-1 flex flex-wrap gap-2 text-xs font-semibold text-slate-600">
+                  <span className="bg-white px-3 py-1 rounded-full border border-slate-200">14+ Years Experience</span>
+                  <span className="bg-white px-3 py-1 rounded-full border border-slate-200">10,000+ Implants Placed</span>
+                  <span className="bg-white px-3 py-1 rounded-full border border-slate-200">Fellow AOI & ICOI</span>
+                  <span className="bg-white px-3 py-1 rounded-full border border-slate-200">Full-Mouth Rehabilitation</span>
+                </div>
+
+                <div className="pt-2">
+                  <Link href="/team">
+                    <Button variant="outline" size="sm" className="font-bold text-xs">
+                      <span>View Full Doctor Profiles & Team</span>
+                      <ArrowRight className="ml-1.5 h-3.5 w-3.5 text-medical-600" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
 
         {/* Certificates & Awards */}
         <GlassCard variant="standard" className="p-8 bg-slate-50/70 border border-slate-200 space-y-6">
