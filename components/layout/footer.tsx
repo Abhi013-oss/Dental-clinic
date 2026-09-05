@@ -114,7 +114,7 @@ export function Footer() {
               <div className="space-y-1">
                 <span className="font-bold text-white block">Kapurthala Branch:</span>
                 <p className="text-[11px] text-slate-300 font-medium">LINK ROAD, OPPOSITE PARK, NEAR YES BANK, KAPURTHALA, PUNJAB</p>
-                <p className="text-[11px] text-sky-400 font-bold">Ph: 82641-71818</p>
+                <p className="text-[11px] text-sky-400 font-bold">Ph: 99100-66721</p>
               </div>
 
               {/* Delhi */}

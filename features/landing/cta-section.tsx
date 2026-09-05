@@ -39,7 +39,7 @@ export function CtaSection() {
                 </Link>
 
                 <a
-                  href="https://wa.me/918264171818?text=Hello%20ÉLITE%20Dental%20Clinic,%20I%20would%20like%20to%20inquire%20about%20a%20consultation."
+                  href="https://wa.me/919910066721?text=Hello%20Jawahar%20Dental%20Hospital,%20I%20would%20like%20to%20inquire%20about%20a%20consultation."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto"

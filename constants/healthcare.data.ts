@@ -63,7 +63,7 @@ export const whyChooseData: WhyChooseItem[] = [
     id: '6',
     iconName: 'PhoneCall',
     title: 'Prompt Patient Care',
-    description: 'Direct phone lines for Kapurthala (82641-71818) and Delhi (99100-66721 / 82855-47579) for urgent care.',
+    description: 'Direct hospital helpline (99100-66721 / 82855-47579) for urgent care and instant consultations.',
   },
 ];
 
@@ -143,7 +143,7 @@ export const faqData: FaqItem[] = [
   {
     question: 'How do I schedule a consultation at the Kapurthala or Delhi branch?',
     answer:
-      'You can call our Kapurthala branch directly at 82641-71818 or Delhi branch at 99100-66721 / 82855-47579, or click the "Book Appointment" button on our website.',
+      'You can call our direct hospital helpline at 99100-66721 (or 82855-47579), or click the "Book Appointment" button on our website.',
     category: 'Appointments',
   },
   {

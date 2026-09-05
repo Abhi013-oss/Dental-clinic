@@ -250,7 +250,7 @@ export function SimpleBookingForm() {
           </a>
 
           <a
-            href={`https://wa.me/918264171818?text=Hi,%20I%20have%20booked%20an%20appointment%20Ref:%20${lastBooking.refCode}%20with%20${encodeURIComponent(lastBooking.doctorName)}`}
+            href={`https://wa.me/919910066721?text=Hi,%20I%20have%20booked%20an%20appointment%20Ref:%20${lastBooking.refCode}%20with%20${encodeURIComponent(lastBooking.doctorName)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto"
@@ -398,7 +398,7 @@ export function SimpleBookingForm() {
               </div>
               <div className="sm:col-span-2">
                 <Input
-                  placeholder="98765 43210 / 8264171818"
+                  placeholder="98765 43210 / 9910066721"
                   error={errors.phone?.message}
                   {...register('phone')}
                 />

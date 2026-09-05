@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
                 </table>
 
                 <p style="color: #475569; font-size: 13px; line-height: 1.6; text-align: center; margin: 0 0 20px 0;">
-                  Direct Reception Phone: <strong style="color: #0f172a;">82641-71818 (Kapurthala) | 99100-66721 (Delhi)</strong>.
+                  Direct Reception Phone: <strong style="color: #0f172a;">99100-66721 / 82855-47579</strong>.
                 </p>
               </td>
             </tr>

@@ -136,7 +136,7 @@ export function BookingForm() {
           </div>
           <div className="sm:col-span-2">
             <Input
-              placeholder="98765 43210 / 8264171818"
+              placeholder="98765 43210 / 9910066721"
               error={errors.phone?.message}
               {...register('phone')}
             />

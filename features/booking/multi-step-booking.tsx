@@ -186,7 +186,7 @@ export function MultiStepBooking() {
           </a>
 
           <a
-            href={`https://wa.me/18008883548?text=Hello%20ÉLITE%20Clinic,%20I%20have%20reserved%20appointment%20${bookingReference}`}
+            href={`https://wa.me/919910066721?text=Hello%20Jawahar%20Dental%20Hospital,%20I%20have%20reserved%20appointment%20${bookingReference}`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto"

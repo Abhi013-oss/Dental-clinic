@@ -3,7 +3,7 @@
 import { SectionHeader } from '@/components/shared/section-header';
 import { GlassCard } from '@/components/shared/glass-card';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import { MapPin, PhoneCall, Clock } from 'lucide-react';
+import { MapPin, PhoneCall, Clock, Navigation } from 'lucide-react';
 import { siteConfig } from '@/config/site.config';
 
 export function LocationSection() {
@@ -111,6 +111,51 @@ export function LocationSection() {
             </GlassCard>
           </ScrollReveal>
         </div>
+
+        {/* Interactive Google Map Embed */}
+        <ScrollReveal direction="up" delay={0.4}>
+          <div className="mt-10 rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-white">
+            <div className="p-4 sm:p-6 bg-white border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <div className="flex items-center space-x-2">
+                  <MapPin className="h-5 w-5 text-medical-600" />
+                  <h3 className="font-sans text-base sm:text-lg font-bold text-navy-900">
+                    Jawahar&apos;s Vraja Dental Clinic &amp; Implant Centre
+                  </h3>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                  Link Road, Opposite Park, Near Yes Bank, Kapurthala, Punjab 144601
+                </p>
+              </div>
+
+              <div className="flex items-center space-x-3 shrink-0">
+                <a
+                  href="https://www.google.com/maps/place/Jawahar's+Vraja+Dental+Clinic+and+Implant+centre-Dentist%2FImplant+Specialist%2FRoot+Canal+Treatment%2FBest+Dentist/@31.3810123,75.3852523,876m/data=!3m2!1e3!4b1!4m6!3m5!1s0x391a492c9d2a99a7:0x2bf171f2deb101f3!8m2!3d31.3810123!4d75.3878272!16s%2Fg%2F11lgksztb8?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl bg-medical-600 hover:bg-medical-700 text-white text-xs font-bold transition-colors shadow-sm"
+                >
+                  <Navigation className="h-4 w-4" />
+                  <span>Open in Google Maps / Directions</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="relative w-full h-[380px] sm:h-[440px] bg-slate-100">
+              <iframe
+                title="Jawahar's Vraja Dental Clinic and Implant Centre Location"
+                src="https://maps.google.com/maps?q=31.3810123,75.3878272&hl=en&z=17&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

@@ -53,7 +53,7 @@ export const siteConfig: SiteConfig = {
     kapurthala: {
       name: 'Kapurthala Branch',
       address: 'LINK ROAD, OPPOSITE PARK, NEAR YES BANK, KAPURTHALA, PUNJAB',
-      contact: '82641-71818',
+      contact: '99100-66721',
     },
     delhi: {
       name: 'Delhi Branch',
@@ -62,7 +62,7 @@ export const siteConfig: SiteConfig = {
     },
   },
   contact: {
-    phone: '82641-71818',
+    phone: '99100-66721',
     email: 'adityabusinesslab@gmail.com',
     address: {
       street: 'LINK ROAD, OPPOSITE PARK, NEAR YES BANK',
