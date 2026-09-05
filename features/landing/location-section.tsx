@@ -151,12 +151,13 @@ export function LocationSection() {
           <div className="relative w-full h-[400px] sm:h-[480px] bg-slate-100">
             <iframe
               title="Jawahar's Vraja Dental Clinic and Implant Centre Location"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=75.3818%2C31.3775%2C75.3938%2C31.3845&amp;layer=mapnik&amp;marker=31.3810123%2C75.3878272"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3408.2!2d75.3878272!3d31.3810123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a492c9d2a99a7%3A0x2bf171f2deb101f3!2sJawahar's+Vraja+Dental+Clinic+and+Implant+centre!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="eager"
+              referrerPolicy="no-referrer-when-downgrade"
               className="w-full h-full"
             />
 
