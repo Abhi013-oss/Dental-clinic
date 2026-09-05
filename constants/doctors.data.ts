@@ -66,7 +66,7 @@ export const doctorsData: Doctor[] = [
     experienceYears: 11,
     about: 'Dr. Priyanka Sharma, BDS, is an experienced dental professional with over 11 years of clinical experience, specialising in root canal treatment, restorative dentistry, crowns, and comprehensive dental rehabilitation. She has successfully performed 20,000+ root canal treatments (RCTs), along with extensive experience in crowns and multiple full-mouth rehabilitation cases.',
     bio: 'Experienced dental surgeon with over 11 years of clinical experience and 20,000+ successful root canal treatments, focusing on tooth preservation and patient comfort.',
-    avatarUrl: '/doctors/dr-priyanka-sharma.svg',
+    avatarUrl: '/doctors/dr-priyanka-sharma.jpg',
     achievements: [
       '11+ Years Clinical Experience & 20,000+ Successful Root Canal Treatments (RCTs)',
       'Ex-Junior Resident at Sir Ganga Ram Hospital, New Delhi',
@@ -117,7 +117,7 @@ export const doctorsData: Doctor[] = [
     experienceYears: 7,
     about: 'Dr. Sandeep Kaur, BDS, is an experienced dental professional with 7 years of clinical experience, dedicated to providing comprehensive and patient-focused dental care. She completed her Bachelor of Dental Surgery (BDS) from Dental College, Patiala.',
     bio: 'Dedicated dental surgeon with 7 years of clinical experience, including 5 years of association with Jawahar Dental Hospital in preventive, restorative, and periodontal care.',
-    avatarUrl: '/doctors/dr-sandeep-kaur.svg',
+    avatarUrl: '/doctors/dr-sandeep-kaur.jpg',
     achievements: [
       '7+ Years of Clinical Experience in General & Restorative Dentistry',
       '5 Years of dedicated association with Jawahar Dental Hospital',
@@ -164,7 +164,7 @@ export const doctorsData: Doctor[] = [
     experienceYears: 2,
     about: 'Dr. Rajwinder Kaur, BDS, is a dedicated dental professional with 2 years of clinical experience, committed to providing compassionate, comprehensive, and patient-focused dental care.',
     bio: 'Compassionate dental practitioner committed to comfortable patient experience, preventative oral healthcare, and precision restorative treatments.',
-    avatarUrl: '/doctors/dr-rajwinder-kaur.svg',
+    avatarUrl: '/doctors/dr-rajwinder-kaur-portrait.jpg',
     achievements: [
       '2+ Years of Clinical Experience in General & Preventive Dentistry',
       'Junior Associate Dentist at Jawahar Dental Hospital',

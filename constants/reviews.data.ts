@@ -4,7 +4,7 @@ export const reviewsData: Review[] = [
   {
     id: '1',
     patientName: 'Kunal Bakshi',
-    patientAvatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop',
+    patientAvatar: '/reviews/patient-kunal-bakshi.png',
     treatment: 'RCT & Tooth Filling Procedure',
     rating: 5,
     date: '2 months ago',
@@ -16,7 +16,7 @@ export const reviewsData: Review[] = [
   {
     id: '2',
     patientName: 'Jaskiran Kaur',
-    patientAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop',
+    patientAvatar: '/reviews/patient-jaskiran.jpg',
     treatment: 'Prosthodontics & Specialist Care',
     rating: 5,
     date: '3 months ago',
@@ -28,7 +28,7 @@ export const reviewsData: Review[] = [
   {
     id: '3',
     patientName: 'Gurmeet S',
-    patientAvatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?q=80&w=200&auto=format&fit=crop',
+    patientAvatar: '/reviews/patient-gurmeet.jpg',
     treatment: 'Teeth Restoration & General Care',
     rating: 5,
     date: '6 months ago',
@@ -40,7 +40,7 @@ export const reviewsData: Review[] = [
   {
     id: '4',
     patientName: 'Sandeep Kaur',
-    patientAvatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop',
+    patientAvatar: '/reviews/patient-sandeep.jpg',
     treatment: 'Full Lower Jaw Dental Implants',
     rating: 5,
     date: '1 year ago',
@@ -52,7 +52,7 @@ export const reviewsData: Review[] = [
   {
     id: '5',
     patientName: 'Simranjeet Kaur',
-    patientAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop',
+    patientAvatar: '/reviews/patient-simranjeet.jpg',
     treatment: 'Comprehensive Dental Care',
     rating: 5,
     date: '1 year ago',
