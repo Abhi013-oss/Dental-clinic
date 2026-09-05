@@ -183,18 +183,22 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="relative w-full h-[380px] sm:h-[450px] bg-slate-100">
+          <div className="relative w-full h-[400px] sm:h-[480px] bg-slate-100">
             <iframe
               title="Jawahar's Vraja Dental Clinic and Implant Centre Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3408.203006240228!2d75.3852523!3d31.3810123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a492c9d2a99a7%3A0x2bf171f2deb101f3!2sJawahar%27s%20Vraja%20Dental%20Clinic%20and%20Implant%20centre-Dentist%2FImplant%20Specialist%2FRoot%20Canal%20Treatment%2FBest%20Dentist!5e0!3m2!1sen!2sin!4v1725516000000!5m2!1sen!2sin"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=75.3818%2C31.3775%2C75.3938%2C31.3845&amp;layer=mapnik&amp;marker=31.3810123%2C75.3878272"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              loading="eager"
               className="w-full h-full"
             />
+
+            <div className="absolute bottom-4 left-4 z-10 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-xl shadow-md border border-slate-200/80 flex items-center space-x-2 text-xs font-bold text-navy-900 pointer-events-none">
+              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Clinic Location Pinned • Kapurthala (Punjab)</span>
+            </div>
           </div>
         </div>
       </div>

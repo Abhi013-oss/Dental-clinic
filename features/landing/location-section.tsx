@@ -112,50 +112,60 @@ export function LocationSection() {
           </ScrollReveal>
         </div>
 
-        {/* Interactive Google Map Embed */}
-        <ScrollReveal direction="up" delay={0.4}>
-          <div className="mt-10 rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-white">
-            <div className="p-4 sm:p-6 bg-white border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div>
-                <div className="flex items-center space-x-2">
-                  <MapPin className="h-5 w-5 text-medical-600" />
-                  <h3 className="font-sans text-base sm:text-lg font-bold text-navy-900">
-                    Jawahar&apos;s Vraja Dental Clinic &amp; Implant Centre
-                  </h3>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                  Link Road, Opposite Park, Near Yes Bank, Kapurthala, Punjab 144601
-                </p>
+        {/* Interactive Clinic Location Map */}
+        <div className="mt-10 rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-white">
+          <div className="p-4 sm:p-6 bg-white border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div className="flex items-center space-x-2">
+                <MapPin className="h-5 w-5 text-medical-600" />
+                <h3 className="font-sans text-base sm:text-lg font-bold text-navy-900">
+                  Jawahar&apos;s Vraja Dental Clinic &amp; Implant Centre
+                </h3>
               </div>
-
-              <div className="flex items-center space-x-3 shrink-0">
-                <a
-                  href="https://www.google.com/maps/place/Jawahar's+Vraja+Dental+Clinic+and+Implant+centre-Dentist%2FImplant+Specialist%2FRoot+Canal+Treatment%2FBest+Dentist/@31.3810123,75.3852523,876m/data=!3m2!1e3!4b1!4m6!3m5!1s0x391a492c9d2a99a7:0x2bf171f2deb101f3!8m2!3d31.3810123!4d75.3878272!16s%2Fg%2F11lgksztb8?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl bg-medical-600 hover:bg-medical-700 text-white text-xs font-bold transition-colors shadow-sm"
-                >
-                  <Navigation className="h-4 w-4" />
-                  <span>Open in Google Maps / Directions</span>
-                </a>
-              </div>
+              <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                Link Road, Opposite Park, Near Yes Bank, Kapurthala, Punjab 144601
+              </p>
             </div>
 
-            <div className="relative w-full h-[380px] sm:h-[450px] bg-slate-100">
-              <iframe
-                title="Jawahar's Vraja Dental Clinic and Implant Centre Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3408.203006240228!2d75.3852523!3d31.3810123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a492c9d2a99a7%3A0x2bf171f2deb101f3!2sJawahar%27s%20Vraja%20Dental%20Clinic%20and%20Implant%20centre-Dentist%2FImplant%20Specialist%2FRoot%20Canal%20Treatment%2FBest%20Dentist!5e0!3m2!1sen!2sin!4v1725516000000!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full"
-              />
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <a
+                href={`tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, '')}`}
+                className="inline-flex items-center justify-center space-x-1.5 px-3.5 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-navy-900 text-xs font-bold transition-colors"
+              >
+                <PhoneCall className="h-3.5 w-3.5 text-medical-600" />
+                <span>Call {siteConfig.contact.phone}</span>
+              </a>
+
+              <a
+                href="https://www.google.com/maps/place/Jawahar's+Vraja+Dental+Clinic+and+Implant+centre-Dentist%2FImplant+Specialist%2FRoot+Canal+Treatment%2FBest+Dentist/@31.3810123,75.3852523,876m/data=!3m2!1e3!4b1!4m6!3m5!1s0x391a492c9d2a99a7:0x2bf171f2deb101f3!8m2!3d31.3810123!4d75.3878272!16s%2Fg%2F11lgksztb8?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl bg-medical-600 hover:bg-medical-700 text-white text-xs font-bold transition-colors shadow-md shadow-medical-600/20"
+              >
+                <Navigation className="h-4 w-4" />
+                <span>Open in Google Maps / Directions</span>
+              </a>
             </div>
           </div>
-        </ScrollReveal>
+
+          <div className="relative w-full h-[400px] sm:h-[480px] bg-slate-100">
+            <iframe
+              title="Jawahar's Vraja Dental Clinic and Implant Centre Location"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=75.3818%2C31.3775%2C75.3938%2C31.3845&amp;layer=mapnik&amp;marker=31.3810123%2C75.3878272"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="eager"
+              className="w-full h-full"
+            />
+
+            <div className="absolute bottom-4 left-4 z-10 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-xl shadow-md border border-slate-200/80 flex items-center space-x-2 text-xs font-bold text-navy-900 pointer-events-none">
+              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Clinic Location Pinned • Kapurthala (Punjab)</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
