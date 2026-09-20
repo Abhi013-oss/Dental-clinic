@@ -1,7 +1,7 @@
 'use client';
 
+import * as React from 'react';
 import { SectionHeader } from '@/components/shared/section-header';
-import { GlassCard } from '@/components/shared/glass-card';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { whyChooseData } from '@/constants/healthcare.data';
 import { Cpu, HeartHandshake, Award, ShieldCheck, DollarSign, PhoneCall } from 'lucide-react';
@@ -17,8 +17,8 @@ const iconMap = {
 
 export function WhyChooseUs() {
   return (
-    <section className="py-24 bg-slate-50/60 text-navy-900 border-y border-slate-200/80">
-      <div className="container">
+    <section className="py-20 lg:py-24 bg-white text-navy-900 border-b border-slate-200/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal direction="up" delay={0.1}>
           <SectionHeader
             badge="Clinical Excellence"
@@ -28,27 +28,34 @@ export function WhyChooseUs() {
           />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Structured 6-Pillar Clinical Blueprint Grid (Refined, Low-Container Layout) */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {whyChooseData.map((item, index) => {
             const IconComponent = iconMap[item.iconName as keyof typeof iconMap] || ShieldCheck;
 
             return (
-              <ScrollReveal key={item.id} direction="up" delay={0.1 * index + 0.15}>
-                <GlassCard variant="standard" className="h-full flex flex-col justify-between group bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-medical-500/40 transition-all duration-400">
+              <ScrollReveal key={item.id} direction="up" delay={0.08 * index + 0.1}>
+                <div className="relative p-6 sm:p-7 rounded-xl bg-[#FAFCFB] border border-slate-200/80 shadow-xs hover:border-medical-500/40 hover:shadow-sm transition-all duration-200 flex flex-col justify-between h-full">
                   <div className="space-y-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-medical-50 border border-medical-200/80 text-medical-600 group-hover:scale-110 group-hover:bg-medical-600 group-hover:text-white transition-all duration-300">
-                      <IconComponent className="h-6 w-6" />
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-medical-50 text-medical-600 border border-medical-200/70">
+                        <IconComponent className="h-5 w-5" />
+                      </div>
+                      <span className="text-xs font-extrabold text-slate-300 tracking-wider">
+                        0{index + 1}
+                      </span>
                     </div>
 
-                    <h3 className="font-sans text-xl font-bold text-navy-900 group-hover:text-medical-600 transition-colors">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                      {item.description}
-                    </p>
+                    <div>
+                      <h3 className="font-sans text-base sm:text-lg font-bold text-navy-900">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed font-normal">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                </GlassCard>
+                </div>
               </ScrollReveal>
             );
           })}

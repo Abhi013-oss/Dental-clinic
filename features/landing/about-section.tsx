@@ -1,37 +1,35 @@
 'use client';
 
+import * as React from 'react';
 import { SectionHeader } from '@/components/shared/section-header';
-import { GlassCard } from '@/components/shared/glass-card';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import { ShieldCheck, HeartHandshake, Eye, Award } from 'lucide-react';
+import { Award, Eye, HeartHandshake, ShieldCheck } from 'lucide-react';
 
 export function AboutSection() {
   return (
-    <section className="py-24 bg-white text-navy-900 relative overflow-hidden">
-      <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Image Reveal */}
+    <section className="py-20 lg:py-24 bg-white text-navy-900 relative overflow-hidden border-b border-slate-200/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Column: Authentic Hospital & Clinic Atmosphere */}
           <div className="lg:col-span-6">
-            <ScrollReveal direction="right" delay={0.2}>
-              <div className="relative rounded-3xl overflow-hidden bg-white p-3 border border-slate-200 shadow-xl group">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+            <ScrollReveal direction="right" delay={0.15}>
+              <div className="relative rounded-2xl bg-white p-2.5 sm:p-3 border border-slate-200/90 shadow-sm">
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-100">
                   <img
                     src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1200&auto=format&fit=crop"
-                    alt="Our Dental Clinic Atmosphere"
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                    alt="Jawahar Dental Hospital Modern Clinic Atmosphere"
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/40 via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/50 via-transparent to-transparent opacity-60" />
 
-                  {/* Floating Philosophy Badge */}
-                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 text-navy-900 border border-slate-200 backdrop-blur-md shadow-lg">
-                    <div className="flex items-center space-x-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-medical-50 text-medical-600">
-                        <Award className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-navy-900">Patient-Centric Mission</h4>
-                        <p className="text-xs text-slate-500">Delivering painless, lifelong oral health with compassion.</p>
-                      </div>
+                  {/* Factual Philosophy Badge */}
+                  <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-white/95 backdrop-blur-sm border border-slate-200/90 shadow-sm flex items-center space-x-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-medical-50 text-medical-600 shrink-0">
+                      <Award className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs sm:text-sm font-bold text-navy-900">Patient-Centric Mission</h4>
+                      <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">Delivering painless, lifelong oral health with compassion.</p>
                     </div>
                   </div>
                 </div>
@@ -39,7 +37,7 @@ export function AboutSection() {
             </ScrollReveal>
           </div>
 
-          {/* Right Column: Copy & Core Pillars */}
+          {/* Right Column: Editorial Narrative & Principles (Typography-Led, No Cards) */}
           <div className="lg:col-span-6 space-y-6">
             <ScrollReveal direction="up" delay={0.1}>
               <SectionHeader
@@ -51,29 +49,30 @@ export function AboutSection() {
               />
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <ScrollReveal direction="up" delay={0.3}>
-                <GlassCard variant="standard" className="space-y-2 p-5 bg-white border border-slate-200">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-medical-50 text-medical-600">
-                    <Eye className="h-5 w-5" />
+            {/* Editorial Principles Callout Block (No Cards) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-3 border-t border-slate-100">
+              <ScrollReveal direction="up" delay={0.2}>
+                <div className="space-y-2 border-l-2 border-medical-500 pl-4 py-1">
+                  <div className="flex items-center space-x-2 text-medical-600">
+                    <Eye className="h-4.5 w-4.5" />
+                    <h3 className="font-sans text-sm font-bold text-navy-900 uppercase tracking-wide">Our Vision</h3>
                   </div>
-                  <h3 className="font-sans text-base font-bold text-navy-900">Our Vision</h3>
                   <p className="text-xs text-slate-600 leading-relaxed font-normal">
                     To set global benchmarks in pain-free aesthetic and restorative healthcare.
                   </p>
-                </GlassCard>
+                </div>
               </ScrollReveal>
 
-              <ScrollReveal direction="up" delay={0.4}>
-                <GlassCard variant="standard" className="space-y-2 p-5 bg-white border border-slate-200">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-medical-50 text-medical-600">
-                    <HeartHandshake className="h-5 w-5" />
+              <ScrollReveal direction="up" delay={0.25}>
+                <div className="space-y-2 border-l-2 border-medical-500 pl-4 py-1">
+                  <div className="flex items-center space-x-2 text-medical-600">
+                    <HeartHandshake className="h-4.5 w-4.5" />
+                    <h3 className="font-sans text-sm font-bold text-navy-900 uppercase tracking-wide">Our Core Values</h3>
                   </div>
-                  <h3 className="font-sans text-base font-bold text-navy-900">Our Core Values</h3>
                   <p className="text-xs text-slate-600 leading-relaxed font-normal">
                     Integrity, absolute clinical transparency, and uncompromised patient safety.
                   </p>
-                </GlassCard>
+                </div>
               </ScrollReveal>
             </div>
           </div>

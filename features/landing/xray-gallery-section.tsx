@@ -50,8 +50,8 @@ export function XRayGallerySection() {
   };
 
   return (
-    <section className="py-20 bg-slate-50 text-navy-900 relative overflow-hidden border-t border-slate-200/80">
-      <div className="container relative z-10 max-w-7xl">
+    <section className="py-20 lg:py-24 bg-white text-navy-900 relative overflow-hidden border-b border-slate-200/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <ScrollReveal direction="up" delay={0.1}>
             <SectionHeader
@@ -64,25 +64,25 @@ export function XRayGallerySection() {
           </ScrollReveal>
 
           {/* Navigation Scroll Buttons */}
-          <ScrollReveal direction="up" delay={0.2}>
-            <div className="flex items-center space-x-3 shrink-0">
+          <ScrollReveal direction="up" delay={0.15}>
+            <div className="flex items-center space-x-2 shrink-0">
               <Button
                 variant="outline"
                 size="icon"
                 onClick={() => handleScroll('left')}
-                className="h-11 w-11 rounded-full border-slate-300 bg-white text-navy-900 shadow-sm hover:bg-medical-600 hover:text-white hover:border-medical-600 transition-all touch-manipulation cursor-pointer"
+                className="h-10 w-10 rounded-lg border-slate-200 bg-white text-navy-900 shadow-xs hover:bg-medical-50 hover:text-medical-600 hover:border-medical-200 transition-colors touch-manipulation cursor-pointer"
                 aria-label="Scroll X-Rays Left"
               >
-                <ChevronLeft className="h-5 w-5" />
+                <ChevronLeft className="h-4.5 w-4.5" />
               </Button>
               <Button
                 variant="outline"
                 size="icon"
                 onClick={() => handleScroll('right')}
-                className="h-11 w-11 rounded-full border-slate-300 bg-white text-navy-900 shadow-sm hover:bg-medical-600 hover:text-white hover:border-medical-600 transition-all touch-manipulation cursor-pointer"
+                className="h-10 w-10 rounded-lg border-slate-200 bg-white text-navy-900 shadow-xs hover:bg-medical-50 hover:text-medical-600 hover:border-medical-200 transition-colors touch-manipulation cursor-pointer"
                 aria-label="Scroll X-Rays Right"
               >
-                <ChevronRight className="h-5 w-5" />
+                <ChevronRight className="h-4.5 w-4.5" />
               </Button>
             </div>
           </ScrollReveal>
@@ -91,34 +91,34 @@ export function XRayGallerySection() {
         {/* Horizontally Scrollable X-Ray Slider */}
         <div
           ref={scrollRef}
-          className="flex space-x-6 overflow-x-auto snap-x snap-mandatory scrollbar-none py-4 px-1 -mx-1"
+          className="flex space-x-5 sm:space-x-6 overflow-x-auto snap-x snap-mandatory scrollbar-none py-2 px-1 -mx-1"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {xrayData.map((item) => (
             <div
               key={item.id}
-              className="snap-start shrink-0 w-[320px] sm:w-[380px] md:w-[420px] group cursor-pointer"
+              className="snap-start shrink-0 w-[300px] sm:w-[360px] md:w-[400px] group cursor-pointer"
               onClick={() => setSelectedImage(item)}
             >
-              <div className="rounded-2xl bg-white border border-slate-200 p-4 shadow-sm hover:shadow-xl hover:border-medical-500/60 transition-all duration-300 space-y-4">
+              <div className="rounded-xl bg-[#FAFCFB] border border-slate-200/90 p-4 shadow-xs hover:border-medical-500/50 hover:shadow-sm transition-all duration-200 space-y-3.5">
                 {/* Image Container with Zoom Overlay */}
-                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-black border border-slate-100">
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-black border border-slate-100">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 
                   {/* Watermark Tag */}
-                  <div className="absolute top-3 left-3 bg-medical-600 text-white text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md backdrop-blur-md shadow-md flex items-center space-x-1.5">
+                  <div className="absolute top-2.5 left-2.5 bg-medical-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded shadow-xs flex items-center space-x-1.5">
                     <Activity className="h-3 w-3 text-sky-200" />
                     <span>{item.category}</span>
                   </div>
 
                   {/* Enlarge Button Indicator */}
-                  <div className="absolute bottom-3 right-3 h-9 w-9 rounded-full bg-black/70 border border-white/30 text-white flex items-center justify-center backdrop-blur-sm group-hover:bg-medical-600 group-hover:border-medical-500 transition-all">
-                    <Maximize2 className="h-4 w-4" />
+                  <div className="absolute bottom-2.5 right-2.5 h-8 w-8 rounded-lg bg-black/75 border border-white/30 text-white flex items-center justify-center backdrop-blur-xs group-hover:bg-medical-600 group-hover:border-medical-500 transition-colors">
+                    <Maximize2 className="h-3.5 w-3.5" />
                   </div>
                 </div>
 
@@ -132,12 +132,12 @@ export function XRayGallerySection() {
                   </p>
                 </div>
 
-                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-medical-600">
+                <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-medical-600">
                   <span className="flex items-center">
                     <ShieldCheck className="h-3.5 w-3.5 mr-1 text-emerald-600" />
-                    Verified Clinical X-Ray
+                    Verified Clinical Record
                   </span>
-                  <span className="text-slate-500 group-hover:text-medical-600 transition-colors">Tap to Enlarge →</span>
+                  <span className="text-slate-500 group-hover:text-medical-600 transition-colors">Tap to Inspect →</span>
                 </div>
               </div>
             </div>
@@ -156,7 +156,7 @@ export function XRayGallerySection() {
               </div>
               <button
                 onClick={() => setSelectedImage(null)}
-                className="p-2 rounded-full bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
+                className="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
                 aria-label="Close Lightbox"
               >
                 <X className="h-6 w-6" />

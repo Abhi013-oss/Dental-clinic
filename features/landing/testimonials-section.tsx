@@ -1,13 +1,12 @@
 'use client';
 
 import * as React from 'react';
+import Link from 'next/link';
 import { SectionHeader } from '@/components/shared/section-header';
-import { GlassCard } from '@/components/shared/glass-card';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import { Star, Quote, CheckCircle2, ChevronLeft, ChevronRight, MessageSquareQuote } from 'lucide-react';
+import { Star, CheckCircle2, ChevronLeft, ChevronRight, MessageSquareQuote } from 'lucide-react';
 import { reviewsData } from '@/constants/reviews.data';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 
 export function TestimonialsSection() {
   const scrollRef = React.useRef<HTMLDivElement>(null);
@@ -20,8 +19,8 @@ export function TestimonialsSection() {
   };
 
   return (
-    <section className="py-24 bg-white text-navy-900 relative overflow-hidden border-t border-slate-100">
-      <div className="container relative z-10 max-w-7xl">
+    <section className="py-20 lg:py-24 bg-white text-navy-900 relative overflow-hidden border-b border-slate-200/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <ScrollReveal direction="up" delay={0.1}>
             <SectionHeader
@@ -34,48 +33,43 @@ export function TestimonialsSection() {
           </ScrollReveal>
 
           {/* Navigation Scroll Controls */}
-          <ScrollReveal direction="up" delay={0.2}>
-            <div className="flex items-center space-x-3 shrink-0">
+          <ScrollReveal direction="up" delay={0.15}>
+            <div className="flex items-center space-x-2 shrink-0">
               <Button
                 variant="outline"
                 size="icon"
                 onClick={() => handleScroll('left')}
-                className="h-11 w-11 rounded-full border-slate-300 bg-white text-navy-900 shadow-sm hover:bg-medical-600 hover:text-white hover:border-medical-600 transition-all touch-manipulation cursor-pointer"
+                className="h-10 w-10 rounded-lg border-slate-200 bg-white text-navy-900 shadow-xs hover:bg-medical-50 hover:text-medical-600 hover:border-medical-200 transition-colors touch-manipulation cursor-pointer"
                 aria-label="Scroll Reviews Left"
               >
-                <ChevronLeft className="h-5 w-5" />
+                <ChevronLeft className="h-4.5 w-4.5" />
               </Button>
               <Button
                 variant="outline"
                 size="icon"
                 onClick={() => handleScroll('right')}
-                className="h-11 w-11 rounded-full border-slate-300 bg-white text-navy-900 shadow-sm hover:bg-medical-600 hover:text-white hover:border-medical-600 transition-all touch-manipulation cursor-pointer"
+                className="h-10 w-10 rounded-lg border-slate-200 bg-white text-navy-900 shadow-xs hover:bg-medical-50 hover:text-medical-600 hover:border-medical-200 transition-colors touch-manipulation cursor-pointer"
                 aria-label="Scroll Reviews Right"
               >
-                <ChevronRight className="h-5 w-5" />
+                <ChevronRight className="h-4.5 w-4.5" />
               </Button>
             </div>
           </ScrollReveal>
         </div>
 
-        {/* Horizontally Scrollable Reviews Slider */}
+        {/* Horizontally Scrollable Reviews Ribbon */}
         <div
           ref={scrollRef}
-          className="flex space-x-6 overflow-x-auto snap-x snap-mandatory scrollbar-none py-4 px-1 -mx-1"
+          className="flex space-x-5 sm:space-x-6 overflow-x-auto snap-x snap-mandatory scrollbar-none py-2 px-1 -mx-1"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {reviewsData.map((review, index) => (
+          {reviewsData.map((review) => (
             <div
               key={review.id}
-              className="snap-start shrink-0 w-[300px] sm:w-[360px] md:w-[400px] group"
+              className="snap-start shrink-0 w-[290px] sm:w-[350px] md:w-[380px] group"
             >
-              <GlassCard
-                variant="standard"
-                className="flex flex-col justify-between relative h-full bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-medical-500/50 transition-all duration-300 p-6 sm:p-7"
-              >
-                <Quote className="absolute top-6 right-6 h-8 w-8 text-medical-600/10 pointer-events-none group-hover:text-medical-600/20 transition-colors" />
-
-                <div className="space-y-4">
+              <div className="flex flex-col justify-between h-full bg-[#FAFCFB] border border-slate-200/90 rounded-xl shadow-xs hover:border-medical-500/40 hover:shadow-sm transition-all duration-200 p-5 sm:p-6">
+                <div className="space-y-3.5">
                   {/* Rating Stars & Verification Tag */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-1 text-amber-400">
@@ -83,53 +77,51 @@ export function TestimonialsSection() {
                         <Star key={i} className="h-4 w-4 fill-current" />
                       ))}
                     </div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100 flex items-center space-x-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/70 flex items-center space-x-1">
                       <CheckCircle2 className="h-3 w-3 text-emerald-600" />
                       <span>Verified Google Review</span>
                     </span>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal italic min-h-[100px]">
-                    "{review.comment}"
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal italic min-h-[90px]">
+                    &ldquo;{review.comment}&rdquo;
                   </p>
                 </div>
 
-                <div className="pt-5 mt-6 border-t border-slate-100 flex items-center space-x-3.5">
+                <div className="pt-4 mt-4 border-t border-slate-200/70 flex items-center space-x-3">
                   {review.patientAvatar ? (
                     <img
                       src={review.patientAvatar}
                       alt={review.patientName}
-                      className="h-11 w-11 rounded-full object-cover border-2 border-medical-500/30 shrink-0"
+                      className="h-10 w-10 rounded-full object-cover border border-slate-200 shrink-0"
                     />
                   ) : (
-                    <div className="h-11 w-11 rounded-full bg-medical-50 border border-medical-200 flex items-center justify-center font-bold text-medical-600 shrink-0">
+                    <div className="h-10 w-10 rounded-full bg-medical-50 border border-medical-200/80 flex items-center justify-center font-bold text-medical-700 shrink-0 text-xs">
                       {review.patientName[0]}
                     </div>
                   )}
 
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-center space-x-1.5">
-                      <span className="font-sans text-sm font-bold text-navy-900 truncate">
-                        {review.patientName}
-                      </span>
+                    <div className="font-sans text-sm font-bold text-navy-900 truncate">
+                      {review.patientName}
                     </div>
-                    <div className="text-xs text-medical-600 font-bold truncate">{review.treatment}</div>
+                    <div className="text-xs text-medical-600 font-semibold truncate">{review.treatment}</div>
                     <div className="text-[11px] text-slate-400 font-medium truncate">{review.location} • {review.date}</div>
                   </div>
                 </div>
-              </GlassCard>
+              </div>
             </div>
           ))}
         </div>
 
         {/* Link to All Patient Reviews Page */}
-        <div className="mt-8 text-center">
+        <div className="mt-10 text-center">
           <Link
             href="/reviews"
-            className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-medical-600 hover:text-navy-900 transition-colors"
+            className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-medical-600 hover:text-navy-900 transition-colors py-2 px-4 rounded-lg hover:bg-slate-50 border border-transparent hover:border-slate-200"
           >
             <MessageSquareQuote className="h-4 w-4" />
-            <span>Read All Verified Patient Reviews & Experiences →</span>
+            <span>Read All Verified Patient Reviews &amp; Experiences →</span>
           </Link>
         </div>
       </div>

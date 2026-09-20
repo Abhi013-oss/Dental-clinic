@@ -9,8 +9,8 @@ export function CredentialsTrustSection() {
   const [modalOpen, setModalOpen] = React.useState(false);
 
   return (
-    <section className="py-20 bg-slate-50 text-navy-900 border-t border-slate-200/80">
-      <div className="container max-w-7xl">
+    <section className="py-20 lg:py-24 bg-[#FAFCFB] text-navy-900 border-b border-slate-200/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal direction="up" delay={0.1}>
           <SectionHeader
             badge="Verified Doctor Credentials"
@@ -20,30 +20,30 @@ export function CredentialsTrustSection() {
           />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mt-12">
-          {/* Left Side: Framing Showcase Image */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center mt-12">
+          {/* Left Side: Framing Showcase Certificate */}
           <div className="lg:col-span-6">
             <ScrollReveal direction="right" delay={0.2}>
               <div
-                className="relative rounded-3xl overflow-hidden bg-white p-3 border border-slate-200 shadow-xl group cursor-pointer"
+                className="relative rounded-2xl bg-white p-2.5 sm:p-3 border border-slate-200/90 shadow-sm group cursor-pointer"
                 onClick={() => setModalOpen(true)}
               >
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100">
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-100">
                   <img
                     src="/certificates/doctors-certificates.png"
                     alt="Doctors Degrees, Awards, Fellowships & Certificates"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 
                   {/* Tap to View Full Screen Indicator */}
-                  <div className="absolute bottom-4 right-4 bg-white/95 text-navy-900 px-3.5 py-2 rounded-xl text-xs font-bold shadow-lg backdrop-blur-md flex items-center space-x-2 border border-slate-200 group-hover:bg-medical-600 group-hover:text-white transition-all">
+                  <div className="absolute bottom-4 right-4 bg-white/95 text-navy-900 px-3.5 py-2 rounded-lg text-xs font-bold shadow-sm backdrop-blur-sm flex items-center space-x-2 border border-slate-200 group-hover:bg-medical-600 group-hover:text-white transition-all">
                     <Maximize2 className="h-4 w-4 text-medical-600 group-hover:text-white" />
                     <span>View Degrees & Certificates</span>
                   </div>
 
-                  <div className="absolute top-4 left-4 bg-medical-600 text-white text-[11px] font-bold px-3 py-1 rounded-lg shadow-md flex items-center space-x-1.5">
-                    <ShieldCheck className="h-3.5 w-3.5 text-sky-300" />
+                  <div className="absolute top-4 left-4 bg-medical-600 text-white text-[11px] font-bold px-3 py-1 rounded-md shadow-sm flex items-center space-x-1.5">
+                    <ShieldCheck className="h-3.5 w-3.5 text-sky-200" />
                     <span>Verified Medical Credentials</span>
                   </div>
                 </div>
@@ -51,50 +51,53 @@ export function CredentialsTrustSection() {
             </ScrollReveal>
           </div>
 
-          {/* Right Side: Trust Highlights */}
-          <div className="lg:col-span-6 space-y-6">
-            <ScrollReveal direction="up" delay={0.3}>
-              <div className="space-y-4">
-                {/* Highlight 1 */}
-                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-medical-500/50 transition-all">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-medical-50 text-medical-600">
-                    <GraduationCap className="h-6 w-6" />
+          {/* Right Side: Institutional Credential Register (Connected Timeline, No Floating Cards) */}
+          <div className="lg:col-span-6">
+            <ScrollReveal direction="up" delay={0.25}>
+              <div className="space-y-6 relative pl-2 sm:pl-4 border-l-2 border-slate-200 ml-2 sm:ml-4">
+                {/* Credential 1 */}
+                <div className="relative pl-6 sm:pl-8">
+                  <div className="absolute -left-[31px] sm:-left-[39px] top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-medical-50 text-medical-600 border border-medical-200/80 shadow-xs">
+                    <GraduationCap className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-sans text-base font-bold text-navy-900">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-medical-600">Surgical Fellowship</span>
+                    <h3 className="font-sans text-base sm:text-lg font-bold text-navy-900 mt-0.5">
                       Fellowship - Academy of Oral Implantology
                     </h3>
-                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
                       Conferred upon <strong>Dr. Arjun Jawahar Sharma</strong> (BDS, MDS) for advanced mastery in dental implant surgery and full mouth prosthetics.
                     </p>
                   </div>
                 </div>
 
-                {/* Highlight 2 */}
-                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-medical-500/50 transition-all">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
-                    <Award className="h-6 w-6" />
+                {/* Credential 2 */}
+                <div className="relative pl-6 sm:pl-8">
+                  <div className="absolute -left-[31px] sm:-left-[39px] top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-50 text-amber-600 border border-amber-200/80 shadow-xs">
+                    <Award className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-sans text-base font-bold text-navy-900">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-amber-600">National Honor</span>
+                    <h3 className="font-sans text-base sm:text-lg font-bold text-navy-900 mt-0.5">
                       4th Dental Academic Excellence Award
                     </h3>
-                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
                       Prestigious <strong>GuidENT Certificate of Excellence</strong> awarded for top academic performance in prosthodontics and clinical research.
                     </p>
                   </div>
                 </div>
 
-                {/* Highlight 3 */}
-                <div className="flex items-start space-x-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-medical-500/50 transition-all">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
-                    <CheckCircle2 className="h-6 w-6" />
+                {/* Credential 3 */}
+                <div className="relative pl-6 sm:pl-8">
+                  <div className="absolute -left-[31px] sm:-left-[39px] top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200/80 shadow-xs">
+                    <CheckCircle2 className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-sans text-base font-bold text-navy-900">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600">Premier Residency</span>
+                    <h3 className="font-sans text-base sm:text-lg font-bold text-navy-900 mt-0.5">
                       GRIPMER Sri Ganga Ram Hospital Residency
                     </h3>
-                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
                       Certified Senior Residency & Clinical Training completed by <strong>Dr. Priyanka Sharma</strong> at Sri Ganga Ram Hospital, New Delhi.
                     </p>
                   </div>
@@ -116,7 +119,7 @@ export function CredentialsTrustSection() {
               </div>
               <button
                 onClick={() => setModalOpen(false)}
-                className="p-2 rounded-full bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
+                className="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
                 aria-label="Close Lightbox"
               >
                 <X className="h-6 w-6" />
