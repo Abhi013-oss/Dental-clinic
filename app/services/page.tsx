@@ -2,22 +2,24 @@ import { SectionHeader } from '@/components/shared/section-header';
 import { ServiceFilter } from '@/features/services/service-filter';
 
 export const metadata = {
-  title: 'Signature Dental Treatments & Aesthetic Procedures',
-  description: 'Explore master porcelain veneers, guided dental implants, Invisalign, and full mouth rehabilitation at ÉLITE Dental Atelier.',
+  title: 'Specialized Dental Treatments & Clinical Procedures | Jawahar Dental Hospital',
+  description: 'Explore dental implants, prosthodontics, orthodontics, root canal therapy, and oral surgery at Jawahar Dental Hospital in Kapurthala and Delhi.',
 };
 
 export default function ServicesPage() {
   return (
-    <div className="pt-32 pb-24 bg-background min-h-screen">
-      <div className="container">
+    <div className="pt-28 sm:pt-32 pb-24 bg-[#FAFCFB] min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="Clinical Portfolio"
-          title="Signature Aesthetic Treatments"
-          highlightTitle="Masterpiece Dentistry."
-          description="Combining advanced biophotonics, microscopic precision, and master ceramists to craft unmatched aesthetic & functional results."
+          badge="Specialized Clinical Departments"
+          title="Comprehensive Dental Procedures"
+          highlightTitle="Engineered For Long-Term Oral Health."
+          description="Browse our full spectrum of specialized dental treatments across 8 clinical departments, guided by senior implantologists and dental surgeons."
         />
 
-        <ServiceFilter />
+        <div className="mt-10">
+          <ServiceFilter />
+        </div>
       </div>
     </div>
   );
