@@ -1,65 +1,73 @@
 'use client';
 
+import * as React from 'react';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { CountUpNumber } from '@/components/shared/count-up-number';
-import { ShieldCheck, Star, Award, HeartHandshake, PhoneCall, Clock } from 'lucide-react';
-import { siteConfig } from '@/config/site.config';
+import { ShieldCheck, Star, Award, HeartHandshake } from 'lucide-react';
 
 export function TrustSection() {
   return (
-    <section className="py-12 bg-slate-50/70 border-y border-slate-200/80">
-      <div className="container">
-        <ScrollReveal direction="up" delay={0.1}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <section className="py-8 sm:py-10 bg-white border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ScrollReveal direction="up" delay={0.05}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {/* Metric 1 */}
-            <div className="flex items-center space-x-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-all group">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-medical-50 text-medical-600 group-hover:scale-110 transition-transform">
-                <HeartHandshake className="h-6 w-6" />
+            <div className="flex items-center space-x-3.5 p-4 rounded-xl bg-[#FAFCFB] border border-slate-200/80 shadow-xs">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-medical-50 text-medical-600 shrink-0">
+                <HeartHandshake className="h-5 w-5" />
               </div>
               <div>
-                <div className="font-sans text-2xl font-extrabold text-navy-900">
+                <div className="font-sans text-xl sm:text-2xl font-extrabold text-navy-900">
                   <CountUpNumber value="12,500+" />
                 </div>
-                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Patients Treated</div>
+                <div className="text-[11px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider">
+                  Patients Treated
+                </div>
               </div>
             </div>
 
             {/* Metric 2 */}
-            <div className="flex items-center space-x-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-all group">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-medical-50 text-medical-600 group-hover:scale-110 transition-transform">
-                <Award className="h-6 w-6" />
+            <div className="flex items-center space-x-3.5 p-4 rounded-xl bg-[#FAFCFB] border border-slate-200/80 shadow-xs">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-medical-50 text-medical-600 shrink-0">
+                <Award className="h-5 w-5" />
               </div>
               <div>
-                <div className="font-sans text-2xl font-extrabold text-navy-900">
+                <div className="font-sans text-xl sm:text-2xl font-extrabold text-navy-900">
                   <CountUpNumber value="25+" />
                 </div>
-                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Years Excellence</div>
+                <div className="text-[11px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider">
+                  Years Clinical Excellence
+                </div>
               </div>
             </div>
 
             {/* Metric 3 */}
-            <div className="flex items-center space-x-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-all group">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-50 text-amber-500 group-hover:scale-110 transition-transform">
-                <Star className="h-6 w-6 fill-current" />
+            <div className="flex items-center space-x-3.5 p-4 rounded-xl bg-[#FAFCFB] border border-slate-200/80 shadow-xs">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-amber-50 text-amber-500 shrink-0">
+                <Star className="h-5 w-5 fill-current" />
               </div>
               <div>
-                <div className="font-sans text-2xl font-extrabold text-navy-900">
+                <div className="font-sans text-xl sm:text-2xl font-extrabold text-navy-900">
                   4.9 / 5.0
                 </div>
-                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Google Rating (500+ Reviews)</div>
+                <div className="text-[11px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider">
+                  Google Rating (500+ Reviews)
+                </div>
               </div>
             </div>
 
             {/* Metric 4 */}
-            <div className="flex items-center space-x-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-all group">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 group-hover:scale-110 transition-transform">
-                <ShieldCheck className="h-6 w-6" />
+            <div className="flex items-center space-x-3.5 p-4 rounded-xl bg-[#FAFCFB] border border-slate-200/80 shadow-xs">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 shrink-0">
+                <ShieldCheck className="h-5 w-5" />
               </div>
               <div>
-                <div className="font-sans text-2xl font-extrabold text-navy-900">
+                <div className="font-sans text-xl sm:text-2xl font-extrabold text-navy-900">
                   100%
                 </div>
-                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Sterilization Standard</div>
+                <div className="text-[11px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider">
+                  Sterilization Standard
+                </div>
               </div>
             </div>
           </div>

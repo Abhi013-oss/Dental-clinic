@@ -1,5 +1,6 @@
 'use client';
 
+import * as React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -10,18 +11,15 @@ import { siteConfig } from '@/config/site.config';
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[88vh] flex items-center justify-center pt-32 pb-20 overflow-hidden bg-white text-navy-900">
-      {/* Ambient Radial Lighting Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-medical-500/5 rounded-full blur-[150px] pointer-events-none" />
-
-      <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Hero Copy */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            {/* Jawahar Dental Official Brand Banner with Tagline */}
+    <section className="relative pt-28 sm:pt-32 lg:pt-36 pb-16 lg:pb-24 bg-[#FAFCFB] border-b border-slate-200/60 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Left Column: Hero Editorial Information (7 cols on desktop) */}
+          <div className="lg:col-span-7 space-y-6 text-left">
+            {/* Jawahar Dental Official Brand Tagline Emblem */}
             <ScrollReveal direction="down" delay={0.05}>
-              <div className="flex justify-center lg:justify-start">
-                <div className="inline-block p-3 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow max-w-sm sm:max-w-md">
+              <div className="inline-flex items-center">
+                <div className="inline-block px-3 py-2 rounded-xl bg-white border border-slate-200/90 shadow-xs max-w-[260px] sm:max-w-[300px]">
                   <img
                     src="/images/jawahar-dental-tagline-logo.png"
                     alt="Jawahar Dental - Tradition | Trust | Technology - Multi Speciality Dental Clinic"
@@ -31,91 +29,110 @@ export function HeroSection() {
               </div>
             </ScrollReveal>
 
+            {/* Medical Department Badge */}
             <ScrollReveal direction="down" delay={0.1}>
-              <div className="inline-flex items-center space-x-2">
-                <Badge variant="gold" className="px-4 py-1.5 text-xs font-bold tracking-wider bg-medical-50 text-medical-700 border-medical-200 hover:bg-medical-100 transition-colors">
+              <div>
+                <Badge
+                  variant="gold"
+                  className="px-3.5 py-1.5 text-xs font-semibold tracking-wide bg-medical-50 text-medical-700 border border-medical-200"
+                >
                   <Activity className="mr-1.5 h-3.5 w-3.5 text-medical-600 animate-pulse" />
                   Specialist Dental Care & Implant Center
                 </Badge>
               </div>
             </ScrollReveal>
 
-            <ScrollReveal direction="up" delay={0.2}>
-              <h1 className="font-sans text-4xl sm:text-6xl lg:text-6xl font-extrabold tracking-tight text-navy-900 leading-[1.12]">
-                Where Advanced Dentistry Meets <br className="hidden sm:inline" />
-                <span className="animate-gradient-text inline-block">Gentle Patient Care.</span>
+            {/* Authoritative Medical Headline */}
+            <ScrollReveal direction="up" delay={0.15}>
+              <h1 className="font-sans text-3xl sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-navy-900 leading-[1.14]">
+                Where Advanced Dentistry Meets{' '}
+                <span className="text-medical-600 block sm:inline">Gentle Patient Care.</span>
               </h1>
             </ScrollReveal>
 
-            <ScrollReveal direction="up" delay={0.3}>
-              <p className="text-base sm:text-lg text-slate-600 max-w-2xl font-normal leading-relaxed mx-auto lg:mx-0">
+            {/* Supporting Clinical Description */}
+            <ScrollReveal direction="up" delay={0.2}>
+              <p className="text-base sm:text-lg text-slate-600 max-w-xl font-normal leading-relaxed">
                 Experience world-class dental care designed around your comfort, safety, and lifelong health. Guided by international specialists in a bright, modern, stress-free clinic.
               </p>
             </ScrollReveal>
 
-            {/* Hero Action Buttons - Spacious & Uncondensed */}
-            <ScrollReveal direction="up" delay={0.4}>
-              <div className="pt-3 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            {/* Hero Action Buttons */}
+            <ScrollReveal direction="up" delay={0.25}>
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
                 <Link href="/book" className="w-full sm:w-auto">
-                  <Button variant="gold" size="lg" className="w-full sm:w-auto font-bold text-base px-8 h-14 shadow-lg shadow-medical-600/20 hover:scale-[1.03] transition-transform duration-300">
-                    <Calendar className="mr-2.5 h-5 w-5" />
+                  <Button
+                    variant="gold"
+                    size="lg"
+                    className="w-full sm:w-auto font-semibold text-base px-7 h-12 rounded-lg shadow-xs hover:shadow-sm"
+                  >
+                    <Calendar className="mr-2 h-4.5 w-4.5" />
                     <span>Book Your Consultation</span>
                   </Button>
                 </Link>
 
                 <Link href="/services" className="w-full sm:w-auto">
-                  <Button variant="outline" size="lg" className="w-full sm:w-auto font-bold text-base px-8 h-14 hover:scale-[1.03] transition-transform duration-300">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="w-full sm:w-auto font-semibold text-base px-7 h-12 rounded-lg border-slate-200 hover:bg-slate-50"
+                  >
                     <span>Explore Clinical Services</span>
-                    <ArrowRight className="ml-2.5 h-5 w-5 text-medical-600" />
+                    <ArrowRight className="ml-2 h-4 w-4 text-medical-600" />
                   </Button>
                 </Link>
               </div>
             </ScrollReveal>
 
-            {/* Trust Statistics with Animated Count-Up Numbers */}
-            <ScrollReveal direction="up" delay={0.5}>
-              <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-slate-200/80 text-left">
+            {/* Factual Trust Statistics Strip */}
+            <ScrollReveal direction="up" delay={0.3}>
+              <div className="pt-6 sm:pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 border-t border-slate-200/80">
                 {siteConfig.stats.map((stat, idx) => (
-                  <div key={idx} className="space-y-1 group cursor-default">
-                    <div className="font-sans text-3xl sm:text-4xl font-extrabold text-medical-600 group-hover:scale-105 transition-transform duration-300 origin-left">
-                      <CountUpNumber value={stat.value} duration={2.2} />
+                  <div key={idx} className="space-y-0.5">
+                    <div className="font-sans text-2xl sm:text-3xl font-extrabold text-navy-900">
+                      <CountUpNumber value={stat.value} duration={2.0} />
                     </div>
-                    <div className="text-xs text-slate-500 uppercase tracking-wider font-bold group-hover:text-navy-900 transition-colors">{stat.label}</div>
+                    <div className="text-[11px] sm:text-xs text-slate-500 uppercase tracking-wider font-semibold">
+                      {stat.label}
+                    </div>
                   </div>
                 ))}
               </div>
             </ScrollReveal>
           </div>
 
-          {/* Right Column: Hero Visual Image */}
+          {/* Right Column: Hero Clinical Visual (5 cols on desktop) */}
           <div className="lg:col-span-5 relative">
-            <ScrollReveal direction="left" delay={0.3}>
-              <div className="relative rounded-3xl overflow-hidden bg-white p-3 border border-slate-200/90 shadow-xl hover:shadow-2xl hover:border-medical-500/40 transition-all duration-500 group">
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
+            <ScrollReveal direction="left" delay={0.2}>
+              <div className="relative rounded-2xl bg-white p-2.5 sm:p-3 border border-slate-200/90 shadow-sm">
+                <div className="relative aspect-[4/5] sm:aspect-[5/6] lg:aspect-[4/5] rounded-xl overflow-hidden bg-slate-100">
                   <img
                     src="/images/jawahar-dental-hospital-building.jpg"
                     alt="Jawahar Dental Hospital Exterior Building & Modern Clinic Entrance"
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-cover"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/40 via-transparent to-transparent opacity-60" />
 
-                  {/* Floating Patient Comfort Badge */}
-                  <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-white/95 text-navy-900 border border-slate-200 flex items-center justify-between backdrop-blur-md shadow-lg group-hover:-translate-y-1 transition-transform duration-300">
+                  {/* Factual Patient Safety & Comfort Certificate Badge */}
+                  <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-white/95 backdrop-blur-sm border border-slate-200/90 shadow-sm flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-medical-50 text-medical-600 group-hover:scale-110 transition-transform duration-300">
-                        <HeartHandshake className="h-5 w-5" />
+                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-medical-50 text-medical-600 shrink-0">
+                        <HeartHandshake className="h-4.5 w-4.5" />
                       </div>
                       <div>
-                        <div className="flex items-center text-amber-500">
+                        <div className="flex items-center space-x-1 text-amber-500">
                           {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="h-3.5 w-3.5 fill-current" />
+                            <Star key={i} className="h-3 w-3 fill-current" />
                           ))}
+                          <span className="text-[11px] font-bold text-slate-700 ml-1">4.9 ★ Certified</span>
                         </div>
-                        <span className="text-xs font-bold text-navy-900">Patient Safety & Comfort Certified</span>
+                        <p className="text-xs font-semibold text-navy-900 mt-0.5">
+                          Patient Safety & Comfort Certified
+                        </p>
                       </div>
                     </div>
-                    <ShieldCheck className="h-6 w-6 text-medical-600" />
+                    <ShieldCheck className="h-5 w-5 text-medical-600 shrink-0 ml-2" />
                   </div>
                 </div>
               </div>
