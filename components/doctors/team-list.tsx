@@ -18,14 +18,14 @@ export function TeamList() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {doctorsData.map((doctor, index) => (
           <ScrollReveal key={doctor.id} direction="up" delay={0.1 * index + 0.1}>
-            <div className="flex flex-col justify-between rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-medical-500/40 hover:shadow-sm transition-all duration-200 h-full p-6 sm:p-7">
+            <div className="group flex flex-col justify-between rounded-xl bg-white border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 h-full p-6 sm:p-7">
               <div className="space-y-4 sm:space-y-5">
                 {/* Doctor Portrait Image with Clinical Framing */}
                 <div className="relative aspect-[4/5] rounded-lg overflow-hidden border border-slate-100 bg-slate-100">
                   <img
                     src={doctor.avatarUrl}
                     alt={doctor.name}
-                    className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-102"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
 

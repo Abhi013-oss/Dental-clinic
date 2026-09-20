@@ -132,13 +132,13 @@ export function XRayGallerySection() {
               className="snap-start shrink-0 w-[300px] sm:w-[360px] md:w-[400px] group cursor-pointer"
               onClick={() => setSelectedImage(item)}
             >
-              <div className="rounded-xl bg-[#FAFCFB] border border-slate-200/90 p-4 shadow-xs hover:border-medical-500/50 hover:shadow-sm transition-all duration-200 space-y-3.5">
+              <div className="rounded-xl bg-white border border-slate-200/90 p-4 shadow-xs hover:-translate-y-1.5 hover:border-[#159A9C]/50 hover:shadow-md transition-all duration-300 ease-out space-y-3.5">
                 {/* Image Container with Dark Radiographic Mount */}
                 <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-slate-950 border border-slate-800">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102"
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 

@@ -23,14 +23,14 @@ export function TechnologySection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7 sm:gap-8 mt-12">
           {technologyData.map((tech, index) => (
             <ScrollReveal key={tech.id} direction="up" delay={0.08 * index + 0.1}>
-              <div className="h-full flex flex-col justify-between p-6 sm:p-7 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-medical-500/40 hover:shadow-sm transition-all duration-200">
+              <div className="h-full flex flex-col justify-between p-6 sm:p-7 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:border-[#159A9C]/50 hover:shadow-md transition-all duration-300 ease-out group">
                 <div className="space-y-4">
                   {/* Equipment Photo */}
                   <div className="relative aspect-[16/10] rounded-lg overflow-hidden border border-slate-100 bg-slate-50 flex items-center justify-center">
                     <img
                       src={tech.image}
                       alt={tech.title}
-                      className="w-full h-full object-contain p-3"
+                      className="w-full h-full object-contain p-3 transition-transform duration-500 ease-out group-hover:scale-105"
                     />
                     <div className="absolute top-2.5 left-2.5">
                       <Badge variant="gold" className="bg-white/95 text-medical-700 shadow-xs backdrop-blur-sm">

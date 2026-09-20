@@ -130,7 +130,7 @@ export function ServiceFilter() {
           {filteredServices.map((service) => (
             <div
               key={service.id}
-              className="h-full flex flex-col justify-between p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-medical-500/40 hover:shadow-sm transition-all duration-200 group"
+              className="h-full flex flex-col justify-between p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 group"
             >
               <div className="space-y-3.5">
                 {/* Image Container with Department Tag */}
@@ -138,7 +138,7 @@ export function ServiceFilter() {
                   <img
                     src={service.heroImage}
                     alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute top-2.5 left-2.5 bg-white/95 text-medical-700 px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider shadow-xs backdrop-blur-sm border border-slate-200/70">
                     {service.category}

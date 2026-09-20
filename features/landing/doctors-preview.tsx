@@ -29,14 +29,14 @@ export function DoctorsPreview() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 mt-12">
           {doctorsData.map((doctor, index) => (
             <ScrollReveal key={doctor.id} direction="up" delay={0.08 * index + 0.1}>
-              <div className="h-full flex flex-col justify-between p-4 sm:p-5 rounded-xl bg-[#FAFCFB] border border-slate-200/90 shadow-xs hover:border-medical-500/40 hover:shadow-sm transition-all duration-200">
+              <div className="h-full flex flex-col justify-between p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:border-[#159A9C]/50 hover:shadow-md transition-all duration-300 ease-out group">
                 <div className="space-y-4">
                   {/* Doctor Portrait Image with Clinical Crop */}
                   <div className="relative aspect-[3/4] rounded-lg overflow-hidden border border-slate-100 bg-slate-100">
                     <img
                       src={doctor.avatarUrl}
                       alt={doctor.name}
-                      className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-102"
+                      className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
                     />
                   </div>
 

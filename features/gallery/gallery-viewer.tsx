@@ -30,7 +30,7 @@ export function GalleryViewer() {
         {caseStudiesData.map((caseStudy) => (
           <div
             key={caseStudy.id}
-            className="space-y-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-medical-500/40 hover:shadow-sm transition-all duration-200 p-5 sm:p-6 flex flex-col justify-between"
+            className="group rounded-xl bg-white border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between"
           >
             <div className="space-y-4">
               {/* Interactive Before / After Dual Thumbnail Container */}
@@ -46,7 +46,7 @@ export function GalleryViewer() {
                   <img
                     src={caseStudy.beforeImage}
                     alt={`${caseStudy.title} - Before Treatment`}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <span className="absolute top-2 left-2 bg-navy-900/85 text-white text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider">
                     BEFORE
@@ -56,7 +56,7 @@ export function GalleryViewer() {
                   <img
                     src={caseStudy.afterImage}
                     alt={`${caseStudy.title} - After Treatment`}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <span className="absolute top-2 right-2 bg-medical-600 text-white text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider">
                     AFTER

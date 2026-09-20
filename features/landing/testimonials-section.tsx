@@ -94,7 +94,7 @@ export function TestimonialsSection() {
               key={review.id}
               className="snap-start shrink-0 w-[290px] sm:w-[350px] md:w-[380px] group"
             >
-              <div className="flex flex-col justify-between h-full bg-[#FAFCFB] border border-slate-200/90 rounded-xl shadow-xs hover:border-medical-500/40 hover:shadow-sm transition-all duration-200 p-5 sm:p-6">
+              <div className="flex flex-col justify-between h-full bg-white border border-slate-200/90 rounded-xl shadow-xs hover:-translate-y-1.5 hover:border-[#159A9C]/50 hover:shadow-md transition-all duration-300 ease-out p-5 sm:p-6">
                 <div className="space-y-3.5">
                   {/* Rating Stars & Verification Tag */}
                   <div className="flex items-center justify-between">

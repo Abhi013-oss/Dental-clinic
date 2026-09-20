@@ -35,7 +35,7 @@ export function WhyChooseUs() {
 
             return (
               <ScrollReveal key={item.id} direction="up" delay={0.08 * index + 0.1}>
-                <div className="relative p-6 sm:p-7 rounded-xl bg-[#FAFCFB] border border-slate-200/80 shadow-xs hover:border-medical-500/40 hover:shadow-sm transition-all duration-200 flex flex-col justify-between h-full">
+                <div className="relative p-6 sm:p-7 rounded-xl bg-[#FAFCFB] border border-slate-200/80 shadow-xs hover:-translate-y-1.5 hover:border-[#159A9C]/50 hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between h-full group">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-medical-50 text-medical-600 border border-medical-200/70">
