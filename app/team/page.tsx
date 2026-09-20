@@ -10,22 +10,26 @@ export const metadata = {
 
 export default function TeamPage() {
   return (
-    <div className="pt-32 pb-24 bg-white min-h-screen space-y-16">
-      <div className="container max-w-6xl">
+    <div className="pt-28 sm:pt-32 pb-20 bg-[#FAFCFB] min-h-screen">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal direction="up" delay={0.1}>
           <SectionHeader
-            badge="Clinical Team"
-            title="Specialist Doctors & Surgeons"
-            highlightTitle="Unrivaled Expertise."
-            description="Led by Dr. Arjun Jawahar Sharma & Dr. Priyanka Sharma alongside Dr. Sandeep Kaur and Dr. Rajwinder Kaur, providing comprehensive specialist care across Kapurthala and Delhi."
+            badge="Medical Faculty & Leadership"
+            title="Specialist Doctors & Dental Surgeons"
+            highlightTitle="Trained At Premier Medical Institutions."
+            description="Led by senior implantologist Dr. Arjun Jawahar Sharma and root canal specialist Dr. Priyanka Sharma alongside Dr. Sandeep Kaur and Dr. Rajwinder Kaur, delivering specialized clinical excellence across Kapurthala and East Delhi."
           />
         </ScrollReveal>
 
-        <TeamList />
+        <div className="mt-12">
+          <TeamList />
+        </div>
       </div>
 
       {/* Verified Degrees & Certificates Trust Section */}
-      <CredentialsTrustSection />
+      <div className="mt-20">
+        <CredentialsTrustSection />
+      </div>
     </div>
   );
 }

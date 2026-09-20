@@ -9,7 +9,6 @@ import {
   X,
   Calendar,
   GraduationCap,
-  Award,
   CheckCircle2,
   Stethoscope,
   HeartHandshake,
@@ -51,32 +50,32 @@ export function DoctorDetailsModal({ doctor, isOpen, onClose }: DoctorDetailsMod
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 overflow-y-auto">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-navy-950/70 backdrop-blur-md transition-opacity animate-in fade-in duration-300"
+        className="fixed inset-0 bg-navy-950/70 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Modal Dialog Content */}
       <div
-        className="relative w-full max-w-3xl max-h-[90vh] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col z-10 animate-in zoom-in-95 fade-in duration-300"
+        className="relative w-full max-w-3xl max-h-[90vh] bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden flex flex-col z-10 animate-in zoom-in-98 fade-in duration-200"
         role="dialog"
         aria-modal="true"
         aria-labelledby="doctor-modal-title"
       >
-        {/* Header Bar */}
-        <div className="relative bg-gradient-to-r from-navy-950 via-slate-900 to-medical-950 p-6 sm:p-8 text-white">
+        {/* Authoritative Deep Navy Header Bar */}
+        <div className="relative bg-[#0E3340] p-6 sm:p-7 text-white">
           <button
             type="button"
             onClick={onClose}
-            className="absolute top-5 right-5 h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-medical-400"
+            className="absolute top-5 right-5 h-9 w-9 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-medical-400 cursor-pointer"
             aria-label="Close modal"
           >
-            <X className="h-5 w-5" />
+            <X className="h-4.5 w-4.5" />
           </button>
 
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 pt-2">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 pt-1">
             {/* Doctor Avatar */}
-            <div className="relative h-28 w-28 sm:h-32 sm:w-32 rounded-2xl overflow-hidden border-2 border-medical-400/40 shadow-xl shrink-0 bg-slate-900">
+            <div className="relative h-24 w-24 sm:h-28 sm:w-28 rounded-xl overflow-hidden border-2 border-white/20 shadow-md shrink-0 bg-slate-900">
               <img
                 src={doctor.avatarUrl}
                 alt={doctor.name}
@@ -87,10 +86,10 @@ export function DoctorDetailsModal({ doctor, isOpen, onClose }: DoctorDetailsMod
             {/* Doctor Info */}
             <div className="text-center sm:text-left space-y-2 flex-1">
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                <Badge variant="gold" className="text-[11px] font-bold">
+                <Badge variant="gold" className="text-[11px] font-semibold bg-white/15 text-medical-200 border-white/20">
                   {doctor.specialty}
                 </Badge>
-                <span className="inline-flex items-center text-xs text-medical-300 font-semibold bg-medical-950/60 px-2.5 py-0.5 rounded-full border border-medical-500/30">
+                <span className="inline-flex items-center text-xs text-medical-200 font-semibold bg-white/10 px-2.5 py-0.5 rounded border border-white/15">
                   <Clock className="h-3 w-3 mr-1" /> {doctor.experienceYears}+ Years Clinical Experience
                 </span>
               </div>
@@ -99,7 +98,7 @@ export function DoctorDetailsModal({ doctor, isOpen, onClose }: DoctorDetailsMod
                 {doctor.name}
               </h2>
 
-              <p className="text-sm font-semibold text-medical-300">
+              <p className="text-xs sm:text-sm font-semibold text-medical-200">
                 {doctor.title}
               </p>
             </div>
@@ -107,41 +106,41 @@ export function DoctorDetailsModal({ doctor, isOpen, onClose }: DoctorDetailsMod
 
           {/* Stats Bar */}
           {doctor.statsTagline && (
-            <div className="mt-6 pt-4 border-t border-white/10 text-xs text-slate-300 font-medium leading-relaxed">
-              <span className="text-medical-400 font-bold uppercase mr-1">Credentials & Focus:</span>
+            <div className="mt-5 pt-3.5 border-t border-white/15 text-xs text-slate-300 font-normal leading-relaxed">
+              <span className="text-medical-300 font-semibold uppercase mr-1">Credentials &amp; Focus:</span>
               {doctor.statsTagline}
             </div>
           )}
         </div>
 
         {/* Scrollable Modal Body */}
-        <div className="p-6 sm:p-8 overflow-y-auto space-y-8 divide-y divide-slate-100">
+        <div className="p-6 sm:p-7 overflow-y-auto space-y-7 divide-y divide-slate-100">
           {/* 1. About Doctor */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-navy-900 flex items-center">
+          <div className="space-y-2.5">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-navy-900 flex items-center">
               <Stethoscope className="h-4 w-4 mr-2 text-medical-600" />
               About {doctor.name}
             </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
               {doctor.about || doctor.bio}
             </p>
           </div>
 
           {/* 2. Areas of Clinical Expertise */}
           {doctor.expertiseSections && doctor.expertiseSections.length > 0 && (
-            <div className="pt-6 space-y-4">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-navy-900 flex items-center">
+            <div className="pt-6 space-y-3.5">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-navy-900 flex items-center">
                 <Sparkles className="h-4 w-4 mr-2 text-medical-600" />
-                Areas of Clinical Expertise & Specialisation
+                Areas of Clinical Expertise &amp; Specialisation
               </h3>
-              <div className="grid grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 gap-3.5">
                 {doctor.expertiseSections.map((section, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-medical-300 transition-colors"
+                    className="p-4 rounded-xl bg-[#FAFCFB] border border-slate-200/80"
                   >
-                    <h4 className="text-sm font-bold text-navy-900 mb-1.5 flex items-center">
-                      <span className="h-2 w-2 rounded-full bg-medical-600 mr-2" />
+                    <h4 className="text-sm font-bold text-navy-900 mb-1 flex items-center">
+                      <span className="h-1.5 w-1.5 rounded-full bg-medical-600 mr-2" />
                       {section.title}
                     </h4>
                     <p className="text-xs text-slate-600 leading-relaxed font-normal">
@@ -155,16 +154,16 @@ export function DoctorDetailsModal({ doctor, isOpen, onClose }: DoctorDetailsMod
 
           {/* 3. Education & Credentials */}
           {doctor.educationCredentials && doctor.educationCredentials.length > 0 && (
-            <div className="pt-6 space-y-4">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-navy-900 flex items-center">
+            <div className="pt-6 space-y-3.5">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-navy-900 flex items-center">
                 <GraduationCap className="h-4 w-4 mr-2 text-medical-600" />
-                Education & Professional Credentials
+                Education &amp; Professional Credentials
               </h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {doctor.educationCredentials.map((cred, idx) => (
                   <li
                     key={idx}
-                    className="flex items-start text-xs font-medium text-slate-700 bg-medical-50/50 p-2.5 rounded-xl border border-medical-100"
+                    className="flex items-start text-xs font-semibold text-slate-700 bg-medical-50/50 p-2.5 rounded-lg border border-medical-100"
                   >
                     <CheckCircle2 className="h-4 w-4 text-medical-600 mr-2 shrink-0 mt-0.5" />
                     <span>{cred}</span>
@@ -176,35 +175,35 @@ export function DoctorDetailsModal({ doctor, isOpen, onClose }: DoctorDetailsMod
 
           {/* 4. Clinical Philosophy */}
           {doctor.clinicalPhilosophy && (
-            <div className="pt-6 space-y-3">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-navy-900 flex items-center">
+            <div className="pt-6 space-y-2.5">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-navy-900 flex items-center">
                 <HeartHandshake className="h-4 w-4 mr-2 text-medical-600" />
-                Clinical Philosophy & Patient Care
+                Clinical Philosophy &amp; Patient Care
               </h3>
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-medical-50 to-slate-50 border-l-4 border-medical-600 text-xs sm:text-sm text-slate-700 italic leading-relaxed">
-                "{doctor.clinicalPhilosophy}"
+              <div className="p-4 rounded-xl bg-medical-50/60 border-l-4 border-medical-600 text-xs sm:text-sm text-slate-700 italic leading-relaxed">
+                &ldquo;{doctor.clinicalPhilosophy}&rdquo;
               </div>
             </div>
           )}
         </div>
 
         {/* Footer Actions */}
-        <div className="p-4 sm:p-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+        <div className="p-4 sm:p-5 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
           <a
             href={`tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, '')}`}
-            className="w-full sm:w-auto text-xs font-bold text-slate-600 hover:text-medical-600 flex items-center justify-center sm:justify-start"
+            className="w-full sm:w-auto text-xs font-semibold text-slate-600 hover:text-medical-600 flex items-center justify-center sm:justify-start"
           >
-            <PhoneCall className="h-4 w-4 mr-2 text-medical-600" />
+            <PhoneCall className="h-3.5 w-3.5 mr-1.5 text-medical-600" />
             Questions? Call {siteConfig.contact.phone}
           </a>
 
-          <div className="flex items-center gap-3 w-full sm:w-auto">
+          <div className="flex items-center gap-2.5 w-full sm:w-auto">
             <Button
               type="button"
               variant="outline"
               size="sm"
               onClick={onClose}
-              className="w-1/2 sm:w-auto font-bold text-xs"
+              className="w-1/2 sm:w-auto font-semibold text-xs h-9 rounded-lg"
             >
               Close
             </Button>
@@ -214,9 +213,9 @@ export function DoctorDetailsModal({ doctor, isOpen, onClose }: DoctorDetailsMod
                 type="button"
                 variant="gold"
                 size="sm"
-                className="w-full sm:w-auto font-bold text-xs px-6 shadow-md"
+                className="w-full sm:w-auto font-semibold text-xs h-9 px-5 rounded-lg shadow-xs"
               >
-                <Calendar className="mr-2 h-4 w-4" />
+                <Calendar className="mr-1.5 h-3.5 w-3.5" />
                 <span>Book Appointment</span>
               </Button>
             </Link>
