@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { SectionHeader } from '@/components/shared/section-header';
+import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/toast';
@@ -82,22 +83,26 @@ export default function ContactPage() {
     <div className="pt-28 sm:pt-32 pb-24 bg-[#FAFCFB] min-h-screen text-navy-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-14">
         {/* Page Header */}
-        <SectionHeader
-          badge="Hospital Contact &amp; Helpdesk"
-          title="Connect With Our Clinical Team"
-          highlightTitle="Kapurthala &amp; Delhi Branches."
-          description="Have a question regarding treatment protocols, scheduling your first clinical evaluation, or directions to our clinics? We are here to assist."
-          align="center"
-        />
+        <ScrollReveal direction="up" delay={0.1}>
+          <SectionHeader
+            badge="Hospital Contact &amp; Helpdesk"
+            title="Connect With Our Clinical Team"
+            highlightTitle="Kapurthala &amp; Delhi Branches."
+            description="Have a question regarding treatment protocols, scheduling your first clinical evaluation, or directions to our clinics? We are here to assist."
+            align="center"
+          />
+        </ScrollReveal>
 
         {/* Two-Column Layout: Form (7 cols) + Contact Methods (5 cols) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Inquiry Form Column */}
-          <div className="lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 shadow-xs p-6 sm:p-8 space-y-6">
-            <div className="border-b border-slate-100 pb-4">
-              <h3 className="font-sans text-xl sm:text-2xl font-bold text-navy-900">
-                Send A Clinical Inquiry
-              </h3>
+          <div className="lg:col-span-7">
+            <ScrollReveal direction="right" delay={0.15}>
+              <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-6 sm:p-8 space-y-6">
+                <div className="border-b border-slate-100 pb-4">
+                  <h3 className="font-sans text-xl sm:text-2xl font-bold text-navy-900">
+                    Send A Clinical Inquiry
+                  </h3>
               <p className="text-xs text-slate-500 mt-1">
                 Fill out your details below and our hospital patient coordinator will respond promptly.
               </p>
@@ -182,95 +187,102 @@ export default function ContactPage() {
                 </Button>
               </form>
             )}
+              </div>
+            </ScrollReveal>
           </div>
 
           {/* Contact Details & Operating Hours Sidebar */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-6 sm:p-7 space-y-5">
-              <h3 className="font-sans text-lg font-bold text-navy-900 border-b border-slate-100 pb-3">
-                Hospital Locations &amp; Helplines
-              </h3>
+          <div className="lg:col-span-5">
+            <ScrollReveal direction="left" delay={0.2}>
+              <div className="space-y-6">
+                <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 p-6 sm:p-7 space-y-5">
+                  <h3 className="font-sans text-lg font-bold text-navy-900 border-b border-slate-100 pb-3">
+                    Hospital Locations &amp; Helplines
+                  </h3>
 
-              {/* Kapurthala Main Branch */}
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2 text-sm font-bold text-navy-900">
-                  <MapPin className="h-4 w-4 text-medical-600 shrink-0" />
-                  <span>Kapurthala Main Hospital (Punjab)</span>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed pl-6 font-medium">
-                  {siteConfig.branches.kapurthala.address}
-                </p>
-                <div className="flex items-center space-x-2 text-xs font-bold text-medical-600 pl-6">
-                  <Phone className="h-3.5 w-3.5" />
-                  <a href={`tel:${siteConfig.branches.kapurthala.contact}`} className="hover:underline">
-                    {siteConfig.branches.kapurthala.contact}
-                  </a>
-                </div>
-              </div>
-
-              {/* Delhi Branch */}
-              <div className="space-y-2 pt-4 border-t border-slate-100">
-                <div className="flex items-center space-x-2 text-sm font-bold text-navy-900">
-                  <MapPin className="h-4 w-4 text-medical-600 shrink-0" />
-                  <span>East Delhi Branch (Mayur Vihar)</span>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed pl-6 font-medium">
-                  {siteConfig.branches.delhi.address}
-                </p>
-                <div className="flex items-center space-x-2 text-xs font-bold text-medical-600 pl-6">
-                  <Phone className="h-3.5 w-3.5" />
-                  <span>
-                    <a href="tel:9910066721" className="hover:underline">99100-66721</a>,{' '}
-                    <a href="tel:8285547579" className="hover:underline">82855-47579</a>
-                  </span>
-                </div>
-              </div>
-
-              {/* Email & WhatsApp Quick Channels */}
-              <div className="pt-4 border-t border-slate-100 space-y-2.5">
-                <div className="flex items-center space-x-2 text-xs text-slate-600">
-                  <Mail className="h-4 w-4 text-medical-600 shrink-0" />
-                  <a href={`mailto:${siteConfig.contact.email}`} className="font-semibold hover:text-navy-900 hover:underline">
-                    {siteConfig.contact.email}
-                  </a>
-                </div>
-
-                <div className="flex items-center space-x-2 text-xs text-emerald-700">
-                  <MessageSquare className="h-4 w-4 text-emerald-600 shrink-0" />
-                  <a
-                    href="https://wa.me/919910066721?text=Hello%20Jawahar%20Dental%20Hospital,%20I%20have%20an%20inquiry."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold hover:underline"
-                  >
-                    Direct WhatsApp Concierge: +91 99100-66721
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Operating Hours Card */}
-            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-6 space-y-3">
-              <h4 className="font-sans text-sm font-bold text-navy-900 flex items-center">
-                <Clock className="mr-2 h-4 w-4 text-medical-600" />
-                Clinical Operating Hours
-              </h4>
-
-              <div className="space-y-2 text-xs text-slate-600 pt-1">
-                {siteConfig.contact.hours.map((h, i) => (
-                  <div key={i} className="flex justify-between border-b border-slate-100 pb-2">
-                    <span className="font-bold text-navy-900">{h.days}:</span>
-                    <span>{h.time}</span>
+                  {/* Kapurthala Main Branch */}
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2 text-sm font-bold text-navy-900">
+                      <MapPin className="h-4 w-4 text-medical-600 shrink-0" />
+                      <span>Kapurthala Main Hospital (Punjab)</span>
+                    </div>
+                    <p className="text-xs text-slate-600 leading-relaxed pl-6 font-medium">
+                      {siteConfig.branches.kapurthala.address}
+                    </p>
+                    <div className="flex items-center space-x-2 text-xs font-bold text-medical-600 pl-6">
+                      <Phone className="h-3.5 w-3.5" />
+                      <a href={`tel:${siteConfig.branches.kapurthala.contact}`} className="hover:underline">
+                        {siteConfig.branches.kapurthala.contact}
+                      </a>
+                    </div>
                   </div>
-                ))}
+
+                  {/* Delhi Branch */}
+                  <div className="space-y-2 pt-4 border-t border-slate-100">
+                    <div className="flex items-center space-x-2 text-sm font-bold text-navy-900">
+                      <MapPin className="h-4 w-4 text-medical-600 shrink-0" />
+                      <span>East Delhi Branch (Mayur Vihar)</span>
+                    </div>
+                    <p className="text-xs text-slate-600 leading-relaxed pl-6 font-medium">
+                      {siteConfig.branches.delhi.address}
+                    </p>
+                    <div className="flex items-center space-x-2 text-xs font-bold text-medical-600 pl-6">
+                      <Phone className="h-3.5 w-3.5" />
+                      <span>
+                        <a href="tel:9910066721" className="hover:underline">99100-66721</a>,{' '}
+                        <a href="tel:8285547579" className="hover:underline">82855-47579</a>
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Email & WhatsApp Quick Channels */}
+                  <div className="pt-4 border-t border-slate-100 space-y-2.5">
+                    <div className="flex items-center space-x-2 text-xs text-slate-600">
+                      <Mail className="h-4 w-4 text-medical-600 shrink-0" />
+                      <a href={`mailto:${siteConfig.contact.email}`} className="font-semibold hover:text-navy-900 hover:underline">
+                        {siteConfig.contact.email}
+                      </a>
+                    </div>
+
+                    <div className="flex items-center space-x-2 text-xs text-emerald-700">
+                      <MessageSquare className="h-4 w-4 text-emerald-600 shrink-0" />
+                      <a
+                        href="https://wa.me/919910066721?text=Hello%20Jawahar%20Dental%20Hospital,%20I%20have%20an%20inquiry."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold hover:underline"
+                      >
+                        Direct WhatsApp Concierge: +91 99100-66721
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Operating Hours Card */}
+                <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 p-6 space-y-3">
+                  <h4 className="font-sans text-sm font-bold text-navy-900 flex items-center">
+                    <Clock className="mr-2 h-4 w-4 text-medical-600" />
+                    Clinical Operating Hours
+                  </h4>
+
+                  <div className="space-y-2 text-xs text-slate-600 pt-1">
+                    {siteConfig.contact.hours.map((h, i) => (
+                      <div key={i} className="flex justify-between border-b border-slate-100 pb-2">
+                        <span className="font-bold text-navy-900">{h.days}:</span>
+                        <span>{h.time}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
 
         {/* Interactive Google Map Embed */}
-        <div className="rounded-2xl overflow-hidden border border-slate-200/90 shadow-xs bg-white">
-          <div className="p-5 sm:p-6 bg-white border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <ScrollReveal direction="up" delay={0.15}>
+          <div className="rounded-2xl overflow-hidden border border-slate-200/90 shadow-xs hover:border-[#159A9C]/40 transition-all bg-white">
+            <div className="p-5 sm:p-6 bg-white border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4.5 w-4.5 text-medical-600" />
@@ -323,6 +335,7 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </div>
   );

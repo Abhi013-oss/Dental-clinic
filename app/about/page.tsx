@@ -64,8 +64,8 @@ export default function AboutPage() {
         {/* Mission, Vision & Core Values */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <ScrollReveal direction="up" delay={0.1}>
-            <div className="rounded-xl bg-white border border-slate-200/90 p-6 shadow-xs space-y-3 h-full">
-              <div className="h-10 w-10 rounded-lg bg-[#E8F6F5] text-[#159A9C] flex items-center justify-center">
+            <div className="rounded-xl bg-white border border-slate-200/90 p-6 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 group space-y-3 h-full">
+              <div className="h-10 w-10 rounded-lg bg-[#E8F6F5] text-[#159A9C] flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Eye className="h-5 w-5" />
               </div>
               <h3 className="font-sans text-lg font-bold text-navy-900">Our Vision</h3>
@@ -76,8 +76,8 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.2}>
-            <div className="rounded-xl bg-white border border-slate-200/90 p-6 shadow-xs space-y-3 h-full">
-              <div className="h-10 w-10 rounded-lg bg-[#E8F6F5] text-[#159A9C] flex items-center justify-center">
+            <div className="rounded-xl bg-white border border-slate-200/90 p-6 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 group space-y-3 h-full">
+              <div className="h-10 w-10 rounded-lg bg-[#E8F6F5] text-[#159A9C] flex items-center justify-center group-hover:scale-110 transition-transform">
                 <HeartHandshake className="h-5 w-5" />
               </div>
               <h3 className="font-sans text-lg font-bold text-navy-900">Patient-Centric Mission</h3>
@@ -88,8 +88,8 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.3}>
-            <div className="rounded-xl bg-white border border-slate-200/90 p-6 shadow-xs space-y-3 h-full">
-              <div className="h-10 w-10 rounded-lg bg-[#E8F6F5] text-[#159A9C] flex items-center justify-center">
+            <div className="rounded-xl bg-white border border-slate-200/90 p-6 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 group space-y-3 h-full">
+              <div className="h-10 w-10 rounded-lg bg-[#E8F6F5] text-[#159A9C] flex items-center justify-center group-hover:scale-110 transition-transform">
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <h3 className="font-sans text-lg font-bold text-navy-900">Hospital-Grade Safety</h3>
@@ -109,25 +109,27 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {clinicTimeline.map((item, idx) => (
-              <div key={idx} className="rounded-xl bg-white border border-slate-200/90 p-5 shadow-xs space-y-2">
-                <span className="font-sans text-2xl font-extrabold text-[#159A9C]">{item.year}</span>
-                <h4 className="text-sm font-bold text-navy-900">{item.title}</h4>
-                <p className="text-xs text-slate-500 leading-relaxed">{item.description}</p>
-              </div>
+              <ScrollReveal key={idx} direction="up" delay={0.08 * idx + 0.1}>
+                <div className="rounded-xl bg-white border border-slate-200/90 p-5 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 group space-y-2 h-full">
+                  <span className="font-sans text-2xl font-extrabold text-[#159A9C] group-hover:scale-105 inline-block transition-transform">{item.year}</span>
+                  <h4 className="text-sm font-bold text-navy-900">{item.title}</h4>
+                  <p className="text-xs text-slate-500 leading-relaxed">{item.description}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
 
         {/* Dr. Arjun Jawahar Sharma Leadership Spotlight */}
         <ScrollReveal direction="up" delay={0.2}>
-          <div className="rounded-xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-xs overflow-hidden">
+          <div className="rounded-xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-xs hover:border-[#159A9C]/40 transition-all duration-300 group overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               <div className="md:col-span-4 flex justify-center">
                 <div className="relative aspect-[3/4] w-full max-w-[240px] rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100">
                   <img
                     src="/doctors/dr-arjun-jawahar-sharma.jpg"
                     alt="Dr. Arjun Jawahar Sharma - Chief Prosthodontist & Oral Implantologist"
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
               </div>

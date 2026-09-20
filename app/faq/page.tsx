@@ -127,55 +127,57 @@ export default function FaqPage() {
               const isOpen = openIndex === index;
 
               return (
-                <div
-                  key={index}
-                  className="rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-medical-500/40 transition-all overflow-hidden"
-                >
-                  <button
-                    type="button"
-                    onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="w-full p-5 sm:p-6 text-left flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600 transition-colors group cursor-pointer touch-manipulation select-none"
-                    aria-expanded={isOpen}
-                    id={`faq-page-trigger-${index}`}
-                    aria-controls={`faq-page-answer-${index}`}
+                <ScrollReveal key={index} direction="up" delay={0.04 * (index % 6) + 0.05}>
+                  <div
+                    className="rounded-xl bg-white border border-slate-200/90 shadow-xs hover:-translate-y-1 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 overflow-hidden group"
                   >
-                    <div className="flex items-start space-x-3.5 pr-4">
-                      <HelpCircle className="h-5 w-5 text-medical-600 shrink-0 mt-0.5" />
-                      <div className="space-y-1">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-medical-600 bg-medical-50 px-2 py-0.5 rounded border border-medical-200/60 inline-block">
-                          {faq.category || 'General'}
-                        </span>
-                        <h3 className="font-sans text-base sm:text-lg font-bold text-navy-900 group-hover:text-medical-600 transition-colors">
-                          {faq.question}
-                        </h3>
-                      </div>
-                    </div>
-                    <ChevronDown
-                      className={cn(
-                        'h-5 w-5 text-slate-400 shrink-0 transition-transform duration-200',
-                        isOpen && 'rotate-180 text-medical-600'
-                      )}
-                    />
-                  </button>
-
-                  {isOpen && (
-                    <div
-                      id={`faq-page-answer-${index}`}
-                      role="region"
-                      aria-labelledby={`faq-page-trigger-${index}`}
-                      className="px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-700 leading-relaxed font-normal border-t border-slate-100 animate-in fade-in duration-200"
+                    <button
+                      type="button"
+                      onClick={() => setOpenIndex(isOpen ? null : index)}
+                      className="w-full p-5 sm:p-6 text-left flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600 transition-colors cursor-pointer touch-manipulation select-none"
+                      aria-expanded={isOpen}
+                      id={`faq-page-trigger-${index}`}
+                      aria-controls={`faq-page-answer-${index}`}
                     >
-                      {faq.answer}
-                    </div>
-                  )}
-                </div>
+                      <div className="flex items-start space-x-3.5 pr-4">
+                        <HelpCircle className="h-5 w-5 text-medical-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                        <div className="space-y-1">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-medical-600 bg-medical-50 px-2 py-0.5 rounded border border-medical-200/60 inline-block">
+                            {faq.category || 'General'}
+                          </span>
+                          <h3 className="font-sans text-base sm:text-lg font-bold text-navy-900 group-hover:text-medical-600 transition-colors">
+                            {faq.question}
+                          </h3>
+                        </div>
+                      </div>
+                      <ChevronDown
+                        className={cn(
+                          'h-5 w-5 text-slate-400 shrink-0 transition-transform duration-200',
+                          isOpen && 'rotate-180 text-medical-600'
+                        )}
+                      />
+                    </button>
+
+                    {isOpen && (
+                      <div
+                        id={`faq-page-answer-${index}`}
+                        role="region"
+                        aria-labelledby={`faq-page-trigger-${index}`}
+                        className="px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-700 leading-relaxed font-normal border-t border-slate-100 animate-in fade-in duration-200"
+                      >
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                </ScrollReveal>
               );
             })}
           </div>
         )}
 
         {/* Urgent Dental Question / Emergency Banner */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-xs text-center space-y-4">
+        <ScrollReveal direction="up" delay={0.2}>
+          <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-[#159A9C]/40 transition-all text-center space-y-4">
           <div className="max-w-md mx-auto space-y-1.5">
             <span className="text-xs font-bold uppercase tracking-wider text-medical-600">
               Immediate Patient Support
@@ -213,6 +215,7 @@ export default function FaqPage() {
             </Link>
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </div>
   );

@@ -227,14 +227,14 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                 <Link
                   key={related.id}
                   href={`/services/${related.slug}`}
-                  className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-medical-500/40 hover:shadow-sm transition-all duration-200 group flex flex-col justify-between"
+                  className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 group flex flex-col justify-between"
                 >
                   <div className="space-y-3">
                     <div className="relative aspect-[16/10] rounded-lg overflow-hidden border border-slate-100 bg-slate-100">
                       <img
                         src={related.heroImage}
                         alt={related.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
                     <div>

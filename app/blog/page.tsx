@@ -116,49 +116,52 @@ export default function BlogPage() {
 
         {/* Blog Post Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {filteredPosts.map((post) => (
-            <div key={post.id} className="rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-[#159A9C]/60 transition-all flex flex-col justify-between group p-5">
-              <div className="space-y-3">
-                <div className="relative aspect-[16/10] rounded-lg overflow-hidden border border-slate-100 bg-slate-100">
-                  <img
-                    src={post.heroImage}
-                    alt={post.title}
-                    className="w-full h-full object-cover transform group-hover:scale-102 transition-transform duration-500 ease-out"
-                  />
-                  <div className="absolute top-2.5 left-2.5 bg-white/95 text-[#159A9C] px-2 py-0.5 rounded text-[10px] font-bold shadow-xs">
-                    {post.category}
+          {filteredPosts.map((post, idx) => (
+            <ScrollReveal key={post.id} direction="up" delay={0.08 * (idx % 3) + 0.1}>
+              <div className="rounded-xl bg-white border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 flex flex-col justify-between group p-5 h-full">
+                <div className="space-y-3">
+                  <div className="relative aspect-[16/10] rounded-lg overflow-hidden border border-slate-100 bg-slate-100">
+                    <img
+                      src={post.heroImage}
+                      alt={post.title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div className="absolute top-2.5 left-2.5 bg-white/95 text-[#159A9C] px-2 py-0.5 rounded text-[10px] font-bold shadow-xs">
+                      {post.category}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center space-x-2 text-[11px] text-slate-400 mb-1 font-medium">
+                      <Clock className="h-3 w-3 text-[#159A9C]" />
+                      <span>{post.readTime}</span>
+                      <span>•</span>
+                      <span>{post.publishedAt}</span>
+                    </div>
+                    <h3 className="font-sans text-base font-bold text-[#0E3340] group-hover:text-[#159A9C] transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 mt-1.5 line-clamp-3 leading-relaxed font-normal">
+                      {post.excerpt}
+                    </p>
                   </div>
                 </div>
 
-                <div>
-                  <div className="flex items-center space-x-2 text-[11px] text-slate-400 mb-1 font-medium">
-                    <Clock className="h-3 w-3 text-[#159A9C]" />
-                    <span>{post.readTime}</span>
-                    <span>•</span>
-                    <span>{post.publishedAt}</span>
-                  </div>
-                  <h3 className="font-sans text-base font-bold text-[#0E3340] group-hover:text-[#159A9C] transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 mt-1.5 line-clamp-3 leading-relaxed font-normal">
-                    {post.excerpt}
-                  </p>
+                <div className="pt-3 mt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-600">{post.author.name}</span>
+                  <Link href={`/blog/${post.slug}`} className="text-xs font-bold text-[#159A9C] inline-flex items-center hover:underline">
+                    <span>Read Article</span>
+                    <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
                 </div>
               </div>
-
-              <div className="pt-3 mt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-600">{post.author.name}</span>
-                <Link href={`/blog/${post.slug}`} className="text-xs font-bold text-[#159A9C] inline-flex items-center hover:underline">
-                  <span>Read Article</span>
-                  <ArrowRight className="ml-1 h-3.5 w-3.5" />
-                </Link>
-              </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Newsletter Subscription Banner */}
-        <div className="p-8 rounded-xl bg-white border border-slate-200/90 shadow-xs text-center space-y-4 max-w-2xl mx-auto">
+        <ScrollReveal direction="up" delay={0.15}>
+          <div className="p-8 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-[#159A9C]/40 transition-all text-center space-y-4 max-w-2xl mx-auto">
           <div className="h-10 w-10 rounded-lg bg-[#E8F6F5] text-[#159A9C] flex items-center justify-center mx-auto">
             <Mail className="h-5 w-5" />
           </div>
@@ -201,6 +204,7 @@ export default function BlogPage() {
             </Button>
           </form>
         </div>
+        </ScrollReveal>
       </div>
     </div>
   );

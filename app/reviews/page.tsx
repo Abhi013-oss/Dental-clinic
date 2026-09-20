@@ -121,112 +121,115 @@ export default function ReviewsPage() {
           <div className="space-y-8">
             {/* Featured Review (when Available) */}
             {featuredReview && (
-              <div className="bg-white rounded-xl border border-slate-200/90 shadow-xs hover:border-medical-500/40 transition-all p-6 sm:p-8 lg:p-10 relative overflow-hidden">
-                <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
-                  <div className="space-y-4 max-w-3xl">
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center space-x-1 text-amber-500">
-                        {[...Array(featuredReview.rating)].map((_, i) => (
-                          <Star key={i} className="h-4 w-4 fill-current" />
-                        ))}
+              <ScrollReveal direction="up" delay={0.1}>
+                <div className="bg-white rounded-xl border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 p-6 sm:p-8 lg:p-10 relative overflow-hidden group">
+                  <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+                    <div className="space-y-4 max-w-3xl">
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center space-x-1 text-amber-500">
+                          {[...Array(featuredReview.rating)].map((_, i) => (
+                            <Star key={i} className="h-4 w-4 fill-current" />
+                          ))}
+                        </div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200/70 flex items-center space-x-1">
+                          <CheckCircle2 className="h-3 w-3 text-emerald-600" />
+                          <span>Verified Patient Story</span>
+                        </span>
                       </div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200/70 flex items-center space-x-1">
-                        <CheckCircle2 className="h-3 w-3 text-emerald-600" />
-                        <span>Verified Patient Story</span>
-                      </span>
+
+                      <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-normal italic">
+                        &ldquo;{featuredReview.comment}&rdquo;
+                      </p>
+
+                      <div className="pt-4 border-t border-slate-100 flex items-center space-x-3.5">
+                        {featuredReview.patientAvatar ? (
+                          <img
+                            src={featuredReview.patientAvatar}
+                            alt={featuredReview.patientName}
+                            className="h-12 w-12 rounded-full object-cover border border-slate-200 shrink-0"
+                          />
+                        ) : (
+                          <div className="h-12 w-12 rounded-full bg-medical-50 border border-medical-200/80 flex items-center justify-center font-bold text-medical-700 text-sm shrink-0">
+                            {featuredReview.patientName[0]}
+                          </div>
+                        )}
+
+                        <div>
+                          <div className="font-sans text-base font-bold text-navy-900">
+                            {featuredReview.patientName}
+                          </div>
+                          <div className="text-xs text-medical-600 font-semibold">{featuredReview.treatment}</div>
+                          <div className="text-[11px] text-slate-400 font-medium">{featuredReview.location} • {featuredReview.date}</div>
+                        </div>
+                      </div>
                     </div>
 
-                    <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-normal italic">
-                      &ldquo;{featuredReview.comment}&rdquo;
-                    </p>
-
-                    <div className="pt-4 border-t border-slate-100 flex items-center space-x-3.5">
-                      {featuredReview.patientAvatar ? (
-                        <img
-                          src={featuredReview.patientAvatar}
-                          alt={featuredReview.patientName}
-                          className="h-12 w-12 rounded-full object-cover border border-slate-200 shrink-0"
-                        />
-                      ) : (
-                        <div className="h-12 w-12 rounded-full bg-medical-50 border border-medical-200/80 flex items-center justify-center font-bold text-medical-700 text-sm shrink-0">
-                          {featuredReview.patientName[0]}
-                        </div>
-                      )}
-
-                      <div>
-                        <div className="font-sans text-base font-bold text-navy-900">
-                          {featuredReview.patientName}
-                        </div>
-                        <div className="text-xs text-medical-600 font-semibold">{featuredReview.treatment}</div>
-                        <div className="text-[11px] text-slate-400 font-medium">{featuredReview.location} • {featuredReview.date}</div>
-                      </div>
+                    <div className="lg:w-64 shrink-0 bg-[#FAFCFB] rounded-lg border border-slate-200/80 p-4 space-y-2">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Clinical Focus</span>
+                      <div className="text-xs font-bold text-navy-900">{featuredReview.treatment}</div>
+                      <p className="text-[11px] text-slate-500 leading-normal">
+                        Treatment executed with precision anesthesia and hospital-grade sterilization protocols.
+                      </p>
+                      <Link href="/book" className="inline-block pt-1">
+                        <span className="text-xs font-bold text-medical-600 hover:text-navy-900 transition-colors">
+                          Book Similar Care →
+                        </span>
+                      </Link>
                     </div>
-                  </div>
-
-                  <div className="lg:w-64 shrink-0 bg-[#FAFCFB] rounded-lg border border-slate-200/80 p-4 space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Clinical Focus</span>
-                    <div className="text-xs font-bold text-navy-900">{featuredReview.treatment}</div>
-                    <p className="text-[11px] text-slate-500 leading-normal">
-                      Treatment executed with precision anesthesia and hospital-grade sterilization protocols.
-                    </p>
-                    <Link href="/book" className="inline-block pt-1">
-                      <span className="text-xs font-bold text-medical-600 hover:text-navy-900 transition-colors">
-                        Book Similar Care →
-                      </span>
-                    </Link>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             )}
 
             {/* Supporting Reviews Grid */}
             {supportingReviews.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
-                {supportingReviews.map((review) => (
-                  <div
-                    key={review.id}
-                    className="bg-white rounded-xl border border-slate-200/90 shadow-xs hover:border-medical-500/40 hover:shadow-sm transition-all duration-200 p-6 flex flex-col justify-between"
-                  >
-                    <div className="space-y-3.5">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-1 text-amber-500">
-                          {[...Array(review.rating)].map((_, i) => (
-                            <Star key={i} className="h-4 w-4 fill-current" />
-                          ))}
+                {supportingReviews.map((review, idx) => (
+                  <ScrollReveal key={review.id} direction="up" delay={0.06 * (idx % 6) + 0.05}>
+                    <div
+                      className="bg-white rounded-xl border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 p-6 flex flex-col justify-between h-full group"
+                    >
+                      <div className="space-y-3.5">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-1 text-amber-500">
+                            {[...Array(review.rating)].map((_, i) => (
+                              <Star key={i} className="h-4 w-4 fill-current" />
+                            ))}
+                          </div>
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/70 flex items-center space-x-1">
+                            <CheckCircle2 className="h-3 w-3 text-emerald-600" />
+                            <span>Verified</span>
+                          </span>
                         </div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/70 flex items-center space-x-1">
-                          <CheckCircle2 className="h-3 w-3 text-emerald-600" />
-                          <span>Verified</span>
-                        </span>
+
+                        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal italic min-h-[80px]">
+                          &ldquo;{review.comment}&rdquo;
+                        </p>
                       </div>
 
-                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal italic min-h-[80px]">
-                        &ldquo;{review.comment}&rdquo;
-                      </p>
-                    </div>
+                      <div className="pt-4 mt-5 border-t border-slate-100 flex items-center space-x-3.5">
+                        {review.patientAvatar ? (
+                          <img
+                            src={review.patientAvatar}
+                            alt={review.patientName}
+                            className="h-10 w-10 rounded-full object-cover border border-slate-200 shrink-0"
+                          />
+                        ) : (
+                          <div className="h-10 w-10 rounded-full bg-medical-50 border border-medical-200/80 flex items-center justify-center font-bold text-medical-700 text-xs shrink-0">
+                            {review.patientName[0]}
+                          </div>
+                        )}
 
-                    <div className="pt-4 mt-5 border-t border-slate-100 flex items-center space-x-3.5">
-                      {review.patientAvatar ? (
-                        <img
-                          src={review.patientAvatar}
-                          alt={review.patientName}
-                          className="h-10 w-10 rounded-full object-cover border border-slate-200 shrink-0"
-                        />
-                      ) : (
-                        <div className="h-10 w-10 rounded-full bg-medical-50 border border-medical-200/80 flex items-center justify-center font-bold text-medical-700 text-xs shrink-0">
-                          {review.patientName[0]}
+                        <div className="min-w-0 flex-1">
+                          <div className="font-sans text-sm font-bold text-navy-900 truncate">
+                            {review.patientName}
+                          </div>
+                          <div className="text-xs text-medical-600 font-semibold truncate">{review.treatment}</div>
+                          <div className="text-[11px] text-slate-400 font-medium truncate">{review.location} • {review.date}</div>
                         </div>
-                      )}
-
-                      <div className="min-w-0 flex-1">
-                        <div className="font-sans text-sm font-bold text-navy-900 truncate">
-                          {review.patientName}
-                        </div>
-                        <div className="text-xs text-medical-600 font-semibold truncate">{review.treatment}</div>
-                        <div className="text-[11px] text-slate-400 font-medium truncate">{review.location} • {review.date}</div>
                       </div>
                     </div>
-                  </div>
+                  </ScrollReveal>
                 ))}
               </div>
             )}

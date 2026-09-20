@@ -22,7 +22,7 @@ export function LocationSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch mt-12">
           {/* Kapurthala Branch Card */}
           <ScrollReveal direction="up" delay={0.15}>
-            <div className="p-6 sm:p-7 rounded-xl bg-white border border-slate-200/90 shadow-xs space-y-6 h-full flex flex-col justify-between">
+            <div className="p-6 sm:p-7 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 group space-y-6 h-full flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-medical-50 text-medical-600 border border-medical-200/70 shrink-0">
@@ -68,7 +68,7 @@ export function LocationSection() {
 
           {/* Delhi Branch Card */}
           <ScrollReveal direction="up" delay={0.2}>
-            <div className="p-6 sm:p-7 rounded-xl bg-white border border-slate-200/90 shadow-xs space-y-6 h-full flex flex-col justify-between">
+            <div className="p-6 sm:p-7 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 group space-y-6 h-full flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-medical-50 text-medical-600 border border-medical-200/70 shrink-0">

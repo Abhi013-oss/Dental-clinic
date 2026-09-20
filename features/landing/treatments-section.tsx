@@ -3,6 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { SectionHeader } from '@/components/shared/section-header';
+import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { servicesData } from '@/constants/services.data';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -102,12 +103,14 @@ export function TreatmentsSection() {
   return (
     <section className="py-20 lg:py-24 bg-[#FAFCFB] text-navy-900 border-b border-slate-200/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          badge="Clinical Departments & Services"
-          title="Comprehensive Dental Treatments"
-          highlightTitle="Organized By Specialty."
-          description="Explore our 8 specialized dental departments led by board-certified implantologists, endodontists, and master restorative surgeons."
-        />
+        <ScrollReveal direction="up" delay={0.1}>
+          <SectionHeader
+            badge="Clinical Departments & Services"
+            title="Comprehensive Dental Treatments"
+            highlightTitle="Organized By Specialty."
+            description="Explore our 8 specialized dental departments led by board-certified implantologists, endodontists, and master restorative surgeons."
+          />
+        </ScrollReveal>
 
         {/* Mobile Horizontal Department Selector */}
         <div className="lg:hidden mb-8 -mx-4 px-4 overflow-x-auto scrollbar-none flex space-x-2 py-1">
@@ -132,18 +135,20 @@ export function TreatmentsSection() {
         {/* Main Organized Split Console */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Organized Departments List (Matching user request) */}
-          <div className="lg:col-span-5 bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden">
-            <div className="p-4 sm:p-5 border-b border-slate-100 bg-slate-50/70 flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <Layers className="h-4 w-4 text-[#159A9C]" />
-                <span className="font-sans text-xs font-bold uppercase tracking-wider text-[#0E3340]">
-                  Clinical Departments
-                </span>
-              </div>
-              <span className="text-[11px] font-semibold text-slate-500 bg-white px-2 py-0.5 rounded-md border border-slate-200">
-                8 Specialties
-              </span>
-            </div>
+          <div className="lg:col-span-5">
+            <ScrollReveal direction="right" delay={0.15}>
+              <div className="bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden">
+                <div className="p-4 sm:p-5 border-b border-slate-100 bg-slate-50/70 flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <Layers className="h-4 w-4 text-[#159A9C]" />
+                    <span className="font-sans text-xs font-bold uppercase tracking-wider text-[#0E3340]">
+                      Clinical Departments
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-semibold text-slate-500 bg-white px-2 py-0.5 rounded-md border border-slate-200">
+                    8 Specialties
+                  </span>
+                </div>
 
             <div className="divide-y divide-slate-100 max-h-[620px] overflow-y-auto">
               {clinicalDepartments.map((dept) => {
@@ -213,86 +218,92 @@ export function TreatmentsSection() {
               })}
             </div>
           </div>
+        </ScrollReveal>
+      </div>
 
           {/* Right Column: Active Department Treatments Showcase */}
-          <div className="lg:col-span-7 space-y-6">
-            {/* Active Department Header Banner */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="space-y-1">
-                <div className="flex items-center space-x-2">
-                  <Badge variant="gold" className="text-[10px] uppercase tracking-wider">
-                    {activeDepartment.badge}
-                  </Badge>
-                  <span className="text-xs text-slate-500 font-semibold">
-                    {departmentTreatments.length} Procedures Available
-                  </span>
+          <div className="lg:col-span-7">
+            <ScrollReveal direction="left" delay={0.2}>
+              <div className="space-y-6">
+                {/* Active Department Header Banner */}
+                <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="space-y-1">
+                    <div className="flex items-center space-x-2">
+                      <Badge variant="gold" className="text-[10px] uppercase tracking-wider">
+                        {activeDepartment.badge}
+                      </Badge>
+                      <span className="text-xs text-slate-500 font-semibold">
+                        {departmentTreatments.length} Procedures Available
+                      </span>
+                    </div>
+                    <h3 className="font-sans text-xl sm:text-2xl font-bold text-[#0E3340]">
+                      {activeDepartment.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 max-w-xl">
+                      {activeDepartment.subtitle}
+                    </p>
+                  </div>
+
+                  <Link
+                    href={`/book?service=${departmentTreatments[0]?.slug || ''}`}
+                    className="shrink-0 self-start sm:self-auto"
+                  >
+                    <Button size="sm" className="bg-[#159A9C] hover:bg-[#117A7C] text-white font-bold text-xs h-9 px-3.5">
+                      <Calendar className="mr-1.5 h-3.5 w-3.5" />
+                      <span>Book Consultation</span>
+                    </Button>
+                  </Link>
                 </div>
-                <h3 className="font-sans text-xl sm:text-2xl font-bold text-[#0E3340]">
-                  {activeDepartment.title}
-                </h3>
-                <p className="text-xs text-slate-600 max-w-xl">
-                  {activeDepartment.subtitle}
-                </p>
-              </div>
 
-              <Link
-                href={`/book?service=${departmentTreatments[0]?.slug || ''}`}
-                className="shrink-0 self-start sm:self-auto"
-              >
-                <Button size="sm" className="bg-[#159A9C] hover:bg-[#117A7C] text-white font-bold text-xs h-9 px-3.5">
-                  <Calendar className="mr-1.5 h-3.5 w-3.5" />
-                  <span>Book Consultation</span>
-                </Button>
-              </Link>
-            </div>
+                {/* Grid of Treatments under selected department */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {departmentTreatments.map((service) => (
+                    <div
+                      key={service.id}
+                      className="rounded-xl bg-white border border-slate-200/90 p-4 sm:p-5 shadow-xs hover:-translate-y-1.5 hover:border-[#159A9C]/50 hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between group"
+                    >
+                      <div className="space-y-3">
+                        {/* Clinical Image */}
+                        <div className="relative aspect-[16/10] rounded-lg overflow-hidden border border-slate-100 bg-slate-100">
+                          <img
+                            src={service.heroImage}
+                            alt={service.title}
+                            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                          />
+                          <div className="absolute top-2.5 left-2.5 bg-white/95 text-[#159A9C] px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider shadow-xs backdrop-blur-xs border border-slate-200/60">
+                            {service.category}
+                          </div>
+                        </div>
 
-            {/* Grid of Treatments under selected department */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {departmentTreatments.map((service) => (
-                <div
-                  key={service.id}
-                  className="rounded-xl bg-white border border-slate-200/90 p-4 sm:p-5 shadow-xs hover:-translate-y-1.5 hover:border-[#159A9C]/50 hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between group"
-                >
-                  <div className="space-y-3">
-                    {/* Clinical Image */}
-                    <div className="relative aspect-[16/10] rounded-lg overflow-hidden border border-slate-100 bg-slate-100">
-                      <img
-                        src={service.heroImage}
-                        alt={service.title}
-                        className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                      />
-                      <div className="absolute top-2.5 left-2.5 bg-white/95 text-[#159A9C] px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider shadow-xs backdrop-blur-xs border border-slate-200/60">
-                        {service.category}
+                        <div>
+                          <h4 className="font-sans text-base font-bold text-[#0E3340] group-hover:text-[#159A9C] transition-colors line-clamp-1">
+                            {service.title}
+                          </h4>
+                          <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                            {service.shortDescription}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="pt-3.5 mt-3.5 border-t border-slate-100 flex items-center justify-between">
+                        <div className="flex items-center space-x-1 text-xs text-slate-400 font-semibold">
+                          <Clock className="h-3.5 w-3.5 text-[#159A9C]" />
+                          <span>{service.durationMinutes} Mins</span>
+                        </div>
+
+                        <Link
+                          href={`/services/${service.slug}`}
+                          className="inline-flex items-center text-xs font-bold text-[#159A9C] hover:text-[#117A7C] transition-colors"
+                        >
+                          <span>Read Protocol</span>
+                          <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </Link>
                       </div>
                     </div>
-
-                    <div>
-                      <h4 className="font-sans text-base font-bold text-[#0E3340] group-hover:text-[#159A9C] transition-colors line-clamp-1">
-                        {service.title}
-                      </h4>
-                      <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                        {service.shortDescription}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="pt-3.5 mt-3.5 border-t border-slate-100 flex items-center justify-between">
-                    <div className="flex items-center space-x-1 text-xs text-slate-400 font-semibold">
-                      <Clock className="h-3.5 w-3.5 text-[#159A9C]" />
-                      <span>{service.durationMinutes} Mins</span>
-                    </div>
-
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="inline-flex items-center text-xs font-bold text-[#159A9C] hover:text-[#117A7C] transition-colors"
-                    >
-                      <span>Read Protocol</span>
-                      <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
-                    </Link>
-                  </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
 

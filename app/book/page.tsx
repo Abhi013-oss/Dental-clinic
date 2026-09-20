@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SectionHeader } from '@/components/shared/section-header';
+import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { SimpleBookingForm } from '@/features/booking/simple-booking-form';
 import { ShieldCheck, PhoneCall, Clock, MapPin, MessageSquare, Award, CheckCircle2 } from 'lucide-react';
 import { siteConfig } from '@/config/site.config';
@@ -15,33 +16,39 @@ export default function BookPage() {
     <div className="pt-28 sm:pt-32 pb-24 bg-[#FAFCFB] min-h-screen text-navy-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-14">
         {/* Page Header */}
-        <SectionHeader
-          badge="Hospital Appointment Desk"
-          title="Schedule Your Clinical Consultation"
-          highlightTitle="In Simple Steps."
-          description="Select your clinical department, preferred treating doctor, appointment date, and convenient consultation window."
-          align="center"
-        />
+        <ScrollReveal direction="up" delay={0.1}>
+          <SectionHeader
+            badge="Hospital Appointment Desk"
+            title="Schedule Your Clinical Consultation"
+            highlightTitle="In Simple Steps."
+            description="Select your clinical department, preferred treating doctor, appointment date, and convenient consultation window."
+            align="center"
+          />
+        </ScrollReveal>
 
         {/* Balanced Editorial Layout: Form (8 cols) + Hospital Trust Sidebar (4 cols) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Main Booking Form Column */}
           <div className="lg:col-span-8">
-            <React.Suspense
-              fallback={
-                <div className="p-12 text-center bg-white rounded-2xl border border-slate-200 shadow-xs text-xs font-semibold text-slate-500">
-                  Loading consultation scheduling system...
-                </div>
-              }
-            >
-              <SimpleBookingForm />
-            </React.Suspense>
+            <ScrollReveal direction="right" delay={0.15}>
+              <React.Suspense
+                fallback={
+                  <div className="p-12 text-center bg-white rounded-2xl border border-slate-200 shadow-xs text-xs font-semibold text-slate-500">
+                    Loading consultation scheduling system...
+                  </div>
+                }
+              >
+                <SimpleBookingForm />
+              </React.Suspense>
+            </ScrollReveal>
           </div>
 
           {/* Clinical Trust & Direct Helpdesk Sidebar */}
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4">
+            <ScrollReveal direction="left" delay={0.2}>
+              <div className="space-y-6">
             {/* Direct Phone Assistance Card */}
-            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-6 space-y-4">
+            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 p-6 space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="h-10 w-10 rounded-lg bg-medical-50 border border-medical-200/70 text-medical-600 flex items-center justify-center shrink-0">
                   <PhoneCall className="h-5 w-5" />
@@ -83,7 +90,7 @@ export default function BookPage() {
             </div>
 
             {/* Hospital Operating Hours Card */}
-            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-6 space-y-3">
+            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 p-6 space-y-3">
               <h4 className="font-sans text-sm font-bold text-navy-900 flex items-center">
                 <Clock className="mr-2 h-4 w-4 text-medical-600" />
                 Clinical Operating Hours
@@ -102,7 +109,7 @@ export default function BookPage() {
             </div>
 
             {/* Hospital Locations Summary */}
-            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-6 space-y-4">
+            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 p-6 space-y-4">
               <h4 className="font-sans text-sm font-bold text-navy-900 flex items-center">
                 <MapPin className="mr-2 h-4 w-4 text-medical-600" />
                 Hospital Locations
@@ -128,7 +135,7 @@ export default function BookPage() {
             </div>
 
             {/* Patient Safety & Quality Assurance */}
-            <div className="bg-[#FAFCFB] rounded-2xl border border-slate-200/90 p-5 space-y-2.5 text-xs text-slate-600">
+            <div className="bg-[#FAFCFB] rounded-2xl border border-slate-200/90 shadow-xs hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 p-5 space-y-2.5 text-xs text-slate-600">
               <div className="font-bold text-navy-900 flex items-center">
                 <ShieldCheck className="mr-1.5 h-4 w-4 text-emerald-600" />
                 Hospital Protocol Assurances
@@ -149,8 +156,10 @@ export default function BookPage() {
               </ul>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </div>
+  </div>
+</div>
   );
 }
