@@ -14,18 +14,17 @@ export function GlassCard({
   ...props
 }: GlassCardProps) {
   const variantStyles = {
-    standard: 'bg-white border border-slate-200/90 shadow-sm',
-    gold: 'bg-gradient-to-b from-white to-slate-50 border border-slate-200/90 shadow-sm',
-    dark: 'bg-navy-900 text-white border border-navy-800 shadow-xl',
+    standard: 'bg-white border border-slate-200/90 shadow-xs',
+    gold: 'bg-white border border-slate-200/90 shadow-xs',
+    dark: 'bg-[#0E3340] text-white border border-slate-700/60 shadow-md',
   };
 
   return (
     <div
       className={cn(
-        'relative rounded-2xl p-6 sm:p-8 transition-all duration-400 ease-out',
+        'relative rounded-xl p-6 sm:p-7 transition-all duration-200 ease-out',
         variantStyles[variant],
-        glowOnHover &&
-          'hover:-translate-y-1.5 hover:shadow-xl hover:shadow-medical-600/10 hover:border-medical-500/50 cursor-pointer',
+        glowOnHover && 'hover:border-[#159A9C]/40 hover:shadow-sm',
         className
       )}
       {...props}

@@ -26,16 +26,16 @@ export function SectionHeader({
   };
 
   return (
-    <div className={cn('flex flex-col max-w-3xl space-y-4 mb-12 sm:mb-16', alignmentClasses[align], className)}>
+    <div className={cn('flex flex-col max-w-3xl space-y-3.5 mb-10 sm:mb-14', alignmentClasses[align], className)}>
       {badge && <Badge variant="gold">{badge}</Badge>}
 
-      <h2 className="font-sans text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-navy-900 leading-[1.15]">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0E3340] leading-[1.18]">
         {title}{' '}
-        {highlightTitle && <span className="text-medical-600 block sm:inline">{highlightTitle}</span>}
+        {highlightTitle && <span className="text-[#159A9C] block sm:inline">{highlightTitle}</span>}
       </h2>
 
       {description && (
-        <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+        <p className="text-sm sm:text-base text-[#64757A] leading-relaxed font-normal max-w-2xl">
           {description}
         </p>
       )}
