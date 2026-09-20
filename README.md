@@ -1,6 +1,6 @@
-# 🏥 ÉLITE - Production Deployment & Client Handover Handbook
+# 🏥 Jawahar Dental Hospital & Implant Centre - Production Deployment & Client Handover Handbook
 
-> **Engineered for Growth Sahayta** — An agency-grade, high-conversion, production-ready white-label healthcare framework. Deployable for Dental Clinics, Orthopedic Practices, Eye Hospitals, Dermatology Centers, and Specialist Healthcare Providers in under 10 minutes.
+> **Jawahar Dental Hospital & Implant Centre** — Super-speciality dental hospital located in Kapurthala & Delhi. Powered by Next.js 14 (App Router), TypeScript, Tailwind CSS, Supabase PostgreSQL, and modern clinical UX architecture.
 
 ---
 

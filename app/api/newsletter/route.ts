@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: true,
-        message: result.message || 'Successfully subscribed to ÉLITE Clinical Journal.',
+        message: result.message || 'Successfully subscribed to Jawahar Dental Hospital clinical updates.',
         data: result.data,
         simulated: result.simulated,
       },

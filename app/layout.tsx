@@ -14,7 +14,8 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     'Dental Clinic',
-    'Beverly Hills Dentist',
+    'Kapurthala Dentist',
+    'Delhi Dentist',
     'Cosmetic Dentistry',
     'Porcelain Veneers',
     'Dental Implants',

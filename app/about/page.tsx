@@ -1,130 +1,129 @@
 import { SectionHeader } from '@/components/shared/section-header';
-import { GlassCard } from '@/components/shared/glass-card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import { ShieldCheck, Activity, Award, HeartHandshake, Eye, Cpu, Calendar, Clock, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Eye, HeartHandshake, Award, Calendar, CheckCircle2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata = {
   title: 'About Our Clinic',
-  description: 'Learn about our clinical philosophy, state-of-the-art 3D biophotonic technology, certificates, and gentle patient care at ÉLITE Dental Clinic.',
+  description: 'Learn about our clinical philosophy, state-of-the-art 3D biophotonic technology, certificates, and gentle patient care at Jawahar Dental Hospital.',
 };
 
 const clinicTimeline = [
-  { year: '2001', title: 'Clinic Establishment', description: 'Founded in Beverly Hills with a mission to deliver pain-free aesthetic dentistry.' },
-  { year: '2008', title: '3D Imaging Pioneer', description: 'First clinic in California to integrate CBCT 3D volumetric bone scanning.' },
-  { year: '2016', title: 'CEREC Same-Day Milling', description: 'Launched in-house CAD/CAM ceramic milling for single-visit restorations.' },
-  { year: '2023', title: 'Global Healthcare Award', description: 'Voted #1 Private Cosmetic Dental Clinic by International Dental Journal.' },
+  { year: '2001', title: 'Hospital Establishment', description: 'Founded with a mission to deliver comprehensive, advanced, and pain-free dental care.' },
+  { year: '2008', title: '3D Imaging Pioneer', description: 'Integrated advanced CBCT 3D volumetric bone scanning for precise implant diagnostics.' },
+  { year: '2016', title: 'Digital Dentistry Lab', description: 'Launched in-house CAD/CAM ceramic milling for single-visit precision restorations.' },
+  { year: '2023', title: 'Excellence In Implantology', description: 'Recognized for advanced computer-guided full-mouth rehabilitation and restorative outcomes.' },
 ];
 
 const certificates = [
-  'American Academy of Cosmetic Dentistry (AACD) Gold Member',
   'International Congress of Oral Implantologists (ICOI) Fellow',
-  'ISO 9001:2015 Certified Sterilization Suite',
-  'Invisalign Diamond Top 1% Provider',
+  'Academy of Oral Implantology (AOI) Fellow',
+  'ISO Certified Sterilization & Infection Control Protocols',
+  'Advanced Digital CAD/CAM Precision Restorations',
 ];
 
 export default function AboutPage() {
   return (
-    <div className="pt-32 pb-24 bg-white text-navy-900 min-h-screen">
-      <div className="container max-w-5xl space-y-20">
+    <div className="pt-28 pb-20 bg-[#FAFCFB] text-navy-900 min-h-screen">
+      <div className="container max-w-5xl space-y-16">
         {/* Hero Section */}
         <ScrollReveal direction="up" delay={0.1}>
           <SectionHeader
             badge="About Jawahar Dental Hospital"
             title="The Sanctuary of Advanced Dentistry"
             highlightTitle="Science Meets Patient Comfort."
-            description="Founded to redefine healthcare expectations. We combine sub-millimeter 3D technology with a calm, stress-free clinical environment."
+            description="Founded to redefine healthcare expectations. We combine sub-millimeter 3D technology with a calm, stress-free clinical environment across Kapurthala and Delhi."
           />
         </ScrollReveal>
 
         {/* Clinic Interior Tour Hero Visual */}
         <ScrollReveal direction="up" delay={0.2}>
-          <div className="relative aspect-[21/9] rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-xl group">
+          <div className="relative aspect-[21/9] rounded-xl overflow-hidden bg-white border border-slate-200/90 shadow-xs group">
             <img
               src="/images/jawahar-dental-hospital-building.jpg"
               alt="Jawahar Dental Hospital Exterior Building"
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+              className="w-full h-full object-cover transform group-hover:scale-102 transition-transform duration-700 ease-out"
             />
-            <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 text-navy-900 border border-slate-200 backdrop-blur-md shadow-lg flex items-center justify-between">
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 p-4 rounded-xl bg-white/95 text-navy-900 border border-slate-200 backdrop-blur-md shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-center space-x-3">
-                <div className="h-10 w-10 rounded-xl bg-medical-50 text-medical-600 flex items-center justify-center font-bold">
+                <div className="h-10 w-10 rounded-lg bg-[#E8F6F5] text-[#159A9C] flex items-center justify-center font-bold shrink-0">
                   <Award className="h-5 w-5" />
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-navy-900">Kapurthala & Delhi Dental Centers</h4>
-                  <p className="text-xs text-slate-500">Modern clinics led by Dr. Arjun Jawahar Sharma & Dr. Priyanka Sharma.</p>
+                  <p className="text-xs text-slate-500">Super-speciality centers led by Dr. Arjun Jawahar Sharma & Dr. Priyanka Sharma.</p>
                 </div>
               </div>
-              <Badge variant="gold">25+ Years Excellence</Badge>
+              <Badge variant="gold" className="self-start sm:self-auto shrink-0">25+ Years Clinical Excellence</Badge>
             </div>
           </div>
         </ScrollReveal>
 
         {/* Mission, Vision & Core Values */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <ScrollReveal direction="up" delay={0.1}>
-            <GlassCard variant="standard" className="space-y-3 bg-white border border-slate-200 h-full">
-              <div className="h-10 w-10 rounded-xl bg-medical-50 text-medical-600 flex items-center justify-center">
+            <div className="rounded-xl bg-white border border-slate-200/90 p-6 shadow-xs space-y-3 h-full">
+              <div className="h-10 w-10 rounded-lg bg-[#E8F6F5] text-[#159A9C] flex items-center justify-center">
                 <Eye className="h-5 w-5" />
               </div>
-              <h3 className="font-sans text-xl font-bold text-navy-900">Our Vision</h3>
+              <h3 className="font-sans text-lg font-bold text-navy-900">Our Vision</h3>
               <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                To lead global restorative and cosmetic dentistry through pain-free protocols, research, and natural ceramic aesthetics.
+                To lead restorative and implant dentistry through research-driven protocols, biological precision, and enduring natural aesthetics.
               </p>
-            </GlassCard>
+            </div>
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.2}>
-            <GlassCard variant="standard" className="space-y-3 bg-white border border-slate-200 h-full">
-              <div className="h-10 w-10 rounded-xl bg-medical-50 text-medical-600 flex items-center justify-center">
+            <div className="rounded-xl bg-white border border-slate-200/90 p-6 shadow-xs space-y-3 h-full">
+              <div className="h-10 w-10 rounded-lg bg-[#E8F6F5] text-[#159A9C] flex items-center justify-center">
                 <HeartHandshake className="h-5 w-5" />
               </div>
-              <h3 className="font-sans text-xl font-bold text-navy-900">Patient-Centric Mission</h3>
+              <h3 className="font-sans text-lg font-bold text-navy-900">Patient-Centric Mission</h3>
               <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                To make every dental visit stress-free, painless, and completely transparent with zero hidden costs.
+                To make every dental visit stress-free, pain-free, and completely transparent with patient education and zero hidden costs.
               </p>
-            </GlassCard>
+            </div>
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.3}>
-            <GlassCard variant="standard" className="space-y-3 bg-white border border-slate-200 h-full">
-              <div className="h-10 w-10 rounded-xl bg-medical-50 text-medical-600 flex items-center justify-center">
+            <div className="rounded-xl bg-white border border-slate-200/90 p-6 shadow-xs space-y-3 h-full">
+              <div className="h-10 w-10 rounded-lg bg-[#E8F6F5] text-[#159A9C] flex items-center justify-center">
                 <ShieldCheck className="h-5 w-5" />
               </div>
-              <h3 className="font-sans text-xl font-bold text-navy-900">Hospital-Grade Safety</h3>
+              <h3 className="font-sans text-lg font-bold text-navy-900">Hospital-Grade Safety</h3>
               <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                Strict multi-stage autoclave sterilization and HEPA air filtration exceeding CDC & OSHA guidelines.
+                Multi-stage autoclave sterilization, dedicated operatory disinfection, and medical air protocols exceeding regulatory standards.
               </p>
-            </GlassCard>
+            </div>
           </ScrollReveal>
         </div>
 
         {/* Clinic History Timeline */}
-        <div className="space-y-8">
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-medical-600">Our Legacy</span>
-            <h2 className="font-sans text-3xl font-extrabold text-navy-900">25 Years of Clinical Innovation</h2>
+        <div className="space-y-6">
+          <div className="text-center space-y-1">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#159A9C]">Our Heritage</span>
+            <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-[#0E3340]">25+ Years of Clinical Innovation</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {clinicTimeline.map((item, idx) => (
-              <GlassCard key={idx} variant="standard" className="p-6 bg-white border border-slate-200 space-y-2">
-                <span className="font-sans text-2xl font-extrabold text-medical-600">{item.year}</span>
+              <div key={idx} className="rounded-xl bg-white border border-slate-200/90 p-5 shadow-xs space-y-2">
+                <span className="font-sans text-2xl font-extrabold text-[#159A9C]">{item.year}</span>
                 <h4 className="text-sm font-bold text-navy-900">{item.title}</h4>
                 <p className="text-xs text-slate-500 leading-relaxed">{item.description}</p>
-              </GlassCard>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* About Dr. Arjun Jawahar Sharma Leadership Spotlight */}
+        {/* Dr. Arjun Jawahar Sharma Leadership Spotlight */}
         <ScrollReveal direction="up" delay={0.2}>
-          <div className="rounded-3xl bg-slate-50 border border-slate-200/90 p-6 sm:p-10 shadow-sm overflow-hidden">
+          <div className="rounded-xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-xs overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               <div className="md:col-span-4 flex justify-center">
-                <div className="relative aspect-[3/4] w-full max-w-[260px] rounded-2xl overflow-hidden shadow-md border-2 border-white bg-slate-100">
+                <div className="relative aspect-[3/4] w-full max-w-[240px] rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100">
                   <img
                     src="/doctors/dr-arjun-jawahar-sharma.jpg"
                     alt="Dr. Arjun Jawahar Sharma - Chief Prosthodontist & Oral Implantologist"
@@ -135,30 +134,30 @@ export default function AboutPage() {
               <div className="md:col-span-8 space-y-4 text-left">
                 <div className="space-y-1.5">
                   <Badge variant="gold" className="text-xs font-bold">Chief Prosthodontist & Oral Implantologist</Badge>
-                  <h3 className="font-sans text-2xl sm:text-3xl font-extrabold text-navy-900">
+                  <h3 className="font-sans text-2xl sm:text-3xl font-extrabold text-[#0E3340]">
                     Dr. Arjun Jawahar Sharma
                   </h3>
-                  <p className="text-xs sm:text-sm text-medical-600 font-bold">
+                  <p className="text-xs sm:text-sm text-[#159A9C] font-bold">
                     BDS, MDS (Prosthodontics & Oral Implantologist) | MBA (ISB) | Fellow, AOI & ICOI
                   </p>
                 </div>
 
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  With more than 14 years of clinical experience and over 10,000 dental implant placements, Dr. Arjun Jawahar Sharma specializes in complex full-mouth rehabilitation, computer-guided implantology, and natural aesthetic prosthetics.
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  With over 14 years of clinical experience and 10,000+ dental implant placements, Dr. Arjun Jawahar Sharma specializes in complex full-mouth rehabilitation, computer-guided implantology, and natural aesthetic prosthetics.
                 </p>
 
-                <div className="pt-1 flex flex-wrap gap-2 text-xs font-semibold text-slate-600">
-                  <span className="bg-white px-3 py-1 rounded-full border border-slate-200">14+ Years Experience</span>
-                  <span className="bg-white px-3 py-1 rounded-full border border-slate-200">10,000+ Implants Placed</span>
-                  <span className="bg-white px-3 py-1 rounded-full border border-slate-200">Fellow AOI & ICOI</span>
-                  <span className="bg-white px-3 py-1 rounded-full border border-slate-200">Full-Mouth Rehabilitation</span>
+                <div className="pt-1 flex flex-wrap gap-2 text-xs font-medium text-slate-700">
+                  <span className="bg-slate-50 px-3 py-1 rounded-md border border-slate-200">14+ Years Experience</span>
+                  <span className="bg-slate-50 px-3 py-1 rounded-md border border-slate-200">10,000+ Implants Placed</span>
+                  <span className="bg-slate-50 px-3 py-1 rounded-md border border-slate-200">Fellow AOI & ICOI</span>
+                  <span className="bg-slate-50 px-3 py-1 rounded-md border border-slate-200">Full-Mouth Rehabilitation</span>
                 </div>
 
                 <div className="pt-2">
                   <Link href="/team">
-                    <Button variant="outline" size="sm" className="font-bold text-xs">
-                      <span>View Full Doctor Profiles & Team</span>
-                      <ArrowRight className="ml-1.5 h-3.5 w-3.5 text-medical-600" />
+                    <Button variant="outline" size="sm" className="font-bold text-xs border-slate-200 hover:border-[#159A9C]">
+                      <span>View Faculty Credentials & Team</span>
+                      <ArrowRight className="ml-1.5 h-3.5 w-3.5 text-[#159A9C]" />
                     </Button>
                   </Link>
                 </div>
@@ -168,34 +167,36 @@ export default function AboutPage() {
         </ScrollReveal>
 
         {/* Certificates & Awards */}
-        <GlassCard variant="standard" className="p-8 bg-slate-50/70 border border-slate-200 space-y-6">
+        <div className="rounded-xl bg-slate-50/80 border border-slate-200/90 p-6 sm:p-8 space-y-6">
           <div className="text-center space-y-1">
-            <span className="text-xs font-bold uppercase tracking-widest text-medical-600">Accreditations</span>
-            <h3 className="font-sans text-2xl font-bold text-navy-900">Certified Clinical Excellence</h3>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#159A9C]">Accreditations</span>
+            <h3 className="font-sans text-xl sm:text-2xl font-bold text-[#0E3340]">Certified Clinical Excellence</h3>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {certificates.map((cert, i) => (
-              <div key={i} className="flex items-center space-x-3 p-4 rounded-xl bg-white border border-slate-200">
-                <CheckCircle2 className="h-5 w-5 text-medical-600 shrink-0" />
+              <div key={i} className="flex items-center space-x-3 p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs">
+                <CheckCircle2 className="h-5 w-5 text-[#159A9C] shrink-0" />
                 <span className="text-xs font-bold text-navy-900">{cert}</span>
               </div>
             ))}
           </div>
-        </GlassCard>
+        </div>
 
         {/* Book Appointment CTA Banner */}
-        <div className="text-center p-12 rounded-3xl bg-gradient-to-br from-sky-50 to-white border border-medical-200 shadow-xl space-y-6">
-          <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-navy-900">Experience Gentle Care Firsthand</h2>
-          <p className="text-sm text-slate-600 max-w-lg mx-auto">
-            Schedule a consultation with our specialist doctors Dr. Arjun Jawahar Sharma & Dr. Priyanka Sharma today.
+        <div className="text-center p-8 sm:p-12 rounded-xl bg-[#0E3340] text-white border border-slate-200/20 shadow-sm space-y-5">
+          <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-white">Experience Gentle Care Firsthand</h2>
+          <p className="text-xs sm:text-sm text-slate-300 max-w-lg mx-auto">
+            Schedule a comprehensive consultation with our specialist doctors Dr. Arjun Jawahar Sharma & Dr. Priyanka Sharma today.
           </p>
-          <Link href="/book">
-            <Button variant="gold" size="lg" className="font-bold text-sm">
-              <Calendar className="mr-2 h-5 w-5" />
-              <span>Book Consultation</span>
-            </Button>
-          </Link>
+          <div className="pt-2">
+            <Link href="/book">
+              <Button size="lg" className="bg-[#159A9C] hover:bg-[#117A7C] text-white font-bold text-sm px-6 h-11">
+                <Calendar className="mr-2 h-4 w-4" />
+                <span>Book Hospital Consultation</span>
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

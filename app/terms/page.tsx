@@ -1,41 +1,40 @@
 import { SectionHeader } from '@/components/shared/section-header';
-import { siteConfig } from '@/config/site.config';
 
 export const metadata = {
   title: 'Terms & Conditions',
-  description: 'Terms of Service and Clinical Policies for ÉLITE Dental Clinic.',
+  description: 'Terms of Service and Clinical Policies for Jawahar Dental Hospital.',
 };
 
 export default function TermsPage() {
   return (
-    <div className="pt-32 pb-24 bg-white text-navy-900 min-h-screen">
+    <div className="pt-28 pb-20 bg-[#FAFCFB] text-navy-900 min-h-screen">
       <div className="container max-w-3xl space-y-8">
         <SectionHeader
-          badge="Legal Terms"
+          badge="Hospital Policies"
           title="Terms & Conditions"
           highlightTitle="Clinical Policies."
-          description="Last updated: August 1, 2026. Terms governing appointment scheduling, treatment estimates, and website use."
+          description="Last updated: August 1, 2026. Terms governing appointment scheduling, treatment estimates, and website use for Jawahar Dental Hospital."
         />
 
-        <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed text-sm space-y-6">
+        <div className="rounded-xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-xs space-y-6 text-slate-700 leading-relaxed text-sm">
           <section className="space-y-2">
-            <h2 className="font-sans text-xl font-bold text-navy-900">1. Appointment Scheduling & Cancellations</h2>
+            <h2 className="font-sans text-lg font-bold text-[#0E3340]">1. Appointment Scheduling & Cancellations</h2>
             <p>
-              We value your time and reserve exclusive private suites for your appointments. We request at least 24 hours advance notice for cancellations or rescheduling to avoid a reservation hold fee.
+              We value your time and allocate dedicated operatory suites and specialist consultation hours for your appointment. We kindly request at least 24 hours advance notice for cancellations or rescheduling to allow us to accommodate emergency patients.
             </p>
           </section>
 
           <section className="space-y-2">
-            <h2 className="font-sans text-xl font-bold text-navy-900">2. Treatment Estimates & Financial Policy</h2>
+            <h2 className="font-sans text-lg font-bold text-[#0E3340]">2. Treatment Estimates & Clinical Plans</h2>
             <p>
-              Prior to initiating treatment, you will receive a transparent written cost estimate detailing procedure fees, material specifications, and insurance coverage estimates.
+              Prior to initiating any major restorative, surgical, or orthodontic treatment, you will receive a transparent clinical discussion and treatment estimate detailing procedure stages, material specifications, and projected visit schedules.
             </p>
           </section>
 
           <section className="space-y-2">
-            <h2 className="font-sans text-xl font-bold text-navy-900">3. Medical Disclaimer</h2>
+            <h2 className="font-sans text-lg font-bold text-[#0E3340]">3. Medical Disclaimer</h2>
             <p>
-              Information on this website is for educational purposes and does not constitute formal medical diagnosis. Diagnosis is provided exclusively following an in-person clinical examination.
+              Information on this website is provided for educational purposes and does not constitute a formal clinical diagnosis. A comprehensive medical and clinical examination, supplemented by radiographic imaging where indicated, is required before initiating dental care.
             </p>
           </section>
         </div>
