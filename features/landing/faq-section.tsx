@@ -1,10 +1,11 @@
 'use client';
 
 import * as React from 'react';
+import Link from 'next/link';
 import { SectionHeader } from '@/components/shared/section-header';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { faqData } from '@/constants/healthcare.data';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { ChevronDown, HelpCircle, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function FaqSection() {
@@ -23,21 +24,22 @@ export function FaqSection() {
             title="Frequently Asked Questions"
             highlightTitle="Everything You Need To Know."
             description="Clear answers about our treatment protocols, painless anesthesia, zero-interest payment options, and scheduling."
+            align="center"
           />
         </ScrollReveal>
 
-        {/* Clean Typography-Led Accordion (No Card Wrappers) */}
-        <div className="mt-12 divide-y divide-slate-200/80 border-y border-slate-200/80">
+        {/* Clean Typography-Led Accordion (No Bulky Card Wrappers) */}
+        <div className="mt-10 sm:mt-12 divide-y divide-slate-200/80 border-y border-slate-200/80">
           {faqData.map((faq, index) => {
             const isOpen = openIndex === index;
 
             return (
-              <ScrollReveal key={index} direction="up" delay={0.06 * index + 0.1}>
+              <ScrollReveal key={index} direction="up" delay={0.05 * index + 0.1}>
                 <div className="py-1">
                   <button
                     type="button"
                     onClick={() => toggleIndex(index)}
-                    className="w-full py-4 sm:py-5 text-left flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600 transition-colors group cursor-pointer touch-manipulation select-none"
+                    className="w-full py-4 sm:py-5 text-left flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600 focus-visible:ring-offset-2 transition-colors group cursor-pointer touch-manipulation select-none"
                     aria-expanded={isOpen}
                     id={`faq-trigger-${index}`}
                     aria-controls={`faq-answer-${index}`}
@@ -70,6 +72,17 @@ export function FaqSection() {
               </ScrollReveal>
             );
           })}
+        </div>
+
+        {/* Link to Dedicated FAQ Page */}
+        <div className="mt-8 text-center">
+          <Link
+            href="/faq"
+            className="inline-flex items-center space-x-1.5 text-xs font-bold text-medical-600 hover:text-navy-900 transition-colors py-2 px-3 rounded-lg hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600"
+          >
+            <span>Browse Full Patient FAQ &amp; Assistance Directory</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
       </div>
     </section>

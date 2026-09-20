@@ -42,6 +42,24 @@ export function XRayGallerySection() {
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const [selectedImage, setSelectedImage] = React.useState<XRayItem | null>(null);
 
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && selectedImage) {
+        setSelectedImage(null);
+      }
+    };
+
+    if (selectedImage) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedImage]);
+
   const handleScroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const scrollAmount = direction === 'left' ? -380 : 380;
@@ -49,14 +67,24 @@ export function XRayGallerySection() {
     }
   };
 
+  const handleContainerKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      handleScroll('left');
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      handleScroll('right');
+    }
+  };
+
   return (
     <section className="py-20 lg:py-24 bg-white text-navy-900 relative overflow-hidden border-b border-slate-200/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-6">
           <ScrollReveal direction="up" delay={0.1}>
             <SectionHeader
-              badge="Clinical Radiology & RVG Diagnostics"
-              title="Dental X-Rays & Surgical Case Records"
+              badge="Clinical Radiology &amp; RVG Diagnostics"
+              title="Dental X-Rays &amp; Surgical Case Records"
               highlightTitle="100% Real Clinical Diagnostics."
               description="Authentic RVG 2000 digital radiographs and surgical root stump extractions performed at Jawahar Dental Hospital."
               align="left"
@@ -70,7 +98,7 @@ export function XRayGallerySection() {
                 variant="outline"
                 size="icon"
                 onClick={() => handleScroll('left')}
-                className="h-10 w-10 rounded-lg border-slate-200 bg-white text-navy-900 shadow-xs hover:bg-medical-50 hover:text-medical-600 hover:border-medical-200 transition-colors touch-manipulation cursor-pointer"
+                className="h-10 w-10 rounded-lg border-slate-200 bg-white text-navy-900 shadow-xs hover:bg-medical-50 hover:text-medical-600 hover:border-medical-200 transition-colors touch-manipulation cursor-pointer focus-visible:ring-2 focus-visible:ring-medical-600"
                 aria-label="Scroll X-Rays Left"
               >
                 <ChevronLeft className="h-4.5 w-4.5" />
@@ -79,7 +107,7 @@ export function XRayGallerySection() {
                 variant="outline"
                 size="icon"
                 onClick={() => handleScroll('right')}
-                className="h-10 w-10 rounded-lg border-slate-200 bg-white text-navy-900 shadow-xs hover:bg-medical-50 hover:text-medical-600 hover:border-medical-200 transition-colors touch-manipulation cursor-pointer"
+                className="h-10 w-10 rounded-lg border-slate-200 bg-white text-navy-900 shadow-xs hover:bg-medical-50 hover:text-medical-600 hover:border-medical-200 transition-colors touch-manipulation cursor-pointer focus-visible:ring-2 focus-visible:ring-medical-600"
                 aria-label="Scroll X-Rays Right"
               >
                 <ChevronRight className="h-4.5 w-4.5" />
@@ -91,7 +119,11 @@ export function XRayGallerySection() {
         {/* Horizontally Scrollable X-Ray Slider */}
         <div
           ref={scrollRef}
-          className="flex space-x-5 sm:space-x-6 overflow-x-auto snap-x snap-mandatory scrollbar-none py-2 px-1 -mx-1"
+          onKeyDown={handleContainerKeyDown}
+          tabIndex={0}
+          role="region"
+          aria-label="Clinical X-Ray gallery carousel. Use left and right arrow keys to navigate."
+          className="flex space-x-5 sm:space-x-6 overflow-x-auto snap-x snap-mandatory scrollbar-none py-2 px-1 -mx-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600 focus-visible:ring-offset-2 rounded-xl"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {xrayData.map((item) => (
@@ -101,16 +133,16 @@ export function XRayGallerySection() {
               onClick={() => setSelectedImage(item)}
             >
               <div className="rounded-xl bg-[#FAFCFB] border border-slate-200/90 p-4 shadow-xs hover:border-medical-500/50 hover:shadow-sm transition-all duration-200 space-y-3.5">
-                {/* Image Container with Zoom Overlay */}
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-black border border-slate-100">
+                {/* Image Container with Dark Radiographic Mount */}
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-slate-950 border border-slate-800">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 
-                  {/* Watermark Tag */}
+                  {/* Modality Tag */}
                   <div className="absolute top-2.5 left-2.5 bg-medical-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded shadow-xs flex items-center space-x-1.5">
                     <Activity className="h-3 w-3 text-sky-200" />
                     <span>{item.category}</span>
@@ -135,7 +167,7 @@ export function XRayGallerySection() {
                 <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-medical-600">
                   <span className="flex items-center">
                     <ShieldCheck className="h-3.5 w-3.5 mr-1 text-emerald-600" />
-                    Verified Clinical Record
+                    Verified Diagnostic Record
                   </span>
                   <span className="text-slate-500 group-hover:text-medical-600 transition-colors">Tap to Inspect →</span>
                 </div>
@@ -147,23 +179,33 @@ export function XRayGallerySection() {
 
       {/* Lightbox Fullscreen Modal */}
       {selectedImage && (
-        <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="relative max-w-4xl w-full bg-navy-900 border border-slate-700 rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="xray-modal-title"
+          className="fixed inset-0 z-50 bg-navy-950/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div
+            className="relative max-w-4xl w-full bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-2xl p-5 sm:p-6 space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div>
-                <span className="text-xs text-sky-400 font-bold uppercase tracking-wider">{selectedImage.category}</span>
-                <h3 className="text-lg sm:text-xl font-bold text-white mt-0.5">{selectedImage.title}</h3>
+                <span className="text-[10px] text-medical-600 font-bold uppercase tracking-wider">{selectedImage.category}</span>
+                <h3 id="xray-modal-title" className="text-lg sm:text-xl font-bold text-navy-900 mt-0.5">{selectedImage.title}</h3>
               </div>
               <button
+                type="button"
                 onClick={() => setSelectedImage(null)}
-                className="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
+                className="p-2 rounded-lg bg-slate-100 text-slate-600 hover:text-navy-900 hover:bg-slate-200 transition-colors cursor-pointer"
                 aria-label="Close Lightbox"
               >
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="relative aspect-[4/3] w-full max-h-[70vh] rounded-xl overflow-hidden bg-black flex items-center justify-center border border-slate-800">
+            <div className="relative aspect-[4/3] w-full max-h-[65vh] rounded-xl overflow-hidden bg-slate-950 flex items-center justify-center border border-slate-800">
               <img
                 src={selectedImage.image}
                 alt={selectedImage.title}
@@ -171,9 +213,11 @@ export function XRayGallerySection() {
               />
             </div>
 
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-              {selectedImage.description}
-            </p>
+            <div className="p-3.5 rounded-lg bg-[#FAFCFB] border border-slate-200/80">
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                {selectedImage.description}
+              </p>
+            </div>
           </div>
         </div>
       )}

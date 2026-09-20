@@ -18,18 +18,40 @@ export function TestimonialsSection() {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      handleScroll('left');
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      handleScroll('right');
+    }
+  };
+
   return (
     <section className="py-20 lg:py-24 bg-white text-navy-900 relative overflow-hidden border-b border-slate-200/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-6">
           <ScrollReveal direction="up" delay={0.1}>
-            <SectionHeader
-              badge="Verified Patient Experiences"
-              title="Reflections of Patient Trust"
-              highlightTitle="100% Real Google Reviews."
-              description="Read genuine experiences from patients who underwent root canal treatments, implants, and oral surgery at Jawahar Dental Hospital."
-              align="left"
-            />
+            <div className="space-y-3">
+              <SectionHeader
+                badge="Verified Patient Experiences"
+                title="Reflections of Patient Trust"
+                highlightTitle="100% Real Google Reviews."
+                description="Read genuine experiences from patients who underwent root canal treatments, implants, and oral surgery at Jawahar Dental Hospital."
+                align="left"
+              />
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-50/80 border border-emerald-200/60 text-xs text-emerald-800">
+                <div className="flex items-center space-x-0.5 text-amber-500">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-3.5 w-3.5 fill-current" />
+                  ))}
+                </div>
+                <span className="font-bold text-navy-900">5.0 / 5.0</span>
+                <span className="text-slate-400">·</span>
+                <span className="font-medium text-slate-600">Verified Google Reviews · Kapurthala &amp; Delhi Branches</span>
+              </div>
+            </div>
           </ScrollReveal>
 
           {/* Navigation Scroll Controls */}
@@ -39,7 +61,7 @@ export function TestimonialsSection() {
                 variant="outline"
                 size="icon"
                 onClick={() => handleScroll('left')}
-                className="h-10 w-10 rounded-lg border-slate-200 bg-white text-navy-900 shadow-xs hover:bg-medical-50 hover:text-medical-600 hover:border-medical-200 transition-colors touch-manipulation cursor-pointer"
+                className="h-10 w-10 rounded-lg border-slate-200 bg-white text-navy-900 shadow-xs hover:bg-medical-50 hover:text-medical-600 hover:border-medical-200 transition-colors touch-manipulation cursor-pointer focus-visible:ring-2 focus-visible:ring-medical-600"
                 aria-label="Scroll Reviews Left"
               >
                 <ChevronLeft className="h-4.5 w-4.5" />
@@ -48,7 +70,7 @@ export function TestimonialsSection() {
                 variant="outline"
                 size="icon"
                 onClick={() => handleScroll('right')}
-                className="h-10 w-10 rounded-lg border-slate-200 bg-white text-navy-900 shadow-xs hover:bg-medical-50 hover:text-medical-600 hover:border-medical-200 transition-colors touch-manipulation cursor-pointer"
+                className="h-10 w-10 rounded-lg border-slate-200 bg-white text-navy-900 shadow-xs hover:bg-medical-50 hover:text-medical-600 hover:border-medical-200 transition-colors touch-manipulation cursor-pointer focus-visible:ring-2 focus-visible:ring-medical-600"
                 aria-label="Scroll Reviews Right"
               >
                 <ChevronRight className="h-4.5 w-4.5" />
@@ -60,7 +82,11 @@ export function TestimonialsSection() {
         {/* Horizontally Scrollable Reviews Ribbon */}
         <div
           ref={scrollRef}
-          className="flex space-x-5 sm:space-x-6 overflow-x-auto snap-x snap-mandatory scrollbar-none py-2 px-1 -mx-1"
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+          role="region"
+          aria-label="Patient testimonials carousel. Use left and right arrow keys to navigate."
+          className="flex space-x-5 sm:space-x-6 overflow-x-auto snap-x snap-mandatory scrollbar-none py-2 px-1 -mx-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600 focus-visible:ring-offset-2 rounded-xl"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {reviewsData.map((review) => (
@@ -72,14 +98,14 @@ export function TestimonialsSection() {
                 <div className="space-y-3.5">
                   {/* Rating Stars & Verification Tag */}
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-1 text-amber-400">
+                    <div className="flex items-center space-x-1 text-amber-500">
                       {[...Array(review.rating)].map((_, i) => (
                         <Star key={i} className="h-4 w-4 fill-current" />
                       ))}
                     </div>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/70 flex items-center space-x-1">
                       <CheckCircle2 className="h-3 w-3 text-emerald-600" />
-                      <span>Verified Google Review</span>
+                      <span>Verified Patient</span>
                     </span>
                   </div>
 
@@ -118,7 +144,7 @@ export function TestimonialsSection() {
         <div className="mt-10 text-center">
           <Link
             href="/reviews"
-            className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-medical-600 hover:text-navy-900 transition-colors py-2 px-4 rounded-lg hover:bg-slate-50 border border-transparent hover:border-slate-200"
+            className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-medical-600 hover:text-navy-900 transition-colors py-2 px-4 rounded-lg hover:bg-slate-50 border border-transparent hover:border-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600"
           >
             <MessageSquareQuote className="h-4 w-4" />
             <span>Read All Verified Patient Reviews &amp; Experiences →</span>
