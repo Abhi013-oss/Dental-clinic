@@ -1,21 +1,18 @@
 'use client';
 
 import * as React from 'react';
-import { useInView } from 'framer-motion';
 
 interface CountUpNumberProps {
   value: string; // e.g. "12,500+", "25+", "14", "99.8%"
   duration?: number;
 }
 
-export function CountUpNumber({ value, duration = 2 }: CountUpNumberProps) {
+export function CountUpNumber({ value, duration = 1.5 }: CountUpNumberProps) {
+  // Initialize with actual value so SSR and initial render always display the authentic number
+  const [displayValue, setDisplayValue] = React.useState(value);
   const ref = React.useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
-  const [displayValue, setDisplayValue] = React.useState('0');
 
   React.useEffect(() => {
-    if (!isInView) return;
-
     // Extract numerical part and suffix/prefix
     const match = value.match(/^([\d.,]+)(.*)$/);
     if (!match) {
@@ -37,7 +34,6 @@ export function CountUpNumber({ value, duration = 2 }: CountUpNumberProps) {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
       
-      // Easing function: easeOutExpo for luxury smooth deceleration
       const easeOutProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       const currentNum = targetNum * easeOutProgress;
 
@@ -58,7 +54,7 @@ export function CountUpNumber({ value, duration = 2 }: CountUpNumberProps) {
     animationFrameId = requestAnimationFrame(updateCount);
 
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isInView, value, duration]);
+  }, [value, duration]);
 
   return <span ref={ref}>{displayValue}</span>;
 }
