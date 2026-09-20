@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { simpleBookingSchema, SimpleBookingFormValues, DEFAULT_TIME_SLOTS } from '@/types/booking.types';
@@ -12,7 +13,7 @@ import { Select } from '@/components/ui/select';
 import { useToast } from '@/components/ui/toast';
 import { sanitizeInput } from '@/lib/sanitize';
 import { siteConfig } from '@/config/site.config';
-import { Calendar, Clock, CheckCircle2, PhoneCall, MessageSquare, ShieldCheck, Lock, UserCheck, Globe } from 'lucide-react';
+import { Calendar, Clock, CheckCircle2, PhoneCall, MessageSquare, ShieldCheck, Lock, ArrowRight } from 'lucide-react';
 
 const STORAGE_KEY = 'elite_booked_slots_v1';
 
@@ -32,6 +33,10 @@ export const COUNTRY_CODES = [
 ];
 
 export function SimpleBookingForm() {
+  const searchParams = useSearchParams();
+  const paramDoctor = searchParams?.get('doctor');
+  const paramService = searchParams?.get('service');
+
   const [bookedSlots, setBookedSlots] = React.useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
@@ -73,9 +78,24 @@ export function SimpleBookingForm() {
     },
   });
 
+  // Pre-populate doctor or service if provided via URL search query
+  React.useEffect(() => {
+    if (paramDoctor) {
+      const docExists = doctorsData.some((d) => d.id === paramDoctor);
+      if (docExists) {
+        setValue('doctorId', paramDoctor, { shouldDirty: true, shouldValidate: true });
+      }
+    }
+    if (paramService) {
+      const match = servicesData.find((s) => s.id === paramService || s.slug === paramService);
+      if (match) {
+        setValue('serviceId', match.id, { shouldDirty: true, shouldValidate: true });
+      }
+    }
+  }, [paramDoctor, paramService, setValue]);
+
   const selectedDate = watch('preferredDate');
   const selectedTimeSlot = watch('preferredTimeSlot');
-  const selectedDoctorId = watch('doctorId');
 
   const isSlotBooked = (date: string, time: string) => {
     if (!date || !time) return false;
@@ -164,17 +184,19 @@ export function SimpleBookingForm() {
       setBookedSlots(updatedBooked);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedBooked));
 
-      const refCode = resData.data?.id ? `JAWAHAR-${resData.data.id.substring(0, 8).toUpperCase()}` : `JAWAHAR-${Math.floor(100000 + Math.random() * 900000)}`;
-      
-      const docObj = doctorsData.find(d => d.id === sanitized.doctorId);
+      const refCode = resData.data?.id
+        ? `JAWAHAR-${resData.data.id.substring(0, 8).toUpperCase()}`
+        : `JAWAHAR-${Math.floor(100000 + Math.random() * 900000)}`;
+
+      const docObj = doctorsData.find((d) => d.id === sanitized.doctorId);
       const doctorName = docObj ? docObj.name : 'Any Available Doctor / Specialist';
 
       setLastBooking({ refCode, data: sanitized, doctorName });
 
       showToast({
         type: 'success',
-        title: 'Appointment Reserved',
-        message: `Reserved with ${doctorName} for ${sanitized.preferredDate} at ${sanitized.preferredTimeSlot}.`,
+        title: 'Appointment Request Received',
+        message: `Requested with ${doctorName} for ${sanitized.preferredDate} at ${sanitized.preferredTimeSlot}.`,
       });
 
       setIsSuccess(true);
@@ -182,7 +204,7 @@ export function SimpleBookingForm() {
       const msg = e instanceof Error ? e.message : 'Could not complete reservation.';
       showToast({
         type: 'error',
-        title: 'Booking Error',
+        title: 'Booking Notice',
         message: msg,
       });
     } finally {
@@ -199,69 +221,76 @@ export function SimpleBookingForm() {
   ];
 
   if (isSuccess && lastBooking) {
+    const serviceTitle = servicesData.find((s) => s.id === lastBooking.data.serviceId)?.title || lastBooking.data.serviceId;
+
     return (
-      <div className="p-8 sm:p-12 text-center max-w-xl mx-auto bg-white border border-slate-200 rounded-3xl shadow-xl space-y-6 animate-in fade-in zoom-in-95 duration-300">
-        <div className="h-16 w-16 rounded-full bg-medical-50 border border-medical-200 text-medical-600 flex items-center justify-center mx-auto shadow-md">
-          <CheckCircle2 className="h-10 w-10 text-medical-600" />
+      <div className="p-6 sm:p-10 text-center max-w-xl mx-auto bg-white border border-slate-200/90 rounded-2xl shadow-sm space-y-6 animate-in fade-in zoom-in-95 duration-200">
+        <div className="h-14 w-14 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto">
+          <CheckCircle2 className="h-8 w-8 text-emerald-600" />
         </div>
 
-        <div className="space-y-2">
-          <h2 className="font-sans text-3xl font-extrabold text-navy-900">Appointment Confirmed</h2>
-          <p className="text-xs text-slate-500">Booking Reference: <strong className="text-medical-600 font-mono text-sm">{lastBooking.refCode}</strong></p>
+        <div className="space-y-1.5">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200/70 inline-block">
+            Consultation Request Logged
+          </span>
+          <h2 className="font-sans text-2xl font-extrabold text-navy-900">Appointment Request Received</h2>
+          <p className="text-xs text-slate-500 font-medium">
+            Booking Reference: <strong className="text-medical-600 font-mono text-xs">{lastBooking.refCode}</strong>
+          </p>
         </div>
 
-        <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-left space-y-3 text-xs">
-          <div className="flex justify-between border-b border-slate-200 pb-2">
+        <div className="p-5 rounded-xl bg-[#FAFCFB] border border-slate-200/90 text-left space-y-2.5 text-xs">
+          <div className="flex justify-between border-b border-slate-200/70 pb-2">
             <span className="text-slate-500">Patient Name:</span>
             <span className="font-bold text-navy-900">{lastBooking.data.fullName}</span>
           </div>
-          <div className="flex justify-between border-b border-slate-200 pb-2">
+          <div className="flex justify-between border-b border-slate-200/70 pb-2">
             <span className="text-slate-500">Selected Doctor:</span>
             <span className="font-bold text-medical-600">{lastBooking.doctorName}</span>
           </div>
-          <div className="flex justify-between border-b border-slate-200 pb-2">
+          <div className="flex justify-between border-b border-slate-200/70 pb-2">
             <span className="text-slate-500">Treatment:</span>
-            <span className="font-bold text-navy-900">{servicesData.find(s => s.id === lastBooking.data.serviceId)?.title}</span>
+            <span className="font-bold text-navy-900 truncate max-w-[200px]">{serviceTitle}</span>
           </div>
-          <div className="flex justify-between border-b border-slate-200 pb-2">
+          <div className="flex justify-between border-b border-slate-200/70 pb-2">
             <span className="text-slate-500">Phone Number:</span>
             <span className="font-bold text-navy-900 font-mono">{lastBooking.data.phone}</span>
           </div>
-          <div className="flex justify-between border-b border-slate-200 pb-2">
-            <span className="text-slate-500">Reserved Date:</span>
+          <div className="flex justify-between border-b border-slate-200/70 pb-2">
+            <span className="text-slate-500">Requested Date:</span>
             <span className="font-bold text-navy-900">{lastBooking.data.preferredDate}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-slate-500">Time Slot:</span>
-            <span className="font-bold text-emerald-600">{lastBooking.data.preferredTimeSlot}</span>
+            <span className="text-slate-500">Time Window:</span>
+            <span className="font-bold text-emerald-700">{lastBooking.data.preferredTimeSlot}</span>
           </div>
         </div>
 
         <p className="text-xs text-slate-600 leading-relaxed font-normal">
-          Saved to clinical database. Confirmation sent to <strong className="text-navy-900">{lastBooking.data.email}</strong>.
+          Your consultation details have been recorded in our hospital records. Confirmation sent to <strong className="text-navy-900">{lastBooking.data.email}</strong>. Our reception team will verify your arrival time.
         </p>
 
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <a href={`tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, '')}`} className="w-full sm:w-auto">
-            <Button variant="gold" size="sm" className="w-full font-bold text-xs h-11 px-5 touch-manipulation">
+            <Button variant="gold" size="sm" className="w-full font-bold text-xs h-10 px-5 touch-manipulation">
               <PhoneCall className="mr-2 h-4 w-4" />
               <span>Call Reception</span>
             </Button>
           </a>
 
           <a
-            href={`https://wa.me/919910066721?text=Hi,%20I%20have%20booked%20an%20appointment%20Ref:%20${lastBooking.refCode}%20with%20${encodeURIComponent(lastBooking.doctorName)}`}
+            href={`https://wa.me/919910066721?text=Hi,%20I%20have%20submitted%20an%20appointment%20request%20Ref:%20${lastBooking.refCode}%20for%20${encodeURIComponent(serviceTitle)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto"
           >
-            <Button variant="outline" size="sm" className="w-full font-bold text-xs h-11 px-5 touch-manipulation">
+            <Button variant="outline" size="sm" className="w-full font-bold text-xs h-10 px-5 touch-manipulation hover:bg-slate-50">
               <MessageSquare className="mr-2 h-4 w-4 text-emerald-600" />
-              <span>WhatsApp Direct</span>
+              <span>WhatsApp Reception</span>
             </Button>
           </a>
 
-          <Button variant="ghost" size="sm" onClick={handleResetForm} className="font-bold text-xs h-11 px-5 touch-manipulation">
+          <Button variant="ghost" size="sm" onClick={handleResetForm} className="w-full sm:w-auto font-semibold text-xs h-10 px-4 touch-manipulation">
             Book Another Visit
           </Button>
         </div>
@@ -270,19 +299,23 @@ export function SimpleBookingForm() {
   }
 
   return (
-    <div className="p-6 sm:p-10 max-w-3xl mx-auto bg-white border border-slate-200 rounded-3xl shadow-md space-y-6">
+    <div className="p-6 sm:p-8 md:p-10 bg-white border border-slate-200/90 rounded-2xl shadow-xs space-y-6">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <input type="hidden" {...register('preferredTimeSlot')} />
 
         <div className="border-b border-slate-100 pb-4">
-          <h2 className="font-sans text-2xl font-extrabold text-navy-900">Book Your Dental Visit</h2>
-          <p className="text-xs text-slate-500 mt-1">Select your preferred treatment doctor, appointment date, and time slot.</p>
+          <h2 className="font-sans text-xl sm:text-2xl font-extrabold text-navy-900">
+            Consultation Scheduling Details
+          </h2>
+          <p className="text-xs text-slate-500 mt-1">
+            Select your clinical procedure, preferred doctor, appointment date, and available time slot.
+          </p>
         </div>
 
         {/* 1. Treatment Service & Preferred Doctor Dropdowns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Select
-            label="Treatment Service *"
+            label="Treatment Department / Service *"
             options={servicesData.map((s) => ({
               value: s.id,
               label: s.title,
@@ -300,9 +333,9 @@ export function SimpleBookingForm() {
         </div>
 
         {/* 2. Date Selection & Time Slot Matrix */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <Input
-            label="Preferred Date *"
+            label="Preferred Consultation Date *"
             type="date"
             min={todayStr}
             error={errors.preferredDate?.message}
@@ -310,10 +343,10 @@ export function SimpleBookingForm() {
           />
 
           <div className="space-y-1.5">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-600">
               Select Time Slot *
             </label>
-            <div className="grid grid-cols-1 gap-2">
+            <div className="grid grid-cols-1 gap-1.5 max-h-56 overflow-y-auto pr-1">
               {DEFAULT_TIME_SLOTS.map((slot) => {
                 const booked = isSlotBooked(selectedDate, slot.time);
                 const timePassed = isSlotTimePassed(selectedDate, slot.time);
@@ -325,33 +358,43 @@ export function SimpleBookingForm() {
                     type="button"
                     key={slot.id}
                     disabled={isDisabled}
-                    onClick={() => setValue('preferredTimeSlot', slot.time, { shouldValidate: true, shouldDirty: true, shouldTouch: true })}
-                    className={`p-3 rounded-xl border text-xs font-bold text-left flex items-center justify-between transition-all select-none touch-manipulation cursor-pointer ${
+                    onClick={() =>
+                      setValue('preferredTimeSlot', slot.time, {
+                        shouldValidate: true,
+                        shouldDirty: true,
+                        shouldTouch: true,
+                      })
+                    }
+                    className={`p-2.5 rounded-lg border text-xs font-semibold text-left flex items-center justify-between transition-all select-none touch-manipulation cursor-pointer ${
                       isDisabled
-                        ? 'bg-slate-100 border-slate-200 text-slate-400 opacity-60 cursor-not-allowed'
+                        ? 'bg-slate-50 border-slate-200/70 text-slate-400 opacity-60 cursor-not-allowed'
                         : isSelected
-                        ? 'border-medical-600 bg-medical-50 text-medical-700 ring-2 ring-medical-600/20'
+                        ? 'border-medical-600 bg-medical-50/80 text-medical-700 ring-1 ring-medical-600'
                         : 'border-slate-200 bg-white hover:bg-slate-50 text-navy-900'
                     }`}
                   >
                     <div className="flex items-center space-x-2">
-                      <Clock className={`h-3.5 w-3.5 ${isDisabled ? 'text-slate-400' : 'text-medical-600'}`} />
+                      <Clock
+                        className={`h-3.5 w-3.5 ${
+                          isDisabled ? 'text-slate-400' : 'text-medical-600'
+                        }`}
+                      />
                       <span className={isDisabled ? 'text-slate-400 line-through decoration-slate-300' : ''}>
                         {slot.time} ({slot.period})
                       </span>
                     </div>
 
                     {booked ? (
-                      <span className="inline-flex items-center text-[10px] font-extrabold text-rose-600 uppercase bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200">
-                        <Lock className="h-3 w-3 mr-1 text-rose-500" /> BOOKED
+                      <span className="inline-flex items-center text-[10px] font-bold text-rose-600 uppercase bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">
+                        <Lock className="h-2.5 w-2.5 mr-1 text-rose-500" /> Booked
                       </span>
                     ) : timePassed ? (
-                      <span className="inline-flex items-center text-[10px] font-extrabold text-slate-500 uppercase bg-slate-200/80 px-2 py-0.5 rounded-md border border-slate-300">
-                        <Lock className="h-3 w-3 mr-1 text-slate-400" /> TIME PASSED
+                      <span className="inline-flex items-center text-[10px] font-bold text-slate-500 uppercase bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">
+                        <Lock className="h-2.5 w-2.5 mr-1 text-slate-400" /> Passed
                       </span>
                     ) : (
-                      <span className="text-[10px] font-extrabold text-emerald-600 uppercase">
-                        AVAILABLE
+                      <span className="text-[10px] font-bold text-emerald-700 uppercase">
+                        Available
                       </span>
                     )}
                   </button>
@@ -366,10 +409,10 @@ export function SimpleBookingForm() {
 
         {/* 3. Patient Information: Name, Email & Phone with Country Code Selector */}
         <div className="pt-4 border-t border-slate-100 space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <Input
               label="Full Name *"
-              placeholder="Victoria Sterling"
+              placeholder="e.g. Gurpreet Singh"
               error={errors.fullName?.message}
               {...register('fullName')}
             />
@@ -377,7 +420,7 @@ export function SimpleBookingForm() {
             <Input
               label="Email Address *"
               type="email"
-              placeholder="victoria@example.com"
+              placeholder="patient@example.com"
               error={errors.email?.message}
               {...register('email')}
             />
@@ -385,8 +428,8 @@ export function SimpleBookingForm() {
 
           {/* Country Code + Phone Number Input Field */}
           <div className="space-y-1.5">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500">
-              Phone Number *
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-600">
+              Phone / Mobile Number *
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="sm:col-span-1">
@@ -407,10 +450,11 @@ export function SimpleBookingForm() {
           </div>
         </div>
 
+        {/* Action & Confidentiality Strip */}
         <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center text-xs text-slate-500">
-            <ShieldCheck className="h-4 w-4 text-medical-600 mr-1.5 shrink-0" />
-            <span>Instant slot lock & 100% HIPAA confidential</span>
+            <ShieldCheck className="h-4 w-4 text-emerald-600 mr-1.5 shrink-0" />
+            <span>Encrypted transmission · Confidential medical record</span>
           </div>
 
           <Button
@@ -418,10 +462,10 @@ export function SimpleBookingForm() {
             variant="gold"
             size="lg"
             isLoading={isSubmitting}
-            className="w-full sm:w-auto font-bold text-sm px-8 h-14 touch-manipulation cursor-pointer"
+            className="w-full sm:w-auto font-bold text-xs sm:text-sm px-7 h-12 rounded-lg touch-manipulation cursor-pointer shadow-xs"
           >
-            <Calendar className="mr-2 h-5 w-5" />
-            <span>Confirm Appointment Booking</span>
+            <Calendar className="mr-2 h-4 w-4" />
+            <span>Confirm Appointment Request</span>
           </Button>
         </div>
       </form>
