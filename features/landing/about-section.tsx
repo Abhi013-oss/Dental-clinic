@@ -13,12 +13,12 @@ export function AboutSection() {
           {/* Left Column: Authentic Hospital & Clinic Atmosphere */}
           <div className="lg:col-span-6">
             <ScrollReveal direction="right" delay={0.15}>
-              <div className="relative rounded-2xl bg-white p-2.5 sm:p-3 border border-slate-200/90 shadow-sm">
+              <div className="relative rounded-2xl bg-white p-2.5 sm:p-3 border border-slate-200/90 shadow-sm hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 group cursor-pointer">
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-100">
                   <img
                     src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1200&auto=format&fit=crop"
                     alt="Jawahar Dental Hospital Modern Clinic Atmosphere"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/50 via-transparent to-transparent opacity-60" />
 

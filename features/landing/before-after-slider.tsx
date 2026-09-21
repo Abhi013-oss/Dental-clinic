@@ -70,7 +70,7 @@ export function BeforeAfterSlider() {
               aria-valuemin={0}
               aria-valuemax={100}
               aria-label="Before and after clinical comparison slider. Use left and right arrow keys to adjust view."
-              className="relative aspect-[16/10] sm:aspect-[21/9] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-sm select-none cursor-ew-resize focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600 focus-visible:ring-offset-2"
+              className="relative aspect-[16/10] sm:aspect-[21/9] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-sm hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 select-none cursor-ew-resize focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-600 focus-visible:ring-offset-2"
               onMouseDown={() => setIsDragging(true)}
               onMouseUp={() => setIsDragging(false)}
               onMouseLeave={() => setIsDragging(false)}

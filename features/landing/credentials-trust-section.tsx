@@ -25,14 +25,14 @@ export function CredentialsTrustSection() {
           <div className="lg:col-span-6">
             <ScrollReveal direction="right" delay={0.2}>
               <div
-                className="relative rounded-2xl bg-white p-2.5 sm:p-3 border border-slate-200/90 shadow-sm group cursor-pointer"
+                className="relative rounded-2xl bg-white p-2.5 sm:p-3 border border-slate-200/90 shadow-sm hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 group cursor-pointer"
                 onClick={() => setModalOpen(true)}
               >
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-100">
                   <img
                     src="/certificates/doctors-certificates.png"
                     alt="Doctors Degrees, Awards, Fellowships & Certificates"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 

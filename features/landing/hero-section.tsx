@@ -104,12 +104,12 @@ export function HeroSection() {
           {/* Right Column: Hero Clinical Visual (5 cols on desktop) */}
           <div className="lg:col-span-5 relative">
             <ScrollReveal direction="left" delay={0.2}>
-              <div className="relative rounded-2xl bg-white p-2.5 sm:p-3 border border-slate-200/90 shadow-sm">
+              <div className="relative rounded-2xl bg-white p-2.5 sm:p-3 border border-slate-200/90 shadow-sm hover:-translate-y-1.5 hover:shadow-md hover:border-[#159A9C]/50 transition-all duration-300 group cursor-pointer">
                 <div className="relative aspect-[4/5] sm:aspect-[5/6] lg:aspect-[4/5] rounded-xl overflow-hidden bg-slate-100">
                   <img
                     src="/images/jawahar-dental-hospital-building.jpg"
                     alt="Jawahar Dental Hospital Exterior Building & Modern Clinic Entrance"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/40 via-transparent to-transparent opacity-60" />

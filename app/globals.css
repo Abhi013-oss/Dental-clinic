@@ -140,22 +140,30 @@
 }
 
 /* Premium Healthcare Hover & Micro-Interactions */
-.hover-card-elevate {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+.hover-card-elevate,
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease;
 }
-.hover-card-elevate:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 28px -4px rgba(14, 51, 64, 0.08), 0 4px 10px -2px rgba(14, 51, 64, 0.04);
-  border-color: rgba(21, 154, 156, 0.5);
+.hover-card-elevate:hover,
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px -4px rgba(14, 51, 64, 0.1), 0 6px 14px -3px rgba(21, 154, 156, 0.08);
+  border-color: rgba(21, 154, 156, 0.5) !important;
 }
 
+/* Universal Image Zoom on Card / Image Hover */
 .hover-image-zoom {
   overflow: hidden;
 }
-.hover-image-zoom img {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+.hover-image-zoom img,
+.group img:not(.no-zoom) {
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.55s ease;
+  will-change: transform;
 }
-.hover-image-zoom:hover img {
+.hover-image-zoom:hover img,
+.group:hover img:not(.no-zoom) {
   transform: scale(1.05);
 }
 
