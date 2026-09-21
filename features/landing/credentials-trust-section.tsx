@@ -5,6 +5,254 @@ import { SectionHeader } from '@/components/shared/section-header';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { Award, ShieldCheck, Maximize2, X, GraduationCap, CheckCircle2 } from 'lucide-react';
 
+interface CredentialItem {
+  id: string;
+  category: string;
+  categoryColor: string;
+  title: string;
+  doctor?: string;
+  descriptionPre: string;
+  descriptionPost: string;
+  icon: React.ComponentType<{ className?: string }>;
+  iconBg: string;
+  iconBorder: string;
+  iconColor: string;
+  glowColor: string;
+}
+
+const credentialsData: CredentialItem[] = [
+  {
+    id: 'fellowship',
+    category: 'Surgical Fellowship',
+    categoryColor: 'text-[#159A9C]',
+    title: 'Fellowship - Academy of Oral Implantology',
+    doctor: 'Dr. Arjun Jawahar Sharma',
+    descriptionPre: 'Conferred upon ',
+    descriptionPost: ' (BDS, MDS) for advanced mastery in dental implant surgery and full mouth prosthetics.',
+    icon: GraduationCap,
+    iconBg: 'bg-[#E8F6F5]',
+    iconBorder: 'border-[#159A9C]/50',
+    iconColor: 'text-[#159A9C]',
+    glowColor: 'rgba(21, 154, 156, 0.25)',
+  },
+  {
+    id: 'award',
+    category: 'National Honor',
+    categoryColor: 'text-amber-600',
+    title: '4th Dental Academic Excellence Award',
+    doctor: 'GuidENT Certificate of Excellence',
+    descriptionPre: 'Prestigious ',
+    descriptionPost: ' awarded for top academic performance in prosthodontics and clinical research.',
+    icon: Award,
+    iconBg: 'bg-amber-50',
+    iconBorder: 'border-amber-300',
+    iconColor: 'text-amber-600',
+    glowColor: 'rgba(245, 158, 11, 0.25)',
+  },
+  {
+    id: 'residency',
+    category: 'Premier Residency',
+    categoryColor: 'text-emerald-600',
+    title: 'GRIPMER Sri Ganga Ram Hospital Residency',
+    doctor: 'Dr. Priyanka Sharma',
+    descriptionPre: 'Certified Senior Residency & Clinical Training completed by ',
+    descriptionPost: ' at Sri Ganga Ram Hospital, New Delhi.',
+    icon: CheckCircle2,
+    iconBg: 'bg-emerald-50',
+    iconBorder: 'border-emerald-300',
+    iconColor: 'text-emerald-600',
+    glowColor: 'rgba(16, 185, 129, 0.25)',
+  },
+];
+
+// Write-on Typewriter Heading Component
+function TypewriterHeading({
+  text,
+  active,
+  speed = 22,
+  onComplete,
+}: {
+  text: string;
+  active: boolean;
+  speed?: number;
+  onComplete?: () => void;
+}) {
+  const [displayed, setDisplayed] = React.useState('');
+  const [isTyping, setIsTyping] = React.useState(false);
+  const [completed, setCompleted] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!active || completed) return;
+    setIsTyping(true);
+    let i = 0;
+    const interval = setInterval(() => {
+      i++;
+      setDisplayed(text.slice(0, i));
+      if (i >= text.length) {
+        clearInterval(interval);
+        setIsTyping(false);
+        setCompleted(true);
+        if (onComplete) onComplete();
+      }
+    }, speed);
+    return () => clearInterval(interval);
+  }, [active, text, speed, completed, onComplete]);
+
+  // If not active yet, show empty (or if already completed, show full text)
+  if (!active && !completed) {
+    return <span className="opacity-0">{text}</span>;
+  }
+
+  return (
+    <span className="relative">
+      <span>{completed ? text : displayed}</span>
+      {isTyping && (
+        <span
+          className="inline-block w-[2px] h-[1em] bg-[#159A9C] ml-1 animate-pulse align-middle"
+          aria-hidden="true"
+        />
+      )}
+    </span>
+  );
+}
+
+// Interactive Animated Timeline Register
+function AnimatedCredentialsTimeline() {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [activeStep, setActiveStep] = React.useState(-1);
+  const [linePercent, setLinePercent] = React.useState(0);
+
+  React.useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          // Trigger step 0 (first milestone)
+          setActiveStep(0);
+          setLinePercent(10);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Handle progression from Step 0 -> Step 1 -> Step 2
+  const handleStep0Complete = React.useCallback(() => {
+    setLinePercent(55);
+    setTimeout(() => {
+      setActiveStep(1);
+    }, 250);
+  }, []);
+
+  const handleStep1Complete = React.useCallback(() => {
+    setLinePercent(100);
+    setTimeout(() => {
+      setActiveStep(2);
+    }, 250);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative py-2">
+      {/* Background Track Line */}
+      <div
+        className="absolute top-6 bottom-8 left-[21px] sm:left-[23px] w-[2px] bg-slate-200 -translate-x-1/2 rounded-full"
+        aria-hidden="true"
+      />
+
+      {/* Animated Growing Glowing Teal Line ("Lines Coming") */}
+      <div
+        className="absolute top-6 left-[21px] sm:left-[23px] w-[2.5px] bg-gradient-to-b from-[#159A9C] via-[#0E3340] to-[#10B981] -translate-x-1/2 rounded-full transition-all duration-700 ease-out shadow-xs"
+        style={{
+          height: `calc(${linePercent}% - 48px)`,
+          maxHeight: 'calc(100% - 48px)',
+          opacity: activeStep >= 0 ? 1 : 0,
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Credentials Items */}
+      <div className="space-y-8 sm:space-y-10 relative">
+        {credentialsData.map((item, idx) => {
+          const isItemActive = activeStep >= idx;
+          const Icon = item.icon;
+
+          return (
+            <div
+              key={item.id}
+              className="relative flex items-start group"
+              style={{
+                opacity: isItemActive ? 1 : 0.4,
+                transition: 'opacity 0.5s ease',
+              }}
+            >
+              {/* Circular Milestone Icon ("Pops in with glow") */}
+              <div
+                className={`relative z-10 shrink-0 h-11 w-11 sm:h-12 sm:w-12 rounded-full ${item.iconBg} ${item.iconBorder} border flex items-center justify-center ${item.iconColor} shadow-xs transition-all duration-500 ease-out`}
+                style={{
+                  transform: isItemActive ? 'scale(1)' : 'scale(0.75)',
+                  boxShadow: isItemActive ? `0 0 16px ${item.glowColor}` : 'none',
+                }}
+              >
+                <Icon className="h-5 w-5 sm:h-5.5 sm:w-5.5 transition-transform duration-300 group-hover:scale-110" />
+              </div>
+
+              {/* Text Container with Write-on Heading */}
+              <div className="ml-4 sm:ml-6 flex-1 pt-0.5">
+                {/* Category Badge */}
+                <div
+                  className={`text-[11px] sm:text-xs font-bold uppercase tracking-wider ${item.categoryColor} transition-all duration-400`}
+                  style={{
+                    opacity: isItemActive ? 1 : 0,
+                    transform: isItemActive ? 'translate3d(0, 0, 0)' : 'translate3d(0, 8px, 0)',
+                  }}
+                >
+                  {item.category}
+                </div>
+
+                {/* Write-on Headline */}
+                <h3 className="font-sans text-base sm:text-lg lg:text-xl font-extrabold text-[#0E3340] mt-0.5 tracking-tight">
+                  <TypewriterHeading
+                    text={item.title}
+                    active={isItemActive}
+                    speed={20}
+                    onComplete={
+                      idx === 0
+                        ? handleStep0Complete
+                        : idx === 1
+                        ? handleStep1Complete
+                        : undefined
+                    }
+                  />
+                </h3>
+
+                {/* Supporting Description with Fade/Slide In */}
+                <p
+                  className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed transition-all duration-500"
+                  style={{
+                    opacity: isItemActive ? 1 : 0,
+                    transform: isItemActive ? 'translate3d(0, 0, 0)' : 'translate3d(0, 8px, 0)',
+                    transitionDelay: `${idx * 0.1 + 0.2}s`,
+                  }}
+                >
+                  {item.descriptionPre}
+                  {item.doctor && <strong>{item.doctor}</strong>}
+                  {item.descriptionPost}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export function CredentialsTrustSection() {
   const [modalOpen, setModalOpen] = React.useState(false);
 
@@ -51,58 +299,10 @@ export function CredentialsTrustSection() {
             </ScrollReveal>
           </div>
 
-          {/* Right Side: Institutional Credential Register (Connected Timeline, No Floating Cards) */}
+          {/* Right Side: Institutional Credential Register with Animated Lines & Write-on Effect */}
           <div className="lg:col-span-6">
-            <ScrollReveal direction="up" delay={0.25}>
-              <div className="space-y-6 relative pl-2 sm:pl-4 border-l-2 border-slate-200 ml-2 sm:ml-4">
-                {/* Credential 1 */}
-                <div className="relative pl-6 sm:pl-8">
-                  <div className="absolute -left-[31px] sm:-left-[39px] top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-medical-50 text-medical-600 border border-medical-200/80 shadow-xs">
-                    <GraduationCap className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-medical-600">Surgical Fellowship</span>
-                    <h3 className="font-sans text-base sm:text-lg font-bold text-navy-900 mt-0.5">
-                      Fellowship - Academy of Oral Implantology
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-                      Conferred upon <strong>Dr. Arjun Jawahar Sharma</strong> (BDS, MDS) for advanced mastery in dental implant surgery and full mouth prosthetics.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Credential 2 */}
-                <div className="relative pl-6 sm:pl-8">
-                  <div className="absolute -left-[31px] sm:-left-[39px] top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-50 text-amber-600 border border-amber-200/80 shadow-xs">
-                    <Award className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-amber-600">National Honor</span>
-                    <h3 className="font-sans text-base sm:text-lg font-bold text-navy-900 mt-0.5">
-                      4th Dental Academic Excellence Award
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-                      Prestigious <strong>GuidENT Certificate of Excellence</strong> awarded for top academic performance in prosthodontics and clinical research.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Credential 3 */}
-                <div className="relative pl-6 sm:pl-8">
-                  <div className="absolute -left-[31px] sm:-left-[39px] top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200/80 shadow-xs">
-                    <CheckCircle2 className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600">Premier Residency</span>
-                    <h3 className="font-sans text-base sm:text-lg font-bold text-navy-900 mt-0.5">
-                      GRIPMER Sri Ganga Ram Hospital Residency
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-                      Certified Senior Residency & Clinical Training completed by <strong>Dr. Priyanka Sharma</strong> at Sri Ganga Ram Hospital, New Delhi.
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <ScrollReveal direction="up" delay={0.2}>
+              <AnimatedCredentialsTimeline />
             </ScrollReveal>
           </div>
         </div>
