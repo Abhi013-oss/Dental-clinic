@@ -15,9 +15,11 @@ export function Navbar() {
   const [servicesDropdownOpen, setServicesDropdownOpen] = React.useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const [hasMounted, setHasMounted] = React.useState(false);
 
-  // Monitor scroll for subtle height compaction & elevated boundary
+  // Monitor scroll for subtle height compaction & elevated boundary, and trigger entrance transition
   React.useEffect(() => {
+    setHasMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -35,8 +37,12 @@ export function Navbar() {
 
   return (
     <header
+      style={{
+        transform: hasMounted ? 'translate3d(0, 0, 0)' : 'translate3d(0, -6px, 0)',
+        transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease',
+      }}
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md transition-all duration-200 border-b',
+        'fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b',
         isScrolled
           ? 'py-2.5 border-slate-200 shadow-sm'
           : 'py-3.5 sm:py-4 border-slate-200/80 shadow-none'
@@ -66,8 +72,8 @@ export function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Navigation (5 Core Items) */}
-        <nav className="hidden lg:flex items-center space-x-7 xl:space-x-8" aria-label="Main Navigation">
+        {/* Desktop Navigation (6 Core Items) */}
+        <nav className="hidden lg:flex items-center space-x-5 xl:space-x-7" aria-label="Main Navigation">
           {mainNavItems.map((item) => {
             const isActive = pathname === item.href || (item.href === '/services' && pathname.startsWith('/services'));
 
