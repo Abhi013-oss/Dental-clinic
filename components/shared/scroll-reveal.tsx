@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { motion } from 'framer-motion';
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -17,50 +16,76 @@ export function ScrollReveal({
   className = '',
   delay = 0,
   direction = 'up',
-  duration = 0.6,
+  duration = 0.65,
 }: ScrollRevealProps) {
+  const ref = React.useRef<HTMLDivElement>(null);
   const [hasMounted, setHasMounted] = React.useState(false);
+  const [inView, setInView] = React.useState(false);
 
   React.useEffect(() => {
     setHasMounted(true);
+
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setInView(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.05,
+        rootMargin: '0px 0px -10px 0px',
+      }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
-  // During SSR / before hydration, render plain visible div so SSR HTML is never blank
+  // During SSR / before hydration, render plain visible div so zero opacity 0 is in the HTML
   if (!hasMounted) {
-    return <div className={className}>{children}</div>;
+    return <div ref={ref} className={className}>{children}</div>;
   }
 
-  const getOffset = () => {
+  const getTransform = () => {
+    if (inView) return 'translate3d(0, 0, 0)';
     switch (direction) {
       case 'up':
-        return { y: 28, x: 0 };
+        return 'translate3d(0, 28px, 0)';
       case 'down':
-        return { y: -28, x: 0 };
+        return 'translate3d(0, -28px, 0)';
       case 'left':
-        return { x: 28, y: 0 };
+        return 'translate3d(28px, 0, 0)';
       case 'right':
-        return { x: -28, y: 0 };
+        return 'translate3d(-28px, 0, 0)';
       default:
-        return { x: 0, y: 0 };
+        return 'translate3d(0, 0, 0)';
     }
   };
 
-  const offset = getOffset();
-
   return (
-    <motion.div
-      initial={{ opacity: 0, ...offset }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, amount: 0.05, margin: '0px' }}
-      transition={{
-        duration,
-        delay,
-        ease: [0.22, 1, 0.36, 1], // Luxury smooth easing curve
+    <div
+      ref={ref}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: getTransform(),
+        transitionProperty: 'opacity, transform',
+        transitionDuration: `${duration}s`,
+        transitionDelay: `${delay}s`,
+        transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        willChange: 'opacity, transform',
       }}
       className={className}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
-
