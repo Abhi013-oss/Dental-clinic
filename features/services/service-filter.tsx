@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { servicesData } from '@/constants/services.data';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Clock, Search, X, CheckCircle2, Stethoscope, RotateCcw } from 'lucide-react';
+import { ArrowRight, Search, X, CheckCircle2, Stethoscope, RotateCcw } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function ServiceFilter() {
@@ -167,13 +167,8 @@ export function ServiceFilter() {
                 )}
               </div>
 
-              {/* Card Footer: Duration & Protocol Link */}
-              <div className="pt-3.5 mt-3.5 border-t border-slate-100 flex items-center justify-between">
-                <div className="flex items-center text-xs text-slate-400 font-semibold">
-                  <Clock className="h-3.5 w-3.5 text-medical-600 mr-1 shrink-0" />
-                  <span>{service.durationMinutes} Mins</span>
-                </div>
-
+              {/* Card Footer: Protocol Link */}
+              <div className="pt-3.5 mt-3.5 border-t border-slate-100 flex items-center justify-end">
                 <Link href={`/services/${service.slug}`}>
                   <Button
                     variant="outline"

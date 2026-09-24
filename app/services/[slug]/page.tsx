@@ -95,10 +95,10 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                 </span>
               </div>
               <div className="space-y-0.5 border-l border-slate-200 pl-4">
-                <span className="text-[11px] text-slate-400 block font-bold uppercase tracking-wider">Typical Session</span>
+                <span className="text-[11px] text-slate-400 block font-bold uppercase tracking-wider">Consultation</span>
                 <span className="font-sans text-sm sm:text-base font-bold text-navy-900 flex items-center">
-                  <Clock className="h-4 w-4 text-medical-600 mr-1.5 shrink-0" />
-                  {service.durationMinutes} Minutes
+                  <Calendar className="h-4 w-4 text-medical-600 mr-1.5 shrink-0" />
+                  By Appointment
                 </span>
               </div>
               <div className="space-y-0.5 border-l border-slate-200 pl-4 col-span-2 sm:col-span-1">

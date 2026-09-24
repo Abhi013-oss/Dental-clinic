@@ -10,7 +10,6 @@ import { Badge } from '@/components/ui/badge';
 import {
   ArrowRight,
   ChevronRight,
-  Clock,
   Calendar,
   Stethoscope,
   Sparkles,
@@ -285,12 +284,7 @@ export function TreatmentsSection() {
                         </div>
                       </div>
 
-                      <div className="pt-3.5 mt-3.5 border-t border-slate-100 flex items-center justify-between">
-                        <div className="flex items-center space-x-1 text-xs text-slate-400 font-semibold">
-                          <Clock className="h-3.5 w-3.5 text-[#159A9C]" />
-                          <span>{service.durationMinutes} Mins</span>
-                        </div>
-
+                      <div className="pt-3.5 mt-3.5 border-t border-slate-100 flex items-center justify-end">
                         <Link
                           href={`/services/${service.slug}`}
                           className="inline-flex items-center text-xs font-bold text-[#159A9C] hover:text-[#117A7C] transition-colors"
